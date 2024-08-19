@@ -44,6 +44,7 @@
         <div class="col-lg-12"> 
           <div class="p-5"> 
             <div class="text-center" style="color: #012e32;">
+              <h1 class="h4 mb-2">Aplikasi Penjualan Obat</h1>
              <h2 class="h4 mb-2">Aplikasi Penjualan Obat</h2>
             </div>
             <br>
