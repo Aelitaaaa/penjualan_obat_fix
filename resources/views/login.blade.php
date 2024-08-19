@@ -39,13 +39,12 @@
     @endif
 
       <!-- Nested Row within Card Body -->
-      
       <div class="row">
+        <div class="col-lg-12 d-none d-lg-block bg-login-image"></div> 
         <div class="col-lg-12"> 
           <div class="p-5"> 
-            <div class="text-center" style="color: #012e32;">
-              <h1 class="h4 mb-2">Aplikasi Penjualan Obat</h1>
-             <h2 class="h4 mb-2">Aplikasi Penjualan Obat</h2>
+            <div class="text-center" style="color: grey;">
+              <h1 class="h4 mb-4">Welcome!</h1><h2 class="h4 mb-2">Aplikasi Penjualan Obat</h2>
             </div>
             <br>
 
@@ -71,6 +70,7 @@
            
           </div>
         </div>
+      </div>
     </div>
   </div>
 
