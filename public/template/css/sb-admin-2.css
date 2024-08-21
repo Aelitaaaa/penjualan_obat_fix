@@ -1669,7 +1669,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #858796;
+  color: #728989;
 }
 
 .table th,
@@ -4925,7 +4925,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #f8f9fc;
+  background-color: #e2eded;
   border-bottom: 1px solid #e3e6f0;
 }
 
@@ -10372,7 +10372,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #4e73df !important;
+  color: #1A3636 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
