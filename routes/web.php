@@ -26,6 +26,10 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
+Route::get('/obat', function () {
+    return view('obat');
+})->name('obat');
+
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

@@ -396,7 +396,7 @@
         </div>
     </div>
 
-   @include('template.script')
+    @include('template.script')
 </body>
 
 </html>
