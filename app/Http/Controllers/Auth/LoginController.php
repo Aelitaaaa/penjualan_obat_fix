@@ -10,15 +10,21 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        // Validasi input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
+        // Jika kredensial benar
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/index');
         }
 
-        return redirect()->back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        // Jika kredensial salah, kirim pesan error menggunakan session
+        return redirect()->back()->with('error', 'Email Atau Password Tidak Ditemukan.');
     }
 }
 

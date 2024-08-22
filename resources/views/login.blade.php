@@ -33,12 +33,12 @@
               </div>
             @endif
 
-            <!-- Pesan error -->
             @if (session('error'))
-              <div class="alert alert-danger">
-                {{ session('error') }}
-              </div>
+            <div class="alert alert-danger">
+            {{ session('error') }}
+            </div>
             @endif
+
 
             <!-- Nested Row within Card Body -->
             <div class="row">
