@@ -30,6 +30,14 @@ Route::get('/obat', function () {
     return view('obat');
 })->name('obat');
 
+Route::get('/pasien', function () {
+    return view('pasien');
+})->name('pasien');
+
+Route::get('/suplier', function () {
+    return view('suplier');
+})->name('suplier');
+
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

@@ -32,8 +32,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Data:</h6>
                 <a class="collapse-item" href="{{ route('obat') }}">Obat</a>
-                <a class="collapse-item" href="">Pasien</a>
-                <a class="collapse-item" href="">Suplier</a>
+                <a class="collapse-item" href="{{ route('pasien') }}">Pasien</a>
+                <a class="collapse-item" href="{{ route('suplier') }}">Suplier</a>
                 <a class="collapse-item" href="">Stock Opname</a>
             </div>
         </div>
