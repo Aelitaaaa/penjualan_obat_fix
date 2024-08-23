@@ -14,3 +14,4 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('template/css/sb-admin-2.css')}}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -72,7 +72,17 @@
       </div>
     </div>
   </div>
-
+  <script>
+              Swal.fire({
+    title: 'Berhasil Login!',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    buttonsStyling: false, // Ini memastikan SweetAlert2 tidak menggunakan styling bawaannya
+    customClass: {
+        confirmButton: 'btn-custom-confirm' // Menggunakan kelas CSS kustom
+    }
+});
+    </script>
   @include('template.script')
   @include('sweetalert::alert')
 </body>

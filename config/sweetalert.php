@@ -241,7 +241,7 @@ return [
         'content' => env('SWEET_ALERT_CONTENT_CLASS'),
         'input' => env('SWEET_ALERT_INPUT_CLASS'),
         'actions' => env('SWEET_ALERT_ACTIONS_CLASS'),
-        'confirmButton' => env('SWEET_ALERT_CONFIRM_BUTTON_CLASS'),
+        'confirmButton' => env('SWEET_ALERT_CONFIRM_BUTTON_CLASS', 'btn-custom-confirm'),
         'cancelButton' => env('SWEET_ALERT_CANCEL_BUTTON_CLASS'),
         'footer' => env('SWEET_ALERT_FOOTER_CLASS'),
     ],
@@ -265,3 +265,4 @@ return [
 
 
 ];
+
