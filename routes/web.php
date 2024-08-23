@@ -38,6 +38,10 @@ Route::get('/suplier', function () {
     return view('suplier');
 })->name('suplier');
 
+Route::get('/opname', function () {
+    return view('opname');
+})->name('opname');
+
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

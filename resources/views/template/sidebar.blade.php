@@ -34,7 +34,7 @@
                 <a class="collapse-item" href="{{ route('obat') }}">Obat</a>
                 <a class="collapse-item" href="{{ route('pasien') }}">Pasien</a>
                 <a class="collapse-item" href="{{ route('suplier') }}">Suplier</a>
-                <a class="collapse-item" href="">Stock Opname</a>
+                <a class="collapse-item" href="{{ route('opname') }}">Stock Opname</a>
             </div>
         </div>
     </li>
