@@ -397,6 +397,7 @@
     </div>
 
     @include('template.script')
+    @include('sweetalert::alert')
 </body>
 
 </html>

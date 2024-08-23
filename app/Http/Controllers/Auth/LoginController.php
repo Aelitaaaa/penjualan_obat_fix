@@ -20,7 +20,7 @@ class LoginController extends Controller
 
         // Jika kredensial benar
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/index');
+            return redirect()->intended('/index')->with('success', 'Berhasil Login!');;
         }
 
         // Jika kredensial salah, kirim pesan error menggunakan session

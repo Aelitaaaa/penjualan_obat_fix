@@ -1,6 +1,5 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-<<<<<<< HEAD
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
     <div class="sidebar-brand-icon rotate-n-15">
@@ -39,12 +38,10 @@
             <h6 class="collapse-header">Data-data</h6>
             <a class="collapse-item" href="{{ route('obat') }}">Suplier</a>
             <a class="collapse-item" href="cards.html">Obat</a>
-=======
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
->>>>>>> 4b8d44949afd8a896eb3699d4794a1c9d7e32dad
         </div>
         <div class="sidebar-brand-text mx-3">Klimistri</div>
     </a>
