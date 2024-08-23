@@ -22,7 +22,7 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Data Management Dropdown -->
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData"
             aria-expanded="true" aria-controls="collapseData">
             <i class="fas fa-fw fa-database"></i>
@@ -42,15 +42,15 @@
     <!-- Nav Item -  Siswa -->
     <li class="nav-item active">
         <a class="nav-link" href="siswa.php">
-        <i class="fas fa-fw fa-user"></i>
-        <span>Pembelian Oba</span>
+        <i class="fas fa-fw fa-notes-medical"></i>
+        <span>Pembelian Obat</span>
         </a>
         </li>
 
         <!-- Nav Item -  Siswa -->
         <li class="nav-item active">
         <a class="nav-link" href="siswa.php">
-        <i class="fas fa-fw fa-user"></i>
+        <i class="fas fa-fw fa-cash-register"></i>
         <span>Penjualan</span>
         </a>
         </li>
@@ -58,7 +58,7 @@
         <!-- Nav Item -  Siswa -->
         <li class="nav-item active">
         <a class="nav-link" href="siswa.php">
-        <i class="fas fa-fw fa-user"></i>
+        <i class="fas fa-fw fa-folder-open"></i>
         <span>Laporan Omset</span>
         </a>
         </li>
