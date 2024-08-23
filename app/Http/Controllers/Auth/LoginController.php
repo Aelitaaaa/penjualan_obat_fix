@@ -24,7 +24,7 @@ class LoginController extends Controller
         }
 
         // Jika kredensial salah, kirim pesan error menggunakan session
-        return redirect()->back()->with('error', 'Email Atau Password Tidak Ditemukan.');
+        return redirect()->back()->with('error', 'Username atau Password Salah');
     }
 }
 

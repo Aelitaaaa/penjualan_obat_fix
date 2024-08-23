@@ -19,3 +19,4 @@
     <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script>
     <script src="{{asset('templatejs/demo/datatables-demo.js')}}"></script>
 
+   
