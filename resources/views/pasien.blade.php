@@ -3,7 +3,7 @@
 
 <head>
     <!-- ... other meta and link tags ... -->
-    <title>Klimistri - Data Obat</title>
+    <title>Klimistri - Data Pasien</title>
     @include('template.head')
 </head>
 
