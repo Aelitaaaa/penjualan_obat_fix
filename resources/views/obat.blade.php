@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>APPKAS - Data Obat</title>
+    <title>Data Obat - KLIMISTRI</title>
     @include('template.head')
 </head>
 
@@ -15,7 +15,17 @@
                 @include('template.navbar')
 
                 <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Data Obat Klinik Klimistri</h1>
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-2 text-gray-800">Data Obat Klinik Klimistri</h1>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahObatModal">
+                            <i class="fas fa-fw fa-plus"></i> Tambah Obat
+                        </button>
+                    </div>
+
+                    <!-- Modal Tambah Siswa -->
+                    @include('obat.create')
+                    <!-- End Modal Tambah Siswa -->
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -27,12 +37,12 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama Suplier</th>
                                             <th>Kode Obat</th>
                                             <th>Nama Obat</th>
-                                            <th>Kode suplier</th>
                                             <th>Harga</th>
                                             <th>Jumlah</th>
-                                            <th>Satuan</th>
+                                            <th>Unit</th>
                                             <th>Total Harga</th>
                                             <th>Tanggal</th>
                                         </tr>
