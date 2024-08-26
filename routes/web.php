@@ -26,9 +26,6 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
-Route::get('/obat', function () {
-    return view('obat');
-})->name('obat');
 
 Route::get('/pasien', function () {
     return view('pasien');
@@ -52,3 +49,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 use App\Http\Controllers\AuthController;
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+use App\Http\Controllers\ObatController;
+
+Route::resource('obat', ObatController::class);
