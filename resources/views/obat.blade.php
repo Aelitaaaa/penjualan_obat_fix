@@ -55,19 +55,6 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-
-<<<<<<< Updated upstream
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Obat-Obat</h6>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#tambahSiswaModal">
-                <i class="fas fa-fw fa-plus"></i> Tambah Siswa
-            </button>
-=======
-                </div>
->>>>>>> Stashed changes
             </div>
         </div>
     </div>
