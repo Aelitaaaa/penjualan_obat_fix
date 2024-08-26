@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ObatController; // Tambahkan ini untuk mengimpor ObatController
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,8 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
-Route::get('/obat', function () {
-    return view('obat');
-})->name('obat');
+
+Route::get('/obat', [ObatController::class, 'index'])->name('obat');
 
 Route::get('/pasien', function () {
     return view('pasien');
@@ -46,8 +46,6 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-
-
 
 use App\Http\Controllers\AuthController;
 
