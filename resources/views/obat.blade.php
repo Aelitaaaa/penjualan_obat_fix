@@ -28,7 +28,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Kode Obat</th>
-                                            <th>Kode Suplier</th>
                                             <th>Nama Obat</th>
                                             <th>Harga</th>
                                             <th>Jumlah</th>
@@ -38,16 +37,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($obat as $obat)
+                                        @foreach ($data_obat as $obat)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $obat->kode_obat }}</td>
                                             <td>{{ $obat->nama_obat }}</td>
-                                            <td>{{ $obat->kode_suplier }}</td>
-                                            <td>{{ $obat->harga_obat }}</td>
-                                            <td>{{ $obat->jumlah_obat }}</td>
-                                            <td>{{ $obat->Satuan }}</td>
-                                            <td>{{ $obat->total_harga_obat }}</td>
+                                            <td>{{ $obat->harga }}</td>
+                                            <td>{{ $obat->jumlah }}</td>
+                                            <td>{{ $obat->satuan }}</td>
+                                            <td>{{ $obat->total_harga }}</td>
                                             <td>{{ $obat->tanggal }}</td>
                                         </tr>
                                         @endforeach
@@ -55,6 +53,9 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
