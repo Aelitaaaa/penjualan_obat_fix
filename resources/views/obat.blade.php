@@ -29,6 +29,7 @@
                                             <th>No</th>
                                             <th>Kode Obat</th>
                                             <th>Nama Obat</th>
+                                            <th>Kode suplier</th>
                                             <th>Harga</th>
                                             <th>Jumlah</th>
                                             <th>Satuan</th>
@@ -37,15 +38,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_obat as $obat)
+                                        @foreach ($obat as $obat)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $obat->kode_obat }}</td>
+                                            <td>{{ $obat->kode_suplier }}</td>
                                             <td>{{ $obat->nama_obat }}</td>
-                                            <td>{{ $obat->harga }}</td>
-                                            <td>{{ $obat->jumlah }}</td>
-                                            <td>{{ $obat->satuan }}</td>
-                                            <td>{{ $obat->total_harga }}</td>
+                                            <td>{{ $obat->harga_obat }}</td>
+                                            <td>{{ $obat->jumlah_obat }}</td>
+                                            <td>{{ $obat->Satuan }}</td>
+                                            <td>{{ $obat->total_harga_obat }}</td>
                                             <td>{{ $obat->tanggal }}</td>
                                         </tr>
                                         @endforeach
