@@ -27,8 +27,8 @@
         <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800"></h1>
-<p class="mb-4"></a></p> 
+<h1 class="h3 mb-2 text-gray-800">Data Stock Opname</h1>
+<p class="mb-4"></p> 
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -49,6 +49,19 @@
             <th>Tanggal</th>
           </tr>
         </thead>
+        <tbody>
+          @foreach ($stockOpnames as $index => $stockOpname)
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ $stockOpname->nama_obat }}</td>
+              <td>{{ $stockOpname->jumlah }}</td>
+              <td>{{ $stockOpname->minus }}</td>
+              <td>{{ $stockOpname->harga }}</td>
+              <td>{{ $stockOpname->kerugian }}</td>
+              <td>{{ $stockOpname->tanggal }}</td>
+            </tr>
+          @endforeach
+        </tbody>
       </table>
     </div>
   </div>

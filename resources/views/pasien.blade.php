@@ -48,6 +48,17 @@
             <th>Tanggal</th>
           </tr>
         </thead>
+        <tbody>
+          @foreach($pasien as $index => $pasien)
+              <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ $pasien->nama_pasien}}</td>
+                  <td>{{ $pasien->alamat }}</td>
+                  <td>{{ $pasien->tanggal_lahir }}</td>
+                  <td>{{ $pasien->nomor_telepon }}</td>
+              </tr>
+          @endforeach
+      </tbody>
       </table>
     </div>
   </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PasienController;
-use App\Http\Controllers\OpnameController;
+use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -31,5 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/obat', [ObatController::class, 'index'])->name('obat');
     Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
     Route::get('/pasien', [PasienController::class, 'index'])->name('pasien');
-    Route::get('/opname', [OpnameController::class, 'index'])->name('opname');
+    Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 });
+
