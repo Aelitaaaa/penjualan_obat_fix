@@ -54,10 +54,10 @@
                                             <td>{{ $obat->kode_obat }}</td>
                                             <td>{{ $obat->kode_suplier }}</td>
                                             <td>{{ $obat->nama_obat }}</td>
-                                            <td>{{ $obat->harga_obat }}</td>
+                                            <td>Rp. {{ $obat->harga_obat }}</td>
                                             <td>{{ $obat->jumlah_obat }}</td>
                                             <td>{{ $obat->Satuan }}</td>
-                                            <td>{{ $obat->total_harga_obat }}</td>
+                                            <td>Rp. {{ $obat->total_harga_obat }}</td>
                                             <td>{{ $obat->tanggal }}</td>
                                         </tr>
                                         @endforeach

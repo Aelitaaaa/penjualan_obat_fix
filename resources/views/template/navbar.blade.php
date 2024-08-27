@@ -16,7 +16,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button class="nav-link btn btn-link" type="submit" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-sign-out-alt fa-fw"></i> Logout
+                    <i class="fas fa-sign-out-alt fa-fw" href="{{ route('login') }}"> </i>
                 </button>
             </form>
         </li>
