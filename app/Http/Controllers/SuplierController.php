@@ -9,10 +9,9 @@ class SuplierController extends Controller
 {
     public function index()
     {
-        // Ambil data dari database
+       
         $supliers = Suplier::all();
     
-        // Kirim data ke view
         return view('suplier', compact('supliers'));
     }
     
