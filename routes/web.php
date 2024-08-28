@@ -9,15 +9,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
-// Halaman Utama (assuming this is your default route)
+// Default route (if you want to use it as the home page)
 Route::get('/', function () {
-    return view('login'); // Keep as login if it is the intended start page
+    return view('login'); // Assuming login is the intended start page
 })->name('login');
-
-// Define the index route to prevent the RouteNotFoundException
-Route::get('/index', function () {
-    return view('index'); // Replace 'index' with the actual view file name you want to use
-})->name('index');
 
 // Login & Register routes
 Route::get('/login', function () {
@@ -33,7 +28,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Group routes that require authentication
 Route::middleware(['auth'])->group(function () {
-    Route::get('/obat', [ObatController::class, 'index'])->name('obat');
+    Route::get('/index', function () {
+        return view('index'); // Route for index view, if needed
+    })->name('index');
+
+    Route::get('/obat', [ObatController::class, 'index'])->name('obat.index');
+    Route::post('/obat', [ObatController::class, 'store'])->name('obat.store');
+    Route::delete('/obat/{id}', [ObatController::class, 'delete'])->name('obat.delete'); // Add this line
     Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
     Route::get('/pasien', [PasienController::class, 'index'])->name('pasien');
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');

@@ -34,19 +34,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($obats as $key => $obat)
+                        @foreach ($obat as $key => $obatItem)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $obat->kode_suplier }}</td>
-                                <td>{{ $obat->kode_obat }}</td>
-                                <td>{{ $obat->nama_obat }}</td>
-                                <td>{{ $obat->harga_obat }}</td>
-                                <td>{{ $obat->jumlah_obat }}</td>
-                                <td>{{ $obat->Satuan }}</td>
-                                <td>{{ $obat->total_harga_obat }}</td>
+                                <td>{{ $obatItem->kode_suplier }}</td>
+                                <td>{{ $obatItem->kode_obat }}</td>
+                                <td>{{ $obatItem->nama_obat }}</td>
+                                <td>{{ $obatItem->harga_obat }}</td>
+                                <td>{{ $obatItem->jumlah_obat }}</td>
+                                <td>{{ $obatItem->Satuan }}</td>
+                                <td>{{ $obatItem->total_harga_obat }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obat->id_obat }}">Edit</button>
-                                    <form action="{{ route('obat.destroy', $obat->id_obat) }}" method="POST" style="display:inline-block;">
+                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">Edit</button>
+                                    <form action="{{ route('obat.delete', $obatItem->id_obat) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
