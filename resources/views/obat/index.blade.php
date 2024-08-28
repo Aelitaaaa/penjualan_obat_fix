@@ -36,7 +36,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Suplier</th>
+                                            <th>Nama Suplier</th>
                                             <th>Kode Obat</th>
                                             <th>Nama Obat</th>
                                             <th>Harga</th>
