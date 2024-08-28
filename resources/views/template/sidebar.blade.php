@@ -32,7 +32,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Data:</h6>
                 <a class="collapse-item" href="{{ route('obat.index') }}">Obat</a>
-                <a class="collapse-item" href="{{ route('pasien') }}">Pasien</a>
+                <a class="collapse-item" href="{{ route('pasien.index') }}">Pasien</a>
                 <a class="collapse-item" href="{{ route('suplier') }}">Suplier</a>
                 <a class="collapse-item" href="{{ route('opname') }}">Stock Opname</a>
             </div>

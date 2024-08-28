@@ -35,7 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/obat', [ObatController::class, 'index'])->name('obat.index');
     Route::post('/obat', [ObatController::class, 'store'])->name('obat.store');
     Route::delete('/obat/{id}', [ObatController::class, 'delete'])->name('obat.delete'); // Add this line
-    Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
-    Route::get('/pasien', [PasienController::class, 'index'])->name('pasien');
-    Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 });
+
+Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
+Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
+Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
