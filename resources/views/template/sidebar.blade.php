@@ -33,7 +33,7 @@
                 <h6 class="collapse-header">Manage Data:</h6>
                 <a class="collapse-item" href="{{ route('obat.index') }}">Obat</a>
                 <a class="collapse-item" href="{{ route('pasien.index') }}">Pasien</a>
-                <a class="collapse-item" href="{{ route('suplier') }}">Suplier</a>
+                <a class="collapse-item" href="{{ route('suplier.index') }}">Suplier</a>
                 <a class="collapse-item" href="{{ route('opname') }}">Stock Opname</a>
             </div>
         </div>

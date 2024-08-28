@@ -37,6 +37,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/obat/{id}', [ObatController::class, 'delete'])->name('obat.delete'); // Add this line
 });
 
-Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
+Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier.index');
 Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
 Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
