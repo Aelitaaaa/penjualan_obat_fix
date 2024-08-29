@@ -40,3 +40,15 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier.index');
 Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
 Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
+
+Route::get('/pembelian-obat', function () {
+    return view('pembelian');
+})->name('pembelian.obat');
+
+Route::get('/penjualan-obat', function () {
+    return view('penjualan');
+})->name('penjualan.obat');
+
+Route::get('/laporan-omset', function () {
+    return view('laporan');
+})->name('laporan.omset');

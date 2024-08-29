@@ -46,13 +46,13 @@
                                 @foreach ($stockOpnames as $index => $stockOpname)
                                   <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $stockOpname->tanggal }}</td>
-                                    <td>{{ $stockOpname->nama_obat }}</td>
-                                    <td>{{ $stockOpname->jumlah_sistem }}</td>
+                                    <td>{{ $stockOpname->tanggal_opname }}</td>
+                                    <td>{{ $stockOpname->kode_obat }}</td>
+                                    <td>{{ $stockOpname->jumlah_obat }}</td>
                                     <td>{{ $stockOpname->jumlah_fisik }}</td>
                                     <td>{{ $stockOpname->minus }}</td>
-                                    <td>{{ $stockOpname->harga }}</td>
-                                    <td>{{ $stockOpname->kerugian }}</td>
+                                    <td>{{ $stockOpname->harga_obat }}</td>
+                                    <td>{{ $stockOpname->total_kerugian }}</td>
                                   </tr>
                                 @endforeach
                               </tbody>

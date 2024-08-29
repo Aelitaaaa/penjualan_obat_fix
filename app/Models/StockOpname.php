@@ -2,27 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StockOpname extends Model
 {
-    use HasFactory;
-
-   
-    protected $table = 'stock_opname';
-
+    protected $table = 'stock_opname'; // Nama tabel di database
+    protected $primaryKey = 'id'; // Primary key tabel
+    public $timestamps = false; // Jika tabel tidak memiliki kolom created_at dan updated_at
     
-    protected $primaryKey = 'id';
-
-   
+    // Tentukan kolom yang dapat diisi secara massal jika diperlukan
     protected $fillable = [
-        'nama_obat',
-        'jumlah_sistem',
+        'tanggal_obat',
+        'kode_obat',
+        'jumlah_obat',
         'jumlah_fisik',
         'minus',
         'harga',
-        'kerugian',
-        'tanggal'
+        'total_kerugian',
     ];
 }

@@ -41,15 +41,16 @@
 
     <!-- Nav Item -  Siswa -->
     <li class="nav-item active">
-        <a class="nav-link" href="siswa.php">
-        <i class="fas fa-fw fa-notes-medical"></i>
-        <span>Pembelian Obat</span>
+        <a class="nav-link" href="{{ route('pembelian.obat') }}">
+            <i class="fas fa-fw fa-notes-medical"></i>
+            <span>Pembelian Obat</span>
         </a>
-        </li>
+    </li>
+    
 
         <!-- Nav Item -  Siswa -->
         <li class="nav-item active">
-        <a class="nav-link" href="siswa.php">
+            <a class="nav-link" href="{{ route('penjualan.obat') }}">
         <i class="fas fa-fw fa-cash-register"></i>
         <span>Penjualan</span>
         </a>
@@ -57,7 +58,7 @@
 
         <!-- Nav Item -  Siswa -->
         <li class="nav-item active">
-        <a class="nav-link" href="siswa.php">
+        <a class="nav-link" href="{{ route('laporan.omset') }}">
         <i class="fas fa-fw fa-folder-open"></i>
         <span>Laporan Omset</span>
         </a>
