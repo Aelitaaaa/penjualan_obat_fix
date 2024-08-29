@@ -12,7 +12,7 @@ class SuplierController extends Controller
        
         $supliers = Suplier::all();
     
-        return view('suplier', compact('supliers'));
+        return view('suplier.index', compact('supliers'));
     }
     
 }

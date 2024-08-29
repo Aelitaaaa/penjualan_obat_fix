@@ -13,6 +13,6 @@ class PasienController extends Controller
         $pasien = Pasien::all();
     
         // Kirim data ke view
-        return view('pasien', compact('pasien'));
+        return view('pasien.index', compact('pasien'));
     }
 }

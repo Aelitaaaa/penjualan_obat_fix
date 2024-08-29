@@ -33,24 +33,26 @@
                               <thead>
                                 <tr>
                                   <th>No</th>
+                                  <th>Tanggal</th>
                                   <th>Nama Obat</th>
-                                  <th>Jumlah</th>
+                                  <th>Jumlah Sistem</th>
+                                  <th>Jumlah Fisik</th>
                                   <th>Minus</th>
                                   <th>Harga</th>
                                   <th>Kerugian</th>
-                                  <th>Tanggal</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 @foreach ($stockOpnames as $index => $stockOpname)
                                   <tr>
                                     <td>{{ $index + 1 }}</td>
+                                    <td>{{ $stockOpname->tanggal }}</td>
                                     <td>{{ $stockOpname->nama_obat }}</td>
-                                    <td>{{ $stockOpname->jumlah }}</td>
+                                    <td>{{ $stockOpname->jumlah_sistem }}</td>
+                                    <td>{{ $stockOpname->jumlah_fisik }}</td>
                                     <td>{{ $stockOpname->minus }}</td>
                                     <td>{{ $stockOpname->harga }}</td>
                                     <td>{{ $stockOpname->kerugian }}</td>
-                                    <td>{{ $stockOpname->tanggal }}</td>
                                   </tr>
                                 @endforeach
                               </tbody>

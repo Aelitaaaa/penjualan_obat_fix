@@ -18,7 +18,8 @@ class StockOpname extends Model
    
     protected $fillable = [
         'nama_obat',
-        'jumlah',
+        'jumlah_sistem',
+        'jumlah_fisik',
         'minus',
         'harga',
         'kerugian',
