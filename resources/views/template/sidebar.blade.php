@@ -39,9 +39,9 @@
         </div>
     </li>
 
-    <!-- Nav Item -  Siswa -->
+  
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('pembelian.obat') }}">
+        <a class="nav-link" href="{{ route('pembelian.index') }}">
             <i class="fas fa-fw fa-notes-medical"></i>
             <span>Pembelian Obat</span>
         </a>
