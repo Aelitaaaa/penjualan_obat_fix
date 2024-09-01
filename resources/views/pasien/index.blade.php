@@ -37,9 +37,10 @@
                                 <tr>
                                   <th>No</th>
                                   <th>Nama Pasien</th>
-                                  <th>Alamat</th>
+                                  <th>Jenis Kelamin</th>
                                   <th>Tanggal Lahir</th>
                                   <th>Nomor Telepon</th>
+                                  <th>Alamat</th>
                                   <th>Tanggal</th>
                                 </tr>
                               </thead>
@@ -48,9 +49,10 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $pasien->nama_pasien}}</td>
-                                        <td>{{ $pasien->alamat }}</td>
+                                        <td>{{ $pasien->jenis_kelamin }}</td>
                                         <td>{{ $pasien->tanggal_lahir }}</td>
                                         <td>{{ $pasien->nomor_telepon }}</td>
+                                        <td>{{ $pasien->alamat }}</td>
                                         <td></td>
                                     </tr>
                                 @endforeach
