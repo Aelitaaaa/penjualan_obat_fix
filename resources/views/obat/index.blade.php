@@ -49,7 +49,7 @@
                                         @foreach ($obat as $key => $obatItem)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $obatItem->kode_suplier }}</td>
+                                                <td>{{ $obatItem->suplier->nama_suplier ?? 'N/A' }}</td> <!-- Menggunakan relationship jika ada -->
                                                 <td>{{ $obatItem->kode_obat }}</td>
                                                 <td>{{ $obatItem->nama_obat }}</td>
                                                 <td>{{ $obatItem->harga_obat }}</td>
@@ -57,8 +57,11 @@
                                                 <td>{{ $obatItem->Satuan }}</td>
                                                 <td>{{ $obatItem->total_harga_obat }}</td>
                                                 <td>
+                                                    <!-- Form Edit -->
                                                     <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">Edit</button>
-                                                    <form action="{{ route('obat.delete', $obatItem->id_obat) }}" method="POST" style="display:inline-block;">
+                                                    
+                                                    <!-- Form Delete -->
+                                                    <form action="{{ route('obat.delete', ['id' => $obatItem->id_obat]) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

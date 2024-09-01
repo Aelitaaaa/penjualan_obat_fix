@@ -35,10 +35,11 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD untuk Obat
     Route::get('/obat', [ObatController::class, 'index'])->name('obat.index');
+    Route::get('/obat/create', [ObatController::class, 'create'])->name('obat.create');
     Route::post('/obat', [ObatController::class, 'store'])->name('obat.store');
     Route::put('/obat/{id}', [ObatController::class, 'update'])->name('obat.update');
-    Route::delete('/obat/{id}', [ObatController::class, 'delete'])->name('obat.delete'); 
-
+    Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.delete');
+    
     // CRUD untuk Pembelian
     Route::prefix('pembelian')->name('pembelian.')->group(function () {
         Route::get('/', [PembelianController::class, 'index'])->name('index');
