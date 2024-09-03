@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\DetailPembelianController;
 
 // Halaman depan/login
 Route::get('/', function () {
@@ -45,6 +46,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [PembelianController::class, 'index'])->name('index');
         Route::get('/create', [PembelianController::class, 'create'])->name('create');
         Route::post('/', [PembelianController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [PembelianController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [PembelianController::class, 'update'])->name('update');
+        Route::delete('/{id}', [PembelianController::class, 'destroy'])->name('destroy');
+    });
+
+    // CRUD untuk Pembelian
+    Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
+        Route::get('/{kodePembelian}', [DetailPembelianController::class, 'index'])->name('index');
+        Route::get('/create', [PembelianController::class, 'create'])->name('create');
+        Route::post('/{kodePembelian}', [DetailPembelianController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [PembelianController::class, 'edit'])->name('edit');
         Route::put('/{id}', [PembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [PembelianController::class, 'destroy'])->name('destroy');

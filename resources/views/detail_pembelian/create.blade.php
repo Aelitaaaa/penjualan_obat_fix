@@ -1,29 +1,39 @@
 <!-- Modal Tambah Obat -->
-<div class="modal fade text-left" id="tambahPembelianModal" tabindex="-1" role="dialog" aria-labelledby="tambahPembelianModalLabel" aria-hidden="true">
+<div class="modal fade text-left" id="tambahObatModal" tabindex="-1" role="dialog" aria-labelledby="tambahObatModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="post" action="{{ route('pembelian.store') }}">
+        <form method="post" action="{{ route('detail_pembelian.store', ['kodePembelian' => $pembelian->kode_pembelian]) }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahPembelianModalLabel">Tambah Obat</h5>
+                    <h5 class="modal-title" id="tambahObatModalLabel">Tambah Obat</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Pembelian</label>
-                        <input type="text" name="kode_pembelian" class="form-control" required>
+                        <label>Obat</label>
+                        <select id="kode_obat" name="kode_obat" class="form-control">
+                            <option value="">-Pilih-</option>
+                            @foreach ($obat as $obatItem)
+                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_obat }}">
+                                    {{ $obatItem->nama_obat }}
+                                </option>
+                            @endforeach
+                        </select>                     
                     </div>
                     <div class="form-group">
-                        <label>Kode Suplier</label>
-                        <input type="text" name="kode_suplier" class="form-control" required>
+                        <label>Jumlah Obat</label>
+                        <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Total Harga</label>
-                        <input type="number" name="total_harga" class="form-control" placeholder="Rp." readonly>
-                    </div>                                   
-                               
+                        <label>Harga</label>
+                        <input type="number" id="harga_obat" name="harga_obat" class="form-control" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Subtotal</label>
+                        <input type="number" id="subtotal" name="subtotal" class="form-control" required readonly>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>
@@ -33,7 +43,6 @@
         </form>
     </div>
 </div>
-@include('template.script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {

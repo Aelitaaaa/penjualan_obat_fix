@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
 
@@ -48,12 +47,9 @@ class PembelianController extends Controller
     {
         $request->validate([
             'kode_pembelian' => 'required|max:7',
-            'kode_obat' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
-            'harga_obat' => 'required|numeric',
-            'jumlah_pembelian' => 'required|integer',
-            'total_harga' => 'required|numeric',
-            'tanggal_pembelian' => 'required|date',
+            'totsl_pembelian' => 'required|numeric',
+            'create_at' => 'required|date',
         ]);
 
         $pembelianItem = Pembelian::findOrFail($id);
