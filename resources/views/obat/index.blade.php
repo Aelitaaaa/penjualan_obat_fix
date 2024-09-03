@@ -49,7 +49,7 @@
                                         @foreach ($obat as $key => $obatItem)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $obatItem->suplier->nama_suplier ?? 'N/A' }}</td> <!-- Menggunakan relationship jika ada -->
+                                                <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> <!--petik dua itu, klo misalkan nama supliernya gaada, mau diisi apa-->
                                                 <td>{{ $obatItem->kode_obat }}</td>
                                                 <td>{{ $obatItem->nama_obat }}</td>
                                                 <td>{{ $obatItem->harga_obat }}</td>
