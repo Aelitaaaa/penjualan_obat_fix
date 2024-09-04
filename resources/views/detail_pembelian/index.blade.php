@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Obat - KLIMISTRI</title>
+    <title>Detail Pembelian - KLIMISTRI</title>
     @include('template.head')
 </head>
 <body id="page-top">
     <div id="wrapper">
         @include('template.sidebar')
-
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 @include('template.navbar')
-
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Obat Klinik Klimistri</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Kode Pembelian: {{ $pembelian->kode_pembelian }} </h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#tambahObatModal">
                             <i class="fas fa-fw fa-plus"></i> Tambah Obat
                         </button>
                     </div>
 
-                    <!-- Modal Tambah Obat -->
-                    @include('obat.create', ['suplier' => $suplier])
+                     <!-- Modal Tambah Obat -->
+                     @include('detail_pembelian.create', ['obat' => $obat]) 
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Obat</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Detail Pembelian</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -35,33 +33,28 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Suplier</th>
-                                            <th>Kode Obat</th>
-                                            <th>Nama Obat</th>
-                                            <th>Harga</th>
+                                            <th>Obat</th>
                                             <th>Jumlah</th>
-                                            <th>Satuan</th>
-                                            <th>Total Harga</th>
+                                            <th>Harga Satuan</th>
+                                            <th>Subtotal</th>
+                                         
+                                            <th>Tanggal Pembelian</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($obat as $key => $obatItem)
+                                        @foreach ($detailPembelian as $key => $item)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> <!--petik dua itu, klo misalkan nama supliernya gaada, mau diisi apa-->
-                                                <td>{{ $obatItem->kode_obat }}</td>
-                                                <td>{{ $obatItem->nama_obat }}</td>
-                                                <td>{{ $obatItem->harga_obat }}</td>
-                                                <td>{{ $obatItem->jumlah_obat }}</td>
-                                                <td>{{ $obatItem->Satuan }}</td>
-                                                <td>{{ $obatItem->total_harga_obat }}</td>
+                                                <td>{{ $key + 1 }}</td>           
+                                                <td>{{ $item->kode_obat }}</td>
+                                                <td>{{ $item->jumlah }}</td>
+                                                <td>{{ $item->harga_satuan }}</td>              
+                                                <td>{{ $item->subtotal }}</td>
+                                               
+                                                <td>{{ $item->create_at}}</td>
                                                 <td>
-                                                    <!-- Form Edit -->
-                                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">Edit</button>
-                                                    
-                                                    <!-- Form Delete -->
-                                                    <form action="{{ route('obat.delete', ['id' => $obatItem->id_obat]) }}" method="POST" style="display:inline-block;">
+                                                    <a href="{{ route('detail_pembelian.index', $item->id_pembelian) }}" class="btn btn-warning btn-sm">Detail</a>
+                                                    <form action="{{ route('detail_pembelian.destroy', $item->id_pembelian) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -70,11 +63,15 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <td colspan="4"> Total: </td>
+                                        <td>hh</td>
+                                        
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -14,5 +14,10 @@ class Obat extends Model
     protected $fillable = [
         'kode_suplier', 'kode_obat', 'nama_obat', 'harga_obat', 'jumlah_obat', 'Satuan', 'total_harga_obat'
     ];
+
+    public function suplier()
+    {
+        return $this->belongsTo(Suplier::class, 'kode_suplier', 'kode_suplier');
+    }
 }
 
