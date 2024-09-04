@@ -9,10 +9,10 @@ class PasienController extends Controller
 {
     public function index()
     {
-        // Ambil data dari database
+        
         $pasien = Pasien::all();
     
-        // Kirim data ke view
+        
         return view('pasien.index', compact('pasien'));
     }
 }
