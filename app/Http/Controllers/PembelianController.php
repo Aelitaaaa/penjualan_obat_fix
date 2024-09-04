@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
 
@@ -47,9 +48,12 @@ class PembelianController extends Controller
     {
         $request->validate([
             'kode_pembelian' => 'required|max:7',
+            'kode_obat' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
-            'totsl_pembelian' => 'required|numeric',
-            'create_at' => 'required|date',
+            'harga_obat' => 'required|numeric',
+            'jumlah_pembelian' => 'required|integer',
+            'total_harga' => 'required|numeric',
+            'tanggal_pembelian' => 'required|date',
         ]);
 
         $pembelianItem = Pembelian::findOrFail($id);
@@ -61,7 +65,6 @@ class PembelianController extends Controller
     
     public function destroy($id)
     {
-        // Temukan pembelian berdasarkan ID
         $pembelian = Pembelian::find($id);
     
         if (!$pembelian) {

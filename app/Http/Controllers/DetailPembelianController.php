@@ -72,7 +72,7 @@ class DetailPembelianController extends Controller
     
     public function destroy($id)
     {
-        // Temukan pembelian berdasarkan ID
+      
         $detailPembelian = DetailPembelian::find($id);
     
         if (!$detailPembelian) {
