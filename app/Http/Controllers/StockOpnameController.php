@@ -9,8 +9,8 @@ class StockOpnameController extends Controller
 {
     public function index()
     {
-        $stockOpnames = StockOpname::all(); // Mengambil semua data dari tabel opname
-        return view('opname', compact('stockOpnames')); // Mengirim data ke view
+        $stockOpnames = StockOpname::all();
+        return view('opname', compact('stockOpnames')); 
     }
 }
 

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class StockOpname extends Model
 {
-    protected $table = 'stock_opname'; // Nama tabel di database
-    protected $primaryKey = 'id'; // Primary key tabel
-    public $timestamps = false; // Jika tabel tidak memiliki kolom created_at dan updated_at
+    protected $table = 'stock_opname';
+    protected $primaryKey = 'id'; 
+    public $timestamps = false; 
     
-    // Tentukan kolom yang dapat diisi secara massal jika diperlukan
+    
     protected $fillable = [
         'tanggal_obat',
         'kode_obat',
