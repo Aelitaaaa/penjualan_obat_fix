@@ -58,7 +58,15 @@ Route::put('obat/{id}', [ObatController::class, 'update'])->name('obat.update');
     });
 
     // Suplier
-    Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier.index');
+    Route::prefix('suplier')->name('suplier.')->group(function () {
+        Route::get('/', [SuplierController::class, 'index'])->name('index');
+        Route::get('/create', [SuplierController::class, 'create'])->name('create');
+        Route::post('/', [SuplierController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [SuplierController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [SuplierController::class, 'update'])->name('update');
+        Route::delete('/{id}', [SuplierController::class, 'destroy'])->name('destroy');
+    });
+
     
     // Pasien
     Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');

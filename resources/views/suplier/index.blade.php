@@ -32,29 +32,29 @@
                             <h6 class="m-0 font-weight-bold text-primary">Suplier-Suplier</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode Suplier</th>
-                                <th>Nama Suplier</th>
-                                <th>Alamat</th>
-                                <th>Nomor Telepon</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($supliers as $index => $suplier)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $suplier->kode_suplier }}</td>
-                                    <td>{{ $suplier->nama_suplier }}</td>
-                                    <td>{{ $suplier->alamat }}</td>
-                                    <td>{{ $suplier->nomor_telepon }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            <div class="table-responsive">                       
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode Suplier</th>
+                                            <th>Nama Suplier</th>
+                                            <th>Alamat</th>
+                                            <th>Nomor Telepon</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($supliers as $index => $suplier)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $suplier->kode_suplier }}</td>
+                                                <td>{{ $suplier->nama_suplier }}</td>
+                                                <td>{{ $suplier->alamat }}</td>
+                                                <td>{{ $suplier->nomor_telepon }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-
+    @include('sweetalert::alert')
     @include('template.script')
 </body>
 
