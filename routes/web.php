@@ -33,7 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/obat', [ObatController::class, 'index'])->name('obat.index');
     Route::get('/obat/create', [ObatController::class, 'create'])->name('obat.create');
     Route::post('/obat', [ObatController::class, 'store'])->name('obat.store');
-    Route::put('/obat/{id}', [ObatController::class, 'update'])->name('obat.update');
+    Route::get('obat/{id}/edit', [ObatController::class, 'edit'])->name('obat.edit');
+Route::put('obat/{id}', [ObatController::class, 'update'])->name('obat.update');
     Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.delete');
     
     // Pembelian
