@@ -9,7 +9,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\DetailPembelianController;
 
 
 Route::get('/', function () {
@@ -48,7 +47,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{id}', [PembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [PembelianController::class, 'destroy'])->name('destroy');
     });
-   
+
+    
     Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier.index');
     Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
