@@ -17,8 +17,6 @@ class Pembelian extends Model
         'kode_pembelian',
         'kode_suplier',
         'total_pembelian',
-        'create_at',
-        'update_at',
     ];
 
 }

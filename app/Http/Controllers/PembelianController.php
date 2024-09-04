@@ -22,13 +22,9 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_pembelian' => 'required|max:7',
-            'kode_obat' => 'required|max:7',
+           'kode_pembelian' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
-            'harga_obat' => 'required|numeric',
-            'jumlah_pembelian' => 'required|integer',
-            'total_harga' => 'required|numeric',
-            'tanggal_pembelian' => 'required|date',
+            'total_pembelian' => 'nullable|numeric',
         ]);
 
         Pembelian::create($request->all());
@@ -48,12 +44,8 @@ class PembelianController extends Controller
     {
         $request->validate([
             'kode_pembelian' => 'required|max:7',
-            'kode_obat' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
-            'harga_obat' => 'required|numeric',
-            'jumlah_pembelian' => 'required|integer',
-            'total_harga' => 'required|numeric',
-            'tanggal_pembelian' => 'required|date',
+            'total_pembelian' => 'nullable|numeric',
         ]);
 
         $pembelianItem = Pembelian::findOrFail($id);

@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label>Total Harga</label>
-                        <input type="number" name="total_harga" class="form-control" placeholder="Rp." readonly>
+                        <input type="number" name="total_pembelian" class="form-control" placeholder="Rp." readonly>
                     </div>                                   
                                
                 </div>

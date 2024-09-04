@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jumlah Pembelian</label>
-                                    <input type="number" name="jumlah_pembelian" class="form-control" value="{{ $pembelianItem->jumlah_pembelian }}" required>
+                                    <input type="number" name="jumlah_pembelian" class="form-control" value="{{ $pembelianItem->jumlah_pembelian }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Total Harga</label>
