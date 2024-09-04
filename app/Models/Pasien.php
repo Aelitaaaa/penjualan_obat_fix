@@ -11,7 +11,16 @@ class Pasien extends Model
 
     // Tentukan nama tabel jika berbeda dari nama model
     protected $table = 'pasien';
+    protected $primaryKey = 'id';
 
     // Tentukan kolom-kolom yang bisa diisi
-    protected $fillable = ['nama', 'jenis_kelamin', 'nomor_telepon', 'alamat'];
+    protected $fillable = [
+        'nama_pasien', 
+        'jenis_kelamin', 
+        'tanggal_lahir',
+        'nomor_telepon', 
+        'alamat',
+        'created_at'
+
+    ];
 }

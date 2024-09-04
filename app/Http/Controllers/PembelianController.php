@@ -25,6 +25,7 @@ class PembelianController extends Controller
            'kode_pembelian' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
             'total_pembelian' => 'nullable|numeric',
+            'created_at' => 'nullable|date_format:Y-m-d H:i:s',
         ]);
 
         Pembelian::create($request->all());
@@ -46,6 +47,7 @@ class PembelianController extends Controller
             'kode_pembelian' => 'required|max:7',
             'kode_suplier' => 'required|max:7',
             'total_pembelian' => 'nullable|numeric',
+            'created_at' => 'nullable|date_format:Y-m-d H:i:s',
         ]);
 
         $pembelianItem = Pembelian::findOrFail($id);

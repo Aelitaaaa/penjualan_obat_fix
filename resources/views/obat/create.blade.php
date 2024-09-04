@@ -16,40 +16,33 @@
                         <select name="kode_suplier" class="form-control">
                             <option value="">-Pilih-</option>
                             @foreach ($suplier as $suplierItem)
-                                <option value="{{ $suplierItem->kode_suplier }}">{{ $suplierItem->nama_suplier }}</option>
+                                <option value="{{ $suplierItem->kode_suplier }}">{{ $suplierItem->kode_suplier }} - {{ $suplierItem->nama_suplier }}</option>
                             @endforeach
                         </select>                        
                     </div>
                     <div class="form-group">
                         <label>Kode Obat</label>
-                        <select id="kode_obat" name="kode_obat" class="form-control">
-                            <option value="">-Pilih-</option>
-                            @foreach ($obat as $obatItem)
-                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_obat }}" data-unit="{{ $obatItem->Satuan }}">
-                                    {{ $obatItem->kode_obat }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <input type="text" id="kode_obat" name="kode_obat" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Obat</label>
-                        <input type="text" id="nama_obat" name="nama_obat" class="form-control" required readonly>
+                        <input type="text" id="nama_obat" name="nama_obat" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
-                        <input type="number" id="harga_obat" name="harga" class="form-control" required readonly>
+                        <input type="number" id="harga_obat" name="harga_obat" class="form-control" placeholder="Rp." required>
                     </div>
                     <div class="form-group">
                         <label>Jumlah</label>
-                        <input type="number" id="jumlah_obat" name="jumlah" class="form-control" required>
+                        <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Unit</label>
-                        <input type="text" id="unit" name="unit" class="form-control" required readonly>
+                        <input type="text" id="unit" name="unit" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Total Harga</label>
-                        <input type="number" id="total_harga_obat" name="total_harga" class="form-control" required readonly>
+                        <input type="number" id="total_harga_obat" name="total_harga_obat" class="form-control" placeholder="Rp." required>
                     </div>
                     
                 </div>

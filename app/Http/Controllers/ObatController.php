@@ -32,6 +32,7 @@ class ObatController extends Controller
         'jumlah_obat' => 'required|integer|min:1', 
         'unit' => 'required|string|max:15', 
         'total_harga_obat' => 'required|numeric|min:0', 
+        'created_at' => 'nullable|date_format:Y-m-d H:i:s',
     ]);
 
     
@@ -41,8 +42,9 @@ class ObatController extends Controller
         'nama_obat' => $request->nama_obat,
         'harga_obat' => $request->harga_obat,
         'jumlah_obat' => $request->jumlah_obat,
-        'Satuan' => $request->unit,
+        'unit' => $request->unit,
         'total_harga_obat' => $request->total_harga_obat,
+        'created_at' => $request->created_at
     ]);
 
     
@@ -70,6 +72,7 @@ public function update(Request $request, $id)
         'jumlah_obat' => 'required|integer|min:1', 
         'unit' => 'required|string|max:15', 
         'total_harga_obat' => 'required|numeric|min:0', 
+        'created_at' => 'nullable|date_format:Y-m-d H:i:s',
     ]);
 
     
@@ -80,8 +83,9 @@ public function update(Request $request, $id)
         'nama_obat' => $request->nama_obat,
         'harga_obat' => $request->harga_obat,
         'jumlah_obat' => $request->jumlah_obat,
-        'Satuan' => $request->unit,
+        'unit' => $request->unit,
         'total_harga_obat' => $request->total_harga_obat,
+        'created_at' => $request->created_at
     ]);
 
     return redirect()->route('obat.index')->with('success', 'Obat berhasil diperbarui!');

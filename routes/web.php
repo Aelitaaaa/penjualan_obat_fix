@@ -69,7 +69,14 @@ Route::put('obat/{id}', [ObatController::class, 'update'])->name('obat.update');
 
     
     // Pasien
-    Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
+    Route::prefix('pasien')->name('pasien.')->group(function () {
+        Route::get('/', [PasienController::class, 'index'])->name('index');
+        Route::get('/create', [PasienController::class, 'create'])->name('create');
+        Route::post('/', [PasienController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [PasienController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [PasienController::class, 'update'])->name('update');
+        Route::delete('/{id}', [PasienController::class, 'destroy'])->name('destroy');
+    });
     
     // Stock Opname
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');

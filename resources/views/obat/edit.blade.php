@@ -1,53 +1,56 @@
-<!-- Modal Edit Obat -->
-@foreach ($obats as $obat)
-<div class="modal fade" id="editObatModal{{ $obat->id_obat }}" tabindex="-1" role="dialog" aria-labelledby="editObatModalLabel{{ $obat->id_obat }}" aria-hidden="true">
+<div class="modal fade" id="editObatModal{{ $obatItem->id_obat }}" tabindex="-1" role="dialog" aria-labelledby="editObatModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editObatModalLabel{{ $obat->id_obat }}">Edit Obat</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                <h5 class="modal-title" id="editObatModalLabel">Edit Obat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('obat.update', $obat->id_obat) }}" method="POST">
+            <form action="{{ route('obat.update', ['id' => $obatItem->id_obat]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Suplier</label>
-                        <input type="text" name="kode_suplier" class="form-control" value="{{ $obat->kode_suplier }}" required>
+                        <label for="kode_suplier">Suplier</label>
+                        <select name="kode_suplier" class="form-control" required>
+                            @foreach($suplier as $item)
+                                <option value="{{ $item->kode_suplier }}" {{ $item->kode_suplier == $obatItem->kode_suplier ? 'selected' : '' }}>
+                                    {{ $item->nama_suplier }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Kode Obat</label>
-                        <input type="text" name="kode_obat" class="form-control" value="{{ $obat->kode_obat }}" required>
+                        <label for="kode_obat">Kode Obat</label>
+                        <input type="text" name="kode_obat" class="form-control" value="{{ $obatItem->kode_obat }}" required>
                     </div>
                     <div class="form-group">
-                        <label>Nama Obat</label>
-                        <input type="text" name="nama_obat" class="form-control" value="{{ $obat->nama_obat }}" required>
+                        <label for="nama_obat">Nama Obat</label>
+                        <input type="text" name="nama_obat" class="form-control" value="{{ $obatItem->nama_obat }}" required>
                     </div>
                     <div class="form-group">
-                        <label>Harga Obat</label>
-                        <input type="number" name="harga_obat" class="form-control" value="{{ $obat->harga_obat }}" required>
+                        <label for="harga_obat">Harga</label>
+                        <input type="number" name="harga_obat" class="form-control" value="{{ $obatItem->harga_obat }}" required>
                     </div>
                     <div class="form-group">
-                        <label>Jumlah Obat</label>
-                        <input type="number" name="jumlah_obat" class="form-control" value="{{ $obat->jumlah_obat }}" required>
+                        <label for="jumlah_obat">Jumlah</label>
+                        <input type="number" name="jumlah_obat" class="form-control" value="{{ $obatItem->jumlah_obat }}" required>
                     </div>
                     <div class="form-group">
-                        <label>Satuan</label>
-                        <input type="text" name="Satuan" class="form-control" value="{{ $obat->Satuan }}" required>
+                        <label for="unit">Unit</label>
+                        <input type="text" name="unit" class="form-control" value="{{ $obatItem->unit }}" required>
                     </div>
                     <div class="form-group">
-                        <label>Total Harga Obat</label>
-                        <input type="number" name="total_harga_obat" class="form-control" value="{{ $obat->total_harga_obat }}" required>
+                        <label for="total_harga_obat">Total Harga</label>
+                        <input type="number" name="total_harga_obat" class="form-control" value="{{ $obatItem->total_harga_obat }}" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-@endforeach

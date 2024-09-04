@@ -12,7 +12,7 @@ class Obat extends Model
     public $timestamps = false; 
     
     protected $fillable = [
-        'kode_suplier', 'kode_obat', 'nama_obat', 'harga_obat', 'jumlah_obat', 'Satuan', 'total_harga_obat'
+        'kode_suplier', 'kode_obat', 'nama_obat', 'harga_obat', 'jumlah_obat', 'unit', 'total_harga_obat', 'created_at'
     ];
 
     public function suplier()

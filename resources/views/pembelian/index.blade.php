@@ -49,7 +49,7 @@
                                                 <td>{{ $item->kode_pembelian }}</td>              
                                                 <td>{{ $item->kode_suplier }}</td>
                                                 <td>Rp. {{ $item->total_pembelian }}</td>
-                                                <td>{{ $item->create_at}}</td>
+                                                <td>{{ $item->created_at}}</td>
                                                 <td>
                                                     <a href="{{ route('detail_pembelian.index', $item->id_pembelian) }}" class="btn btn-warning btn-sm">Detail</a>
                                                     <form action="{{ route('pembelian.destroy', $item->id_pembelian) }}" method="POST" style="display:inline-block;">

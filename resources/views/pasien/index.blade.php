@@ -41,7 +41,7 @@
                                   <th>Tanggal Lahir</th>
                                   <th>Nomor Telepon</th>
                                   <th>Alamat</th>
-                                  <th>Tanggal</th>
+                                  <th>Tanggal Penambahan</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -53,7 +53,7 @@
                                         <td>{{ $pasien->tanggal_lahir }}</td>
                                         <td>{{ $pasien->nomor_telepon }}</td>
                                         <td>{{ $pasien->alamat }}</td>
-                                        <td></td>
+                                        <td>{{ $pasien->created_at }}</td>
                                     </tr>
                                 @endforeach
                              </tbody>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-
+    @include('sweetalert::alert')
     @include('template.script')
 </body>
 

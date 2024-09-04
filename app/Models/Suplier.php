@@ -15,7 +15,13 @@ class Suplier extends Model
         protected $primaryKey = 'id_suplier';
 
     
-    protected $fillable = ['kode_suplier', 'nama_suplier', 'alamat', 'nomor_telepon'];
+    protected $fillable = [
+        'kode_suplier', 
+        'nama_suplier', 
+        'alamat', 
+        'nomor_telepon',
+        'created_at'
+    ];
 
    
     public $incrementing = true;

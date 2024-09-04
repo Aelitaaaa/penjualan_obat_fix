@@ -41,6 +41,7 @@
                                             <th>Nama Suplier</th>
                                             <th>Alamat</th>
                                             <th>Nomor Telepon</th>
+                                            <th>Tanggal Penambahan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,6 +52,7 @@
                                                 <td>{{ $suplier->nama_suplier }}</td>
                                                 <td>{{ $suplier->alamat }}</td>
                                                 <td>{{ $suplier->nomor_telepon }}</td>
+                                                <td>{{ $suplier->created_at }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
