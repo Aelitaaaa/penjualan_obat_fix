@@ -55,8 +55,8 @@
             var namaObat = selectedOption.data('nama');
             var hargaJual = selectedOption.data('harga');
 
-            // Isi field harga_jual
-            $('#harga_jual').val(hargaJual);
+            // Isi field harga_satuan
+            $('#harga_satuan').val(hargaJual);
 
             // Reset nilai subtotal
             $('#subtotal').val('');
@@ -71,7 +71,7 @@
 
         // Ketika jumlah obat diinput
         $('#jumlah_pembelian').on('input', function() {
-            var hargaJual = $('#harga_jual').val();
+            var hargaJual = $('#harga_satuan').val();
             var jumlah = $(this).val();
 
             // Hitung total harga
@@ -84,4 +84,5 @@
         });
     });
 </script>
+
 

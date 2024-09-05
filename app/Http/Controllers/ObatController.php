@@ -31,7 +31,7 @@ class ObatController extends Controller
         'harga_beli' => 'required|numeric|min:0', 
         'harga_jual' => 'required|numeric|min:0', 
         'jumlah_obat' => 'required|integer|min:1', 
-        'unit' => 'required|string|max:15', 
+        'unit' => 'required|string|max:15',  
         'created_at' => 'nullable|date_format:Y-m-d H:i:s',
     ]);
 
