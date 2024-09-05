@@ -16,7 +16,7 @@ Route::redirect('/', '/login');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
@@ -80,4 +80,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/laporan-omset', function () {
         return view('laporan');
     })->name('laporan.omset');
+
+    
 });
