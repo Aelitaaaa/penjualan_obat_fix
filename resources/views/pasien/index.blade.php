@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pasien - KLIMISTRI</title>
     @include('template.head')
 </head>
@@ -32,32 +33,45 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                <tr>
-                                  <th>No</th>
-                                  <th>Nama Pasien</th>
-                                  <th>Jenis Kelamin</th>
-                                  <th>Tanggal Lahir</th>
-                                  <th>Nomor Telepon</th>
-                                  <th>Alamat</th>
-                                  <th>Tanggal Penambahan</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                @foreach($pasien as $index => $pasien)
-                                    <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $pasien->nama_pasien}}</td>
-                                        <td>{{ $pasien->jenis_kelamin }}</td>
-                                        <td>{{ $pasien->tanggal_lahir }}</td>
-                                        <td>{{ $pasien->nomor_telepon }}</td>
-                                        <td>{{ $pasien->alamat }}</td>
-                                        <td>{{ $pasien->created_at }}</td>
-                                    </tr>
-                                @endforeach
-                             </tbody>
-                            </table>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Pasien</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Nomor Telepon</th>
+                                            <th>Alamat</th>
+                                            <th>Tanggal Penambahan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($pasien as $index => $pasienItem)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $pasienItem->nama_pasien }}</td>
+                                                <td>{{ $pasienItem->jenis_kelamin }}</td>
+                                                <td>{{ $pasienItem->tanggal_lahir }}</td>
+                                                <td>{{ $pasienItem->nomor_telepon }}</td>
+                                                <td>{{ $pasienItem->alamat }}</td>
+                                                <td>{{ $pasienItem->created_at }}</td>
+                                                
+                                                    <td>
+                                                        <button class="btn btn-warning btn-sm" data-toggle="pasien" data-target="#editPasienModal{{ $pasienItem->id_pasien }}">Edit</button>
+                                                        @include('pasien.edit')    
+                                                        @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                    
+                                                    
+                                                
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -71,4 +85,3 @@
 </body>
 
 </html>
-

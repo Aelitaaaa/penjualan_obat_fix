@@ -1,4 +1,5 @@
 <!-- Modal Tambah Obat -->
+
 <div class="modal fade text-left" id="tambahObatModal" tabindex="-1" role="dialog" aria-labelledby="tambahObatModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form method="post" action="{{ route('obat.store') }}">

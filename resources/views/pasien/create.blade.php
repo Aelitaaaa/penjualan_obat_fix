@@ -45,4 +45,4 @@
         </form>
     </div>
 </div>
-
+ @include('template.script')

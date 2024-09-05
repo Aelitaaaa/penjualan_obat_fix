@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{id}', [PasienController::class, 'update'])->name('update');
         Route::delete('/{id}', [PasienController::class, 'destroy'])->name('destroy');
     });
+    
 
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 
