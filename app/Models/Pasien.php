@@ -23,4 +23,8 @@ class Pasien extends Model
         'created_at'
 
     ];
+
+    public function rekamMedis(){
+        return $this->hasOne(RekamMedis::class, 'id_pasien');
+    }
 }
