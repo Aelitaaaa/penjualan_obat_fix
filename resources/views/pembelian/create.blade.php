@@ -58,7 +58,6 @@
         }
     });
 
-    // Ketika jumlah obat diinput
     $('#jumlah_obat').on('input', function() {
         var hargaObat = $('#harga_obat').val();
         var jumlah = $(this).val();
