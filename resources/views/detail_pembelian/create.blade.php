@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
-                        <input type="number" id="harga_jual" name="harga_jual" class="form-control" readonly>
+                        <input type="number" id="harga_satuan" name="harga_satuan" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label>Subtotal</label>
