@@ -11,7 +11,7 @@ class DetailPembelian extends Model
 
     protected $table = 'detail_pembelian';
 
-    protected $primaryKey = 'detail_pembelian';
+    protected $primaryKey = 'id_detail_pembelian';
 
     protected $fillable = [
         'kode_pembelian',
@@ -20,8 +20,32 @@ class DetailPembelian extends Model
         'harga_satuan',
         'subtotal',
         'total_pembelian',
-        'create_at',
-        'update_at',
     ];
+
+    public function pembelian()
+    {
+        return $this->belongsTo(Pembelian::class, 'kode_pembelian', 'id_pembelian');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saved(function ($detailPembelian) {
+            $totalPembelian = DetailPembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+                ->sum('subtotal');
+
+            Pembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+                ->update(['total_pembelian' => $totalPembelian]);
+        });
+
+        static::deleted(function ($detailPembelian) {
+            $totalPembelian = DetailPembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+                ->sum('subtotal');
+
+            Pembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+                ->update(['total_pembelian' => $totalPembelian]);
+        });
+    }
 
 }

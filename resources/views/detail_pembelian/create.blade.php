@@ -1,7 +1,7 @@
 <!-- Modal Tambah Obat -->
 <div class="modal fade text-left" id="tambahObatModal" tabindex="-1" role="dialog" aria-labelledby="tambahObatModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="post" action="{{ route('detail_pembelian.store', ['kodePembelian' => $pembelian->kode_pembelian]) }}">
+        <form method="post" action="{{ route('detail_pembelian.store', ['kode_pembelian' => $pembelian->kode_pembelian]) }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,6 +11,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                <input type="hidden" id="kode_pembelian" name="kode_pembelian" value="{{ $pembelian->kode_pembelian }}">
                     <div class="form-group">
                         <label>Obat</label>
                         <select id="kode_obat" name="kode_obat" class="form-control">
@@ -24,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label>Jumlah Pembelian</label>
-                        <input type="number" id="jumlah_pembelian" name="jumlah_pembelian" class="form-control" required>
+                        <input type="number" id="jumlah" name="jumlah" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
@@ -34,6 +35,7 @@
                         <label>Subtotal</label>
                         <input type="number" id="subtotal" name="subtotal" class="form-control" required readonly>
                     </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>
@@ -62,7 +64,7 @@
             $('#subtotal').val('');
 
             // Jika jumlah sudah diisi, hitung total harga
-            var jumlah = $('#jumlah_pembelian').val();
+            var jumlah = $('#jumlah').val();
             if (jumlah) {
                 var totalHarga = hargaJual * jumlah;
                 $('#subtotal').val(totalHarga);
@@ -70,7 +72,7 @@
         });
 
         // Ketika jumlah obat diinput
-        $('#jumlah_pembelian').on('input', function() {
+        $('#jumlah').on('input', function() {
             var hargaJual = $('#harga_satuan').val();
             var jumlah = $(this).val();
 

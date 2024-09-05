@@ -16,7 +16,10 @@ class DetailPembelianController extends Controller
         $obat = Obat::all();
         $suplier = Suplier::all();
         $pembelian = Pembelian::findOrFail($kodePembelian);
-        return view('detail_pembelian.index', compact('detailPembelian', 'pembelian','obat', 'suplier'));
+        $totalPembelian = DetailPembelian::where('kode_pembelian', $kodePembelian)->sum('subtotal');
+
+
+        return view('detail_pembelian.index', compact('detailPembelian', 'pembelian','obat', 'suplier', 'totalPembelian'));
     }
 
        public function create()
@@ -31,16 +34,32 @@ class DetailPembelianController extends Controller
         $request->validate([
             'kode_pembelian' => 'required|max:7',
             'kode_obat' => 'required|max:7',
-            'jumlah_pembelian' => 'required|integer',
+            'jumlah' => 'required|integer',
             'harga_satuan' => 'required|numeric',
             'subtotal' => 'required|numeric',
-            'total_pembelian' => 'required|numeric',
-            'create_at' => 'required|date',
         ]);
 
-        DetailPembelian::create($request->all());
+            $kodePembelian = $request->input('kode_pembelian');
 
-        return redirect()->route('detail_pembelian.index')->with('success', 'Pembelian berhasil ditambahkan.');
+            DetailPembelian::create([
+                'kode_pembelian' => $kodePembelian,
+                'kode_obat' => $request->input('kode_obat'),
+                'jumlah' => $request->input('jumlah'),
+                'harga_satuan' => $request->input('harga_satuan'),
+                'subtotal' => $request->input('subtotal'),
+    
+            ]);
+
+          
+            $totalPembelian = DetailPembelian::where('kode_pembelian', $request->kode_pembelian)
+            ->sum('subtotal');
+
+            Pembelian::where('kode_pembelian', $request->kode_pembelian)
+                ->update(['total_pembelian' => $totalPembelian]);
+
+                return redirect()->route('detail_pembelian.index', [$request->kode_pembelian])
+                                ->with('success', 'Pembelian berhasil ditambahkan.');
+
     }
 
     
@@ -56,37 +75,51 @@ class DetailPembelianController extends Controller
         $request->validate([
             'kode_pembelian' => 'required|max:7',
             'kode_obat' => 'required|max:7',
-            'jumlah_pembelian' => 'required|integer',
+            'jumlah' => 'required|integer',
             'harga_satuan' => 'required|numeric',
             'subtotal' => 'required|numeric',
             'total_pembelian' => 'required|numeric',
-            'create_at' => 'required|date',
         ]);
 
-        $detailPembelianItem = DetailPembelian::findOrFail($id);
-        $detailPembelianItem->update($request->all());
+        $detailPembelian = DetailPembelian::findOrFail($id);
+        $detailPembelian->update($request->all());
 
-        return redirect()->route('detail_pembelian.index')->with('success', 'Pembelian berhasil diperbarui.');
+    
+    $totalPembelian = DetailPembelian::where('kode_pembelian', $request->kode_pembelian)
+        ->sum('subtotal');
+
+    Pembelian::where('kode_pembelian', $request->kode_pembelian)
+        ->update(['total_pembelian' => $totalPembelian]);
+
+    return redirect()->route('detail_pembelian.index', [$request->kode_pembelian])
+                     ->with('success', 'Pembelian berhasil diperbarui.');
     }
 
     
     public function destroy($id)
-    {
-      
-        $detailPembelian = DetailPembelian::find($id);
-    
-        if (!$detailPembelian) {
-            return redirect()->route('detail_pembelian.index')->with('error', 'Pembelian tidak ditemukan.');
-        }
-    
-        try {
-          
-            $detailPembelian->delete();
-            return redirect()->route('detail_pembelian.index')->with('success', 'Pembelian berhasil dihapus.');
-        } catch (\Illuminate\Database\QueryException $e) {
-           
-            return redirect()->route('detail_pembelian.index')->with('error', 'Gagal menghapus pembelian: ' . $e->getMessage());
-        }
+{
+    $detailPembelian = DetailPembelian::find($id);
+
+    if (!$detailPembelian) {
+        return redirect()->route('detail_pembelian.index')->with('error', 'Pembelian tidak ditemukan.');
     }
+
+    try {
+        $detailPembelian->delete();
+
+        // Calculate total_pembelian and update Pembelian record
+        $totalPembelian = DetailPembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+            ->sum('subtotal');
+
+        Pembelian::where('kode_pembelian', $detailPembelian->kode_pembelian)
+            ->update(['total_pembelian' => $totalPembelian]);
+
+        return redirect()->route('detail_pembelian.index', [$detailPembelian->kode_pembelian])
+                         ->with('success', 'Pembelian berhasil dihapus.');
+    } catch (\Illuminate\Database\QueryException $e) {
+        return redirect()->route('detail_pembelian.index')->with('error', 'Gagal menghapus pembelian: ' . $e->getMessage());
+    }
+}
+
     
 }
