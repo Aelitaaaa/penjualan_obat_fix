@@ -24,12 +24,11 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Jika validasi gagal
+        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Buat pengguna baru dengan data yang sudah divalidasi
         $data = $validator->validated();
         User::create([
             'name' => $data['name'],
