@@ -40,7 +40,8 @@ class ObatController extends Controller
         'kode_suplier' => $request->kode_suplier,
         'kode_obat' => $request->kode_obat,
         'nama_obat' => $request->nama_obat,
-        'harga_obat' => $request->harga_obat,
+        'harga_beli' => $request->harga_beli,
+        'harga_jual' => $request->harga_jual,
         'jumlah_obat' => $request->jumlah_obat,
         'unit' => $request->unit,
         'created_at' => $request->created_at
