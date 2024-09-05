@@ -29,8 +29,12 @@
                         <input type="text" id="nama_obat" name="nama_obat" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Harga</label>
-                        <input type="number" id="harga_obat" name="harga_obat" class="form-control" placeholder="Rp." required>
+                        <label>Harga Beli</label>
+                        <input type="number" id="harga_beli" name="harga_beli" class="form-control" placeholder="Rp." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga Jual</label>
+                        <input type="number" id="harga_jual" name="harga_jual" class="form-control" placeholder="Rp." required>
                     </div>
                     <div class="form-group">
                         <label>Jumlah</label>
@@ -40,11 +44,6 @@
                         <label>Unit</label>
                         <input type="text" id="unit" name="unit" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label>Total Harga</label>
-                        <input type="number" id="total_harga_obat" name="total_harga_obat" class="form-control" placeholder="Rp." required>
-                    </div>
-                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>

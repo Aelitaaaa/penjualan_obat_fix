@@ -19,7 +19,6 @@ class Obat extends Model
         'harga_jual', 
         'jumlah_obat', 
         'unit', 
-        'total_harga_obat', 
         'created_at'
     ];
 

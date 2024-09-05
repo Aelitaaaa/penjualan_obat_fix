@@ -14,21 +14,21 @@
                     <div class="form-group">
                         <label>Obat</label>
                         <select id="kode_obat" name="kode_obat" class="form-control">
-                            <option value="">-Pilih-</option>
+                            <option value="">Nama Obat - Stok</option>
                             @foreach ($obat as $obatItem)
-                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_obat }}">
-                                    {{ $obatItem->nama_obat }}
+                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_jual }}">
+                                    {{ $obatItem->nama_obat }} - {{ $obatItem->jumlah_obat }}
                                 </option>
                             @endforeach
                         </select>                     
                     </div>
                     <div class="form-group">
-                        <label>Jumlah Obat</label>
-                        <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" required>
+                        <label>Jumlah Pembelian</label>
+                        <input type="number" id="jumlah_pembelian" name="jumlah_pembelian" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
-                        <input type="number" id="harga_obat" name="harga_obat" class="form-control" required readonly>
+                        <input type="number" id="harga_jual" name="harga_jual" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label>Subtotal</label>
@@ -43,39 +43,45 @@
         </form>
     </div>
 </div>
+@include('sweetalert::alert')
+@include('template.script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function() {
-    // Ketika kode obat berubah
-    $('#kode_obat').change(function() {
-        var selectedOption = $(this).find('option:selected');
-        var namaObat = selectedOption.data('nama');
-        var hargaObat = selectedOption.data('harga');
+        // Ketika kode obat berubah
+        $('#kode_obat').change(function() {
+            var selectedOption = $(this).find('option:selected');
+            var namaObat = selectedOption.data('nama');
+            var hargaJual = selectedOption.data('harga');
 
-        // Isi field nama_obat, harga_obat, dan unit
-        $('#nama_obat').val(namaObat);
-        $('#harga_obat').val(hargaObat);
+            // Isi field harga_jual
+            $('#harga_jual').val(hargaJual);
 
-        // Reset nilai total harga
-        $('#subtotal').val('');
+            // Reset nilai subtotal
+            $('#subtotal').val('');
 
-        // Jika jumlah sudah diisi, hitung total harga
-        var jumlah = $('#jumlah_obat').val();
-        if (jumlah) {
-            var totalHarga = hargaObat * jumlah;
-            $('#subtotal').val(totalHarga);
-        }
+            // Jika jumlah sudah diisi, hitung total harga
+            var jumlah = $('#jumlah_pembelian').val();
+            if (jumlah) {
+                var totalHarga = hargaJual * jumlah;
+                $('#subtotal').val(totalHarga);
+            }
+        });
+
+        // Ketika jumlah obat diinput
+        $('#jumlah_pembelian').on('input', function() {
+            var hargaJual = $('#harga_jual').val();
+            var jumlah = $(this).val();
+
+            // Hitung total harga
+            if (hargaJual && jumlah) {
+                var totalHarga = hargaJual * jumlah;
+                $('#subtotal').val(totalHarga);
+            } else {
+                $('#subtotal').val('');
+            }
+        });
     });
-
-    // Ketika jumlah obat diinput
-    $('#jumlah_obat').on('input', function() {
-        var hargaObat = $('#harga_obat').val();
-        var jumlah = $(this).val();
-
-        // Hitung total harga
-        var totalHarga = hargaObat * jumlah;
-        $('#subtotal').val(totalHarga);
-    });
-});
-
 </script>
+

@@ -25,7 +25,7 @@ class ObatController extends Controller
 {
     // Validasi input
     $request->validate([
-        'kode_suplier' => 'required|string|max:7',
+        'kode_suplier' => 'nullable|string|max:7',
         'kode_obat' => 'required|string|max:7|unique:obat,kode_obat', 
         'nama_obat' => 'required|string|max:255',
         'harga_beli' => 'required|numeric|min:0', 
@@ -66,14 +66,13 @@ public function update(Request $request, $id)
 {
     // Validasi input
     $request->validate([
-        'kode_suplier' => 'required|string|max:7',
+        'kode_suplier' => 'nullable|string|max:7',
         'kode_obat' => 'required|string|max:7|unique:obat,kode_obat,' . $id . ',id_obat', 
         'nama_obat' => 'required|string|max:255',
         'harga_beli' => 'required|numeric|min:0', 
         'harga_jual' => 'required|numeric|min:0', 
         'jumlah_obat' => 'required|integer|min:1', 
         'unit' => 'required|string|max:15', 
-        'total_harga_obat' => 'required|numeric|min:0', 
         'created_at' => 'nullable|date_format:Y-m-d H:i:s',
     ]);
 
@@ -87,7 +86,6 @@ public function update(Request $request, $id)
         'harga_jual' => $request->harga_jual,
         'jumlah_obat' => $request->jumlah_obat,
         'unit' => $request->unit,
-        'total_harga_obat' => $request->total_harga_obat,
         'created_at' => $request->created_at
     ]);
 

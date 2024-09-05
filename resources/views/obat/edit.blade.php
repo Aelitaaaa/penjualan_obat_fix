@@ -30,8 +30,12 @@
                         <input type="text" name="nama_obat" class="form-control" value="{{ $obatItem->nama_obat }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="harga_obat">Harga</label>
-                        <input type="number" name="harga_obat" class="form-control" value="{{ $obatItem->harga_obat }}" required>
+                        <label for="harga_obat">Harga Beli</label>
+                        <input type="number" name="harga_beli" class="form-control" value="{{ $obatItem->harga_beli }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga_obat">Harga Jual</label>
+                        <input type="number" name="harga_jual" class="form-control" value="{{ $obatItem->harga_jual }}" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah_obat">Jumlah</label>
@@ -40,10 +44,6 @@
                     <div class="form-group">
                         <label for="unit">Unit</label>
                         <input type="text" name="unit" class="form-control" value="{{ $obatItem->unit }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="total_harga_obat">Total Harga</label>
-                        <input type="number" name="total_harga_obat" class="form-control" value="{{ $obatItem->total_harga_obat }}" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -37,7 +37,6 @@
                                             <th>Jumlah</th>
                                             <th>Harga Satuan</th>
                                             <th>Subtotal</th>
-                                         
                                             <th>Tanggal Pembelian</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -47,7 +46,7 @@
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>           
                                                 <td>{{ $item->kode_obat }}</td>
-                                                <td>{{ $item->jumlah }}</td>
+                                                <td>{{ $item->jumlah_pembelian }}</td>
                                                 <td>{{ $item->harga_satuan }}</td>              
                                                 <td>{{ $item->subtotal }}</td>
                                                
@@ -66,7 +65,6 @@
                                     <tfoot>
                                         <td colspan="4"> Total: </td>
                                         <td>hh</td>
-                                        
                                     </tfoot>
                                 </table>
                             </div>
@@ -76,6 +74,7 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
     @include('template.script')
 </body>
 </html>

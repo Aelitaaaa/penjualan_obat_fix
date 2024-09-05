@@ -50,10 +50,10 @@
                                             <th>No</th>
                                             <th>Nama Suplier</th>
                                             <th>Obat</th>
-                                            <th>Harga</th>
+                                            <th>Harga Beli</th>
+                                            <th>Harga Jual</th>
                                             <th>Jumlah</th>
                                             <th>Unit</th>
-                                            <th>Total Harga</th>
                                             <th>Tanggal Penambahan</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -64,10 +64,10 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> <!--petik dua itu, klo misalkan nama supliernya gaada, mau diisi apa-->
                                                 <td>{{ $obatItem->kode_obat}} - {{ $obatItem->nama_obat }}</td>
-                                                <td>Rp. {{ $obatItem->harga_obat }}</td>
+                                                <td>Rp. {{ $obatItem->harga_beli }}</td>
+                                                <td>Rp. {{ $obatItem->harga_jual }}</td>
                                                 <td>{{ $obatItem->jumlah_obat }}</td>
                                                 <td>{{ $obatItem->unit }}</td>
-                                                <td>Rp. {{ $obatItem->total_harga_obat }}</td>
                                                 <td>{{ $obatItem->created_at }}</td>
                                                 <td>
                                                     <!-- Form Edit -->
