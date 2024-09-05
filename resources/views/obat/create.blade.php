@@ -54,41 +54,5 @@
         </form>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-    // Ketika kode obat berubah
-    $('#kode_obat').change(function() {
-        var selectedOption = $(this).find('option:selected');
-        var namaObat = selectedOption.data('nama');
-        var hargaObat = selectedOption.data('harga');
-        var unit = selectedOption.data('unit');
 
-        // Isi field nama_obat, harga_obat, dan unit
-        $('#nama_obat').val(namaObat);
-        $('#harga_obat').val(hargaObat);
-        $('#unit').val(unit);
-
-        // Reset nilai total harga
-        $('#total_harga_obat').val('');
-
-        // Jika jumlah sudah diisi, hitung total harga
-        var jumlah = $('#jumlah_obat').val();
-        if (jumlah) {
-            var totalHarga = hargaObat * jumlah;
-            $('#total_harga_obat').val(totalHarga);
-        }
-    });
-
-    // Ketika jumlah obat diinput
-    $('#jumlah_obat').on('input', function() {
-        var hargaObat = $('#harga_obat').val();
-        var jumlah = $(this).val();
-
-        // Hitung total harga
-        var totalHarga = hargaObat * jumlah;
-        $('#total_harga_obat').val(totalHarga);
-    });
-});
-
-</script>
+@include('template.script')
