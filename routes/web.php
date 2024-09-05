@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DetailPembelianController;
+use App\Http\Controllers\PenjualanController;
 
 Route::redirect('/', '/login');
 
@@ -47,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
         Route::get('/{kodePembelian}', [DetailPembelianController::class, 'index'])->name('index');
         Route::get('/create', [DetailPembelianController::class, 'create'])->name('create');
-        Route::post('/', [DetailPembelianController::class, 'store'])->name('store');
+        Route::post('/{kodePembelian}', [DetailPembelianController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [DetailPembelianController::class, 'edit'])->name('edit');
         Route::put('/{id}', [DetailPembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [DetailPembelianController::class, 'destroy'])->name('destroy');
@@ -73,9 +74,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 
-    Route::get('/penjualan-obat', function () {
-        return view('penjualan');
-    })->name('penjualan.obat');
+    Route::prefix('penjualan')->name('penjualan.')->group(function () {
+        Route::get('/', [PenjualanController::class, 'index'])->name('index');
+        Route::get('/create', [PenjualanController::class, 'create'])->name('create');
+        Route::post('/', [PenjualanController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [PenjualanController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [PenjualanController::class, 'update'])->name('update');
+        Route::delete('/{id}', [PenjualanController::class, 'destroy'])->name('destroy');
+    });
 
     Route::get('/laporan-omset', function () {
         return view('laporan');

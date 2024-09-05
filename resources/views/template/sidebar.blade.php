@@ -21,38 +21,39 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Master Data Dropdown -->
-    <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData"
-            aria-expanded="true" aria-controls="collapseData">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Data Master</span>
-        </a>
-        <div id="collapseData" class="collapse" aria-labelledby="headingData" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Data:</h6>
-                <a class="collapse-item" href="{{ route('obat.index') }}">Obat</a>
-                <a class="collapse-item" href="{{ route('pasien.index') }}">Pasien</a>
-                <a class="collapse-item" href="{{ route('suplier.index') }}">Suplier</a>
-            </div>
+   <!-- Nav Item - Master Data Dropdown -->
+<li class="nav-item {{ Request::routeIs('obat.index', 'pasien.index', 'suplier.index') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+        aria-expanded="{{ Request::routeIs('obat.index', 'pasien.index', 'suplier.index') ? 'true' : 'false' }}" aria-controls="collapsePages">
+        <i class="fas fa-fw fa-database"></i>
+        <span>Data Master</span>
+    </a>
+    <div id="collapsePages" class="collapse {{ Request::routeIs('obat.index', 'pasien.index', 'suplier.index') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Data:</h6>
+            <a class="collapse-item {{ Request::routeIs('obat.index') ? 'active' : '' }}" href="{{ route('obat.index') }}">Obat</a>
+            <a class="collapse-item {{ Request::routeIs('pasien.index') ? 'active' : '' }}" href="{{ route('pasien.index') }}">Pasien</a>
+            <a class="collapse-item {{ Request::routeIs('suplier.index') ? 'active' : '' }}" href="{{ route('suplier.index') }}">Suplier</a>
         </div>
-    </li>
+    </div>
+</li>
+
 
     <!-- Nav Item - Transaksi Dropdown -->
-    <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData1"
-            aria-expanded="true" aria-controls="collapseData1">
-            <i class="fas fa-fw fa-cash-register"></i>
-            <span>Transaksi</span>
-        </a>
-        <div id="collapseData1" class="collapse" aria-labelledby="headingData" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header"></h6>
-                <a class="collapse-item" href="{{ route('pembelian.index') }}">Pembelian Obat</a>
-                <a class="collapse-item" href="{{ route('penjualan.obat') }}">Penjualan Obat</a>
-            </div>
+<li class="nav-item {{ Request::routeIs('pembelian.index', 'penjualan.obat') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData1"
+        aria-expanded="{{ Request::routeIs('pembelian.index', 'penjualan.obat') ? 'true' : 'false' }}" aria-controls="collapseData1">
+        <i class="fas fa-fw fa-cash-register"></i>
+        <span>Transaksi</span>
+    </a>
+    <div id="collapseData1" class="collapse {{ Request::routeIs('pembelian.index', 'penjualan.index') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header"></h6>
+            <a class="collapse-item {{ Request::routeIs('pembelian.index') ? 'active' : '' }}" href="{{ route('pembelian.index') }}">Pembelian Obat</a>
+            <a class="collapse-item {{ Request::routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan Obat</a>
         </div>
-    </li>
+    </div>
+</li>
 
         <!-- Divider -->
          <hr class="sidebar-divider d-none d-md-block">
