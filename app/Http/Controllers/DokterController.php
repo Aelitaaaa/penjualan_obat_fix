@@ -12,9 +12,17 @@ class DokterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $dataDokter = Dokter::all();
+        $dokterId = $request->query('dokter');
+        $dokter = null;
+
+        if($dokterId){
+            $dokter = Dokter::find($dokterId);
+        }
+
+        return view('dokter', ['dataDokter'=>$dataDokter, 'dokter'=>$dokter]);
     }
 
     /**
@@ -35,7 +43,9 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Dokter::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -69,7 +79,9 @@ class DokterController extends Controller
      */
     public function update(Request $request, Dokter $dokter)
     {
-        //
+        $dokter->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +92,8 @@ class DokterController extends Controller
      */
     public function destroy(Dokter $dokter)
     {
-        //
+        $dokter->delete();
+
+        return redirect()->back();
     }
 }

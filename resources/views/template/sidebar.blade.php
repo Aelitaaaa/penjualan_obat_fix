@@ -21,6 +21,48 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    <!-- Heading -->
+<div class="sidebar-heading">
+    Interface
+</div>
+
+<!-- Nav Item - Informasi Collapse Menu -->
+<!-- Nav Item - Informasi Collapse Menu -->
+<li class="nav-item {{ request()->is('dokter*', 'pasien*', 'jadwal*', 'resep*', 'obat*') ? 'active' : '' }}">
+<a class="nav-link collapsed {{ request()->is('dokter*', 'pasien*', 'jadwal*', 'resep*', 'obat*') ? 'active' : '' }}" href="#" data-toggle="collapse" data-target="#collapseInformasi"
+    aria-expanded="true" aria-controls="collapseInformasi">
+    <i class="fas fa-fw fa-info-circle"></i>
+    <span>Informasi</span>
+</a>
+<div id="collapseInformasi" class="collapse {{ request()->is('dokter*', 'pasien*', 'jadwal*', 'resep*', 'obat*') ? 'show' : '' }}" aria-labelledby="headingInformasi" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Informasi Detail:</h6>
+        <a class="collapse-item {{ request()->routeIs('dokter') ? 'active' : '' }}" href="{{ route('dokter.index') }}">Dokter</a>
+        <a class="collapse-item {{ request()->routeIs('pasien') ? 'active' : '' }}" href="{{ route('pasien.index') }}">Pasien</a>
+        <a class="collapse-item {{ request()->routeIs('jadwal') ? 'active' : '' }}" href="{{ route('jadwal') }}">Jadwal</a>
+        <a class="collapse-item {{ request()->routeIs('resep') ? 'active' : '' }}" href="{{ route('resep') }}">Resep</a>
+        <a class="collapse-item {{ request()->routeIs('obat') ? 'active' : '' }}" href="{{ route('obat.index') }}">Obat</a>
+    </div>
+</div>
+</li>
+
+<!-- Nav Item - Administrasi Collapse Menu -->
+<li class="nav-item {{ request()->is('rekammedis*', 'pembayaran*', 'laporan*') ? 'active' : '' }}">
+<a class="nav-link collapsed {{ request()->is('rekammedis*', 'pembayaran*', 'laporan*') ? 'active' : '' }}" href="#" data-toggle="collapse" data-target="#collapseAdministrasi"
+    aria-expanded="true" aria-controls="collapseAdministrasi">
+    <i class="fas fa-fw fa-clipboard-list"></i>
+    <span>Administrasi</span>
+</a>
+<div id="collapseAdministrasi" class="collapse {{ request()->is('rekammedis*', 'pembayaran*', 'laporan*') ? 'show' : '' }}" aria-labelledby="headingAdministrasi" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Administrasi Detail:</h6>
+        <a class="collapse-item {{ request()->routeIs('rekammedis') ? 'active' : '' }}" href="{{ route('rekammedis') }}">Rekam Medis</a>
+        <a class="collapse-item {{ request()->routeIs('pembayaran') ? 'active' : '' }}" href="">Pembayaran</a>
+        <a class="collapse-item {{ request()->routeIs('laporan') ? 'active' : '' }}" href="">Laporan</a>
+    </div>
+</div>
+</li>
+
     <!-- Nav Item - Master Data Dropdown -->
     <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData"
@@ -39,7 +81,7 @@
     </li>
 
     <!-- Nav Item - Transaksi Dropdown -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseData1"
             aria-expanded="true" aria-controls="collapseData1">
             <i class="fas fa-fw fa-cash-register"></i>
@@ -76,6 +118,15 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+
+
+
+
+
+
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

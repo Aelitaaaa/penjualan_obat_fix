@@ -13,9 +13,9 @@ class AddUpdatedAtToPembelianObatTable extends Migration
      */
     public function up()
     {
-        Schema::table('pembelian_obat', function (Blueprint $table) {
-            $table->timestamp('updated_at')->nullable();
-        });
+        // Schema::table('pembelian_obat', function (Blueprint $table) {
+        //     $table->timestamp('updated_at')->nullable();
+        // });
     }
 
     /**

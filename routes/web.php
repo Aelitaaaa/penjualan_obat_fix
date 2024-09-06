@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DetailPembelianController;
+use App\Http\Controllers\DokterController;
 
 Route::redirect('/', '/login');
 
@@ -81,5 +82,25 @@ Route::middleware(['auth'])->group(function () {
         return view('laporan');
     })->name('laporan.omset');
 
-    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    // Route::get('/dokter', function () {
+    //     return view('dokter');
+    // })->name('dokter');
+
+    Route::resource('dokter', DokterController::class);
+
+    Route::get('/jadwal', function () {
+        return view('jadwal');
+    })->name('jadwal');
+
+    Route::get('/resep', function () {
+        return view('resep');
+    })->name('resep');
+
+    Route::get('/rekammedis', function () {
+        return view('rekammedis');
+    })->name('rekammedis');
 });
