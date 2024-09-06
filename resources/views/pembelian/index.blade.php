@@ -13,9 +13,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 @include('template.navbar')
-
                 <div class="container-fluid">
-
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Daftar Pembelian</h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#tambahPembelianModal">

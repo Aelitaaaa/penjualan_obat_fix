@@ -13,10 +13,10 @@ class CreateObatTable extends Migration
      */
     public function up()
     {
-        Schema::create('obat', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        // Schema::create('obat', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
     }
 
     /**
