@@ -6,7 +6,7 @@
     <script src="{{asset('template/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('template/js/sb-admin-2.js')}}"></script>
+    <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
     <script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
