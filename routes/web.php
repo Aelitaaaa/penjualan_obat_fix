@@ -78,9 +78,9 @@ Route::middleware(['auth'])->group(function () {
         return view('penjualan');
     })->name('penjualan.obat');
 
-    Route::get('/laporan-omset', function () {
-        return view('laporan');
-    })->name('laporan.omset');
+    Route::get('/omset', function () {
+        return view('omset.index');
+    })->name('omset.index');
 
     Route::get('/dashboard', function () {
         return view('dashboard');
