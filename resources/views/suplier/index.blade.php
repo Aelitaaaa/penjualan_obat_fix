@@ -19,9 +19,12 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Data Supplier Klinik Klimistri</h1>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahSuplierModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Supplier
-                        </button>
+                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahSuplierModal">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Tambah Supplier</span>
+                        </a>
                     </div>
 
                     <!-- Modal Tambah Obat -->
@@ -54,9 +57,7 @@
                                                 <td>{{ $suplier->alamat }}</td>
                                                 <td>{{ $suplier->nomor_telepon }}</td>
                                                 <td>{{ $suplier->created_at }}</td>
-                                                <td>
-                                                    
-                                                       
+                                                <td>   
                                                     <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editSuplierModal{{ $suplier->id_suplier }}">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>

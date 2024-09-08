@@ -19,9 +19,12 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Data Pasien Klinik Klimistri</h1>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahPasienModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Pasien
-                        </button>
+                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahPasienModal">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Tambah Pasien</span>
+                        </a>
                     </div>
 
                     <!-- Modal Tambah Pasien -->
