@@ -18,9 +18,9 @@
                 <div class="container-fluid">
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Suplier Klinik Klimistri</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Data Supplier Klinik Klimistri</h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#tambahSuplierModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Suplier
+                            <i class="fas fa-fw fa-plus"></i> Tambah Supplier
                         </button>
                     </div>
 
@@ -37,11 +37,12 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Suplier</th>
-                                            <th>Nama Suplier</th>
+                                            <th>Kode Supplier</th>
+                                            <th>Nama Supplier</th>
                                             <th>Alamat</th>
                                             <th>Nomor Telepon</th>
                                             <th>Tanggal Penambahan</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,6 +54,18 @@
                                                 <td>{{ $suplier->alamat }}</td>
                                                 <td>{{ $suplier->nomor_telepon }}</td>
                                                 <td>{{ $suplier->created_at }}</td>
+                                                <td>
+                                                    
+                                                       
+                                                    <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editSuplierModal{{ $suplier->id_suplier }}">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
+                                                    @include('suplier.edit')    
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteSuplierModal{{ $suplier->id_suplier }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    @include('suplier.delete')  
+                                                </td>   
                                             </tr>
                                         @endforeach
                                     </tbody>
