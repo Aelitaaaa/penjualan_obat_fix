@@ -30,12 +30,15 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Data Obat Klinik Klimistri</h1>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahObatModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Obat
-                        </button>
+                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahObatModal">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Tambah Obat</span>
+                        </a>
                     </div>
 
-                    <!-- Modal Tambah Obat -->
+
                     @include('obat.create', ['suplier' => $suplier])
 
                     <div class="card shadow mb-4">
@@ -48,12 +51,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Suplier</th>
+                                            <th>Supplier</th>
                                             <th>Obat</th>
                                             <th>Harga Beli</th>
                                             <th>Harga Jual</th>
-                                            <th>Jumlah</th>
-                                            <th>Unit</th>
+                                            <th>Jumlah - Unit</th>
                                             <th>Tanggal Penambahan</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -62,26 +64,22 @@
                                         @foreach ($obat as $key => $obatItem)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> <!--petik dua itu, klo misalkan nama supliernya gaada, mau diisi apa-->
+                                                <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> 
                                                 <td>{{ $obatItem->kode_obat}} - {{ $obatItem->nama_obat }}</td>
                                                 <td>Rp. {{ $obatItem->harga_beli }}</td>
                                                 <td>Rp. {{ $obatItem->harga_jual }}</td>
-                                                <td>{{ $obatItem->jumlah_obat }}</td>
-                                                <td>{{ $obatItem->unit }}</td>
+                                                <td>{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
                                                 <td>{{ $obatItem->created_at }}</td>
                                                 <td>
-                                                    <!-- Form Edit -->
-                                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">Edit</button>
-                                                    <!-- Modal Edit Obat -->
-
+                                                    <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
                                                     @include('obat.edit')
 
-                                                    <!-- Form Delete -->
-                                                    <form action="{{ route('obat.delete', ['id' => $obatItem->id_obat]) }}" method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                                    </form>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteObatModal{{ $obatItem->id_obat }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    @include('obat.delete')  
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -90,7 +88,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -99,5 +96,3 @@
     @include('template.script')
 </body>
 </html>
-
-<!-- gara gara kau -->

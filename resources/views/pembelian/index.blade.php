@@ -16,9 +16,12 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Daftar Pembelian</h1>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahPembelianModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Pembelian
-                        </button>
+                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahPembelianModal">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Tambah Pembelian</span>
+                        </a>
                     </div>
                     
                     @include('pembelian.create')
