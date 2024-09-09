@@ -9,6 +9,7 @@
 
     <!-- Include CSS and JS -->
     @include('template.head')
+    @include('template.script')
 
 </head>
 

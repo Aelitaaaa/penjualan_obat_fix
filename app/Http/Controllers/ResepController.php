@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RekamMedis;
+use App\Models\Resep;
 use Illuminate\Http\Request;
 
-class RekamMedisController extends Controller
+class ResepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RekamMedisController extends Controller
      */
     public function index()
     {
-        return view('rekammedis');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class RekamMedisController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class RekamMedisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RekamMedis  $rekamMedis
+     * @param  \App\Models\Resep  $resep
      * @return \Illuminate\Http\Response
      */
-    public function show(RekamMedis $rekamMedis)
+    public function show(Resep $resep)
     {
         //
     }
@@ -52,10 +52,10 @@ class RekamMedisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RekamMedis  $rekamMedis
+     * @param  \App\Models\Resep  $resep
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekamMedis $rekamMedis)
+    public function edit(Resep $resep)
     {
         //
     }
@@ -64,10 +64,10 @@ class RekamMedisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RekamMedis  $rekamMedis
+     * @param  \App\Models\Resep  $resep
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekamMedis $rekamMedis)
+    public function update(Request $request, Resep $resep)
     {
         //
     }
@@ -75,10 +75,10 @@ class RekamMedisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RekamMedis  $rekamMedis
+     * @param  \App\Models\Resep  $resep
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekamMedis $rekamMedis)
+    public function destroy(Resep $resep)
     {
         //
     }

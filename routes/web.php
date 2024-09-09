@@ -90,6 +90,9 @@ Route::middleware(['auth'])->group(function () {
     //     return view('dokter');
     // })->name('dokter');
 
+
+    // RAWAT JALAN 
+
     Route::resource('dokter', DokterController::class);
 
     Route::get('/jadwal', function () {

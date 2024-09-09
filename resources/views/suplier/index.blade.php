@@ -5,6 +5,7 @@
 <head>
     <title>Data Suplier - KLIMISTRI</title>
     @include('template.head')
+    @include('template.script')
 </head>
 
 <body id="page-top">
