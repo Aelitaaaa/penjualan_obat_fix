@@ -46,13 +46,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
-        Route::get('/{kodePembelian}', [DetailPembelianController::class, 'index'])->name('index');
+        Route::get('/', [DetailPembelianController::class, 'index'])->name('index');
         Route::get('/create', [DetailPembelianController::class, 'create'])->name('create');
         Route::post('/', [DetailPembelianController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [DetailPembelianController::class, 'edit'])->name('edit');
         Route::put('/{id}', [DetailPembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [DetailPembelianController::class, 'destroy'])->name('destroy');
     });
+
 
     Route::prefix('suplier')->name('suplier.')->group(function () {
         Route::get('/', [SuplierController::class, 'index'])->name('index');

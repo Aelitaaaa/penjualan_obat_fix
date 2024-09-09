@@ -11,7 +11,7 @@ class DetailPembelian extends Model
 
     protected $table = 'detail_pembelian';
 
-    protected $primaryKey = 'detail_pembelian';
+    protected $primaryKey = 'id_detail_pembelian';
 
     protected $fillable = [
         'kode_pembelian',

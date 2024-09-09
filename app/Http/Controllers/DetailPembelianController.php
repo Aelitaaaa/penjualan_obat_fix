@@ -10,13 +10,18 @@ use Illuminate\Http\Request;
 
 class DetailPembelianController extends Controller
 {
-        public function index($kodePembelian)
+        public function index(Request $request)
     {
+        $kodePembelian = $request->query('kode');
+
         $detailPembelian = DetailPembelian::where('kode_pembelian', $kodePembelian)->get();
+        
         $obat = Obat::all();
         $suplier = Suplier::all();
-        $pembelian = Pembelian::findOrFail($kodePembelian);
-        return view('detail_pembelian.index', compact('detailPembelian', 'pembelian','obat', 'suplier'));
+        $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
+
+
+        return view('detail_pembelian.index', compact('detailPembelian','obat', 'suplier', 'pembelian'));
     }
 
        public function create()
@@ -28,20 +33,24 @@ class DetailPembelianController extends Controller
    
     public function store(Request $request)
     {
-        $request->validate([
-            'kode_pembelian' => 'required|max:7',
+        // Lakukan validasi dan proses penyimpanan
+        $validatedData = $request->validate([
             'kode_obat' => 'required|max:7',
-            'jumlah_pembelian' => 'required|integer',
+            'jumlah' => 'required|integer',
             'harga_satuan' => 'required|numeric',
             'subtotal' => 'required|numeric',
-            'total_pembelian' => 'required|numeric',
-            'create_at' => 'required|date',
+            'kode_pembelian' => 'required|max:7',
         ]);
+    
+        // Ambil kode_pembelian dari request
+        $validatedData['kode_pembelian'] = $request->input('kode_pembelian');
+    
+        DetailPembelian::create($validatedData);
+    
+        return redirect()->route('detail_pembelian.index', ['kode' => $validatedData['kode_pembelian']])
+                         ->with('success', 'Pembelian berhasil ditambahkan.');
+    }    
 
-        DetailPembelian::create($request->all());
-
-        return redirect()->route('detail_pembelian.index')->with('success', 'Pembelian berhasil ditambahkan.');
-    }
 
     
     public function edit($id)
@@ -56,7 +65,7 @@ class DetailPembelianController extends Controller
         $request->validate([
             'kode_pembelian' => 'required|max:7',
             'kode_obat' => 'required|max:7',
-            'jumlah_pembelian' => 'required|integer',
+            'jumlah' => 'required|integer',
             'harga_satuan' => 'required|numeric',
             'subtotal' => 'required|numeric',
             'total_pembelian' => 'required|numeric',
