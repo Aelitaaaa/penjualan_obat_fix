@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('template/css/sb-admin-2.css')}}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="{{asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
