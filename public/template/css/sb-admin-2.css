@@ -161,13 +161,13 @@ sup {
 }
 
 a {
-  color: #1A3636;
+  color: #4e73df;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #1A3636;
+  color: #4e73df;
   text-decoration: underline;
 }
 
@@ -2620,8 +2620,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #1A3636;
-  border-color: #1A3636;
+  background-color: #4e73df;
+  border-color: #4e73df;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2631,15 +2631,15 @@ fieldset:disabled a.btn {
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #1A3636;
-  border-color: #1A3636;
+  background-color: #4e73df;
+  border-color: #4e73df;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #1A3636;
-  border-color: #1A3636;
+  background-color: #4e73df;
+  border-color: #4e73df;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -10372,7 +10372,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #1A3636 !important;
+  color: #4e73df !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -10685,9 +10685,9 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #1A3636;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #1A3636), to(#6A9C89));
-  background-image: linear-gradient(180deg, #1A3636 10%, #6A9C89 100%);
+  background-color: #4e73df;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#4e73df));
+  background-image: linear-gradient(180deg, #4e73df 10%, #6A9C89 100%);
   background-size: cover;
 }
 
@@ -12060,7 +12060,7 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .btn-custom-confirm {
-  background-color: #1A3636 !important; 
+  background-color: #4e73df !important; 
   color: white !important;
   border: none !important;
   padding: 10px 20px !important;
