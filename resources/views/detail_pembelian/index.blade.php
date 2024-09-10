@@ -47,10 +47,9 @@
                                                 <td>{{ $key + 1 }}</td>           
                                                 <td>{{ $item->kode_obat }}</td>
                                                 <td>{{ $item->jumlah }}</td>
-                                                <td>{{ $item->harga_satuan }}</td>              
-                                                <td>{{ $item->subtotal }}</td>
-                                               
-                                                <td>{{ $item->create_at}}</td>
+                                                <td>Rp. {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
+                                                <td>Rp. {{ number_format($item->subtotal, 0, ',', '.') }}</td>
+                                                <td>{{ $item->created_at}}</td>
                                                 <td>
                                                     {{-- <a href="{{ route('detail_pembelian.index', $item->id_pembelian) }}" class="btn btn-warning btn-sm">Detail</a> --}}
                                                     <form action="{{ route('detail_pembelian.destroy', $item->id_detail_pembelian) }}" method="POST" style="display:inline-block;">
@@ -63,9 +62,11 @@
                                         @endforeach
                                     </tbody>
                                     <tfoot>
-                                        <td colspan="4"> Total: </td>
-                                        <td>hh</td>
-                                    </tfoot>
+                                        <tr>
+                                            <td colspan="4">Total:</td>
+                                            <td colspan="3">{{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                        </tr>
+                                    </tfoot>                                    
                                 </table>
                             </div>
                         </div>

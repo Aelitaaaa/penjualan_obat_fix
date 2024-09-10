@@ -20,4 +20,9 @@ class Pembelian extends Model
         'created_at'
     ];
 
+    public function details()
+{
+    return $this->hasMany(DetailPembelian::class, 'kode_pembelian', 'kode_pembelian');
+}
+
 }

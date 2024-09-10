@@ -66,8 +66,8 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> 
                                                 <td>{{ $obatItem->kode_obat}} - {{ $obatItem->nama_obat }}</td>
-                                                <td>Rp. {{ $obatItem->harga_beli }}</td>
-                                                <td>Rp. {{ $obatItem->harga_jual }}</td>
+                                                <td>Rp. {{ number_format($obatItem->harga_beli, 0, ',', '.') }}</td>
+                                                <td>Rp. {{ number_format($obatItem->harga_jual, 0, ',', '.') }}</td>
                                                 <td>{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
                                                 <td>{{ $obatItem->created_at }}</td>
                                                 <td>

@@ -49,7 +49,7 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $item->kode_pembelian }}</td>              
                                                 <td>{{ $item->kode_suplier }}</td>
-                                                <td>Rp. {{ $item->total_pembelian }}</td>
+                                                <td>Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
                                                 <td>{{ $item->created_at}}</td>
                                                 <td>
                                                     <a href="{{ route('detail_pembelian.index', ['kode' => $item->kode_pembelian]) }}" class="btn btn-warning btn-sm">Detail</a>

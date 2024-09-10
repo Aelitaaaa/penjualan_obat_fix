@@ -24,4 +24,9 @@ class DetailPembelian extends Model
         'update_at',
     ];
 
+    public function pembelian()
+{
+    return $this->belongsTo(Pembelian::class, 'kode_pembelian', 'kode_pembelian');
+}
+
 }
