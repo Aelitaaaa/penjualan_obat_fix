@@ -84,7 +84,7 @@
                 <a class="collapse-item {{ request()->routeIs('obat.index') ? 'active' : '' }}" href="{{ route('obat.index') }}">Obat</a>
                 <a class="collapse-item {{ request()->routeIs('suplier.index') ? 'active' : '' }}" href="{{ route('suplier.index') }}">Supplier</a>
                 <a class="collapse-item {{ request()->routeIs('pembelian.index') ? 'active' : '' }}" href="{{ route('pembelian.index') }}">Pembelian Obat</a>
-                <a class="collapse-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('pembelian.index') }}">Penjualan Obat</a>
+                <a class="collapse-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan Obat</a>
                 <a class="collapse-item {{ request()->routeIs('opname') ? 'active' : '' }}" href="{{ route('opname') }}">Laporan Opname</a>
             </div>
         </div>

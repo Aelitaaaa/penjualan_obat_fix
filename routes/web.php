@@ -75,9 +75,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 
-    Route::get('/penjualan-obat', function () {
-        return view('penjualan');
-    })->name('penjualan.obat');
+    Route::get('/penjualan', function () {
+        return view('penjualan.index');
+    })->name('penjualan.index');
+
+    Route::get('/detail-penjualan-obat', function () {
+        return view('detail_penjualan.index');
+    })->name('detail_penjualan.index');
+
 
     Route::get('/omset', function () {
         return view('omset.index');
