@@ -15,14 +15,14 @@ class DokterController extends Controller
     public function index(Request $request)
     {
         $dataDokter = Dokter::all();
-        $dokterId = $request->query('dokter');
+        $dokterId = $request->query('dokter.index');
         $dokter = null;
 
         if($dokterId){
             $dokter = Dokter::find($dokterId);
         }
 
-        return view('dokter', ['dataDokter'=>$dataDokter, 'dokter'=>$dokter]);
+        return view('dokter.index', ['dataDokter'=>$dataDokter, 'dokter.index'=>$dokter]);
     }
 
     /**

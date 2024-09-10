@@ -47,7 +47,7 @@
                                             <th>Alamat</th>
                                             <th>Tanggal Penambahan</th>
                                             <th>Update</th>
-                                            <th>Aksi</th>
+                                            <th style="width: 9.4%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
