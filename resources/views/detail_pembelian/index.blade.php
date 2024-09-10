@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Pembelian - KLIMISTRI</title>
     @include('template.head')
+    @include('template.script')
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -78,6 +79,5 @@
         </div>
     </div>
     @include('sweetalert::alert')
-    @include('template.script')
 </body>
 </html>
