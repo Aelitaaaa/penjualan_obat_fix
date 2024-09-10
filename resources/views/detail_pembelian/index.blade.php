@@ -11,9 +11,9 @@
         @include('template.sidebar')
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                @include('template.navbar')
+           
                 <div class="container-fluid">
-                    <button class="btn btn-primary mb-5 mt-4" onclick="window.location.href='{{ route('pembelian.index') }}'">
+                    <button class="btn btn-primary mb-4 mt-4" onclick="window.location.href='{{ route('pembelian.index') }}'">
                         <i class="fas fa-fw fa-arrow-left"></i>Kembali</button>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Kode Pembelian: {{ $pembelian->kode_pembelian }} </h1>

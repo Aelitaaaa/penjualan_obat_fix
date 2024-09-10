@@ -16,12 +16,6 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan</h1>
-                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahPembelianModal">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span class="text">Tambah Penjualan</span>
-                        </a>
                     </div>
                    
 
