@@ -105,14 +105,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rekammedis', function () {
         return view('rekammedis');
     })->name('rekammedis');
-});
 
-
-Route::prefix('dokter')->name('dokter.')->group(function () {
-    Route::get('/', [DokterController::class, 'index'])->name('index');
-    Route::get('/create', [DokterController::class, 'create'])->name('create');
-    Route::post('/', [DokterController::class, 'store'])->name('store');
-    Route::get('/{id}/edit', [DokterController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [DokterController::class, 'update'])->name('update');
-    Route::delete('/{id}', [DokterController::class, 'destroy'])->name('destroy');
+    Route::prefix('dokter')->name('dokter.')->group(function () {
+        Route::get('/', [DokterController::class, 'index'])->name('index');
+        Route::get('/create', [DokterController::class, 'create'])->name('create');
+        Route::post('/', [DokterController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [DokterController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [DokterController::class, 'update'])->name('update');
+        Route::delete('/{id}', [DokterController::class, 'destroy'])->name('destroy');
+    });
 });

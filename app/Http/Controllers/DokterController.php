@@ -77,11 +77,24 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dokter $dokter)
+    public function update(Request $request, $id)
     {
-        $dokter->update($request->all());
+        $request->validate([
+            'nama' => 'required|max:100',
+            'spesialis' => 'required|max:50',
+            'telp' => 'required|max:15',
+            'tarif' => 'required|max:20',
+        ]);
+        
+        $dokter = Dokter::findOrFail($id);
+        $dokter->update([
+            'nama' => $request->nama,
+            'spesialis' => $request->spesialis,
+            'telp' => $request->telp,
+            'tarif' => $request->tarif,
+        ]);
 
-        return redirect()->back();
+        return redirect()->route('dokter.index')->with('success', 'Dokter berhasil diperbarui!');
     }
 
     /**
@@ -90,9 +103,9 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dokter $dokter)
+    public function destroy(string $id)
     {
-        $dokter->delete();
+        Dokter::find($id)->delete();
 
         return redirect()->back();
     }

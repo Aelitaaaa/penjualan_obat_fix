@@ -77,16 +77,59 @@
                                             <td>{{ $dokter->telp }}</td>
                                             <td>{{ $dokter->tarif }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal{{$dokter->id}}">
+                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal{{$dokter->id}}"
+                                                    data-id="{{ $dokter->id }}"
+                                                    data-nama-dokter="{{ $dokter->nama_dokter }}"
+                                                    data-spesialis="{{ $dokter->spesialis }}"
+                                                    data-telepon="{{ $dokter->no_telepon }}"
+                                                    data-tarif="{{ $dokter->tarif }}">
                                                     <i class="fas fa-info-circle"></i>
                                                 </a>
 
-                                                @include('dokter.edit', ['dokter'=>$dokter])
+                                                <div class="modal fade" id="editDataModal{{$dokter->id}}" tabindex="-1" role="dialog" aria-labelledby="editDataModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="editDataModalLabel">Edit Data Dokter</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form id="editFormModal" method="POST" action="{{ route('dokter.update', $dokter->id) }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="id" id="id">
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <label for="nama_dokter">Nama Dokter</label>
+                                                                        <input type="text" class="form-control" value="{{$dokter->nama}}" id="nama_dokter" name="nama" placeholder="Masukkan Nama Dokter">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="spesialis">Spesialis</label>
+                                                                        <input type="text" class="form-control" value="{{$dokter->spesialis}}" id="spesialis" name="spesialis" placeholder="Masukkan Spesialis">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="no_telepon">No. Telepon</label>
+                                                                        <input type="text" class="form-control" id="no_telepon" value="{{$dokter->telp}}" name="telp" placeholder="Masukkan No. Telepon">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="tarif">Tarif</label>
+                                                                        <input type="text" class="form-control" id="tarif" name="tarif" value="{{$dokter->tarif}}" placeholder="Masukkan Tarif">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $dokter->id }}">
+                                                <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $dokter->id_dokter }}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                {{-- <div class="modal fade" id="deleteModal-{{ $dokter->id_dokter }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="deleteModal-{{ $dokter->id_dokter }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -108,8 +151,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> --}}
-                                                @include('dokter.delete', ['dokter'=>$dokter])
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -140,11 +182,47 @@
     </a>
 
     <!-- Tambah Data Modal -->
-    @include('dokter.create')
+    <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog" aria-labelledby="tambahDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data Dokter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('dokter.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="namaDokter">Nama Dokter</label>
+                            <input type="text" class="form-control" id="namaDokter" name="nama" placeholder="Masukkan Nama Dokter">
+                        </div>
+                        <div class="form-group">
+                            <label for="spesialisDokter">Spesialis</label>
+                            <input type="text" class="form-control" id="spesialisDokter" name="spesialis" placeholder="Masukkan Spesialis">
+                        </div>
+                        <div class="form-group">
+                            <label for="teleponDokter">No. Telepon</label>
+                            <input type="text" class="form-control" id="teleponDokter" name="telp" placeholder="Masukkan No. Telepon">
+                        </div>
+                        <div class="form-group">
+                            <label for="tarifDokter">Tarif</label>
+                            <input type="text" class="form-control" id="tarifDokter" name="tarif" placeholder="Masukkan Tarif">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- End of Tambah Data Modal -->
 
     <!-- Modal Edit -->
-    
+
     <!-- End of Edit Data Modal -->
 
     <!-- Logout Modal -->
