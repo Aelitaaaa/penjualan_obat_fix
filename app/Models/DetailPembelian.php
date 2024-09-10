@@ -20,8 +20,8 @@ class DetailPembelian extends Model
         'harga_satuan',
         'subtotal',
         'total_pembelian',
-        'create_at',
-        'update_at',
+        'created_at',
+        'updated_at',
     ];
 
     public function pembelian()

@@ -44,6 +44,7 @@ class DetailPembelianController extends Controller
         'harga_satuan' => 'required|numeric',
         'subtotal' => 'required|numeric',
         'kode_pembelian' => 'required|max:7',
+        'created_at' => 'nullable|date',
     ]);
 
     // Ambil kode_pembelian dari request
