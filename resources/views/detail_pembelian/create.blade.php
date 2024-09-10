@@ -28,7 +28,7 @@
                         <input type="number" id="jumlah" name="jumlah" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Harga</label>
+                        <label>Harga /Unit</label>
                         <input type="number" id="harga_satuan" name="harga_satuan" class="form-control" readonly>
                     </div>
                     <div class="form-group">

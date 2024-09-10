@@ -19,5 +19,7 @@ class StockOpname extends Model
         'minus',
         'harga',
         'total_kerugian',
+        'created_at',
+        'updated_at',
     ];
 }

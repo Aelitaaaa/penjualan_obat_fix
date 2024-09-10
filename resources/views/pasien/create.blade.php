@@ -1,6 +1,3 @@
-
-<!-- Modal Tambah Pasien -->
-
 <div class="modal fade text-left" id="tambahPasienModal" tabindex="-1" role="dialog" aria-labelledby="tambahPasienModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form method="post" action="{{ route('pasien.store') }}">
@@ -38,8 +35,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>
-                    <button type="submit" class="btn btn-primary" name=""><i class="fas fa-fw fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Tutup</button>
+                    <button type="submit" class="btn btn-primary" name=""><i class="fas fa-fw fa-save"></i> Simpan</button>
                 </div>
             </div>
         </form>
