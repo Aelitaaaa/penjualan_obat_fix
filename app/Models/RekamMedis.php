@@ -12,7 +12,6 @@ class RekamMedis extends Model
     protected $fillable = [
         'id_pasien',
         'id_dokter',
-        'tanggal_rekam',
         'diagnosis',
         'tindakan'
     ];

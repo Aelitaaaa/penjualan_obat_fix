@@ -17,7 +17,6 @@ class CreateRekamMedisTable extends Migration
             $table->id();
             $table->integer('id_pasien')->length(20);
             $table->foreignId('id_dokter');
-            $table->date('tanggal_rekam');
             $table->text('diagnosis');
             $table->string('tindakan');
             $table->timestamps();

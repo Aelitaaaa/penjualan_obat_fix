@@ -18,9 +18,11 @@ class RekamMedisController extends Controller
     {
         $Pasien = Pasien::whereDoesntHave('rekamMedis')->get();
         $Dokter = Dokter::all();
+
+        $PasienEdit = Pasien::all();
         $RekamMedis = RekamMedis::orderBy('created_at', 'DESC')->get();
 
-        return view('rekammedis', ['rekamMedis'=>$RekamMedis, 'pasien'=>$Pasien, 'dokter'=>$Dokter]);
+        return view('rekammedis', ['rekamMedis'=>$RekamMedis,'pasienEdit'=>$PasienEdit, 'pasien'=>$Pasien, 'dokter'=>$Dokter]);
     }
 
     /**
@@ -41,9 +43,9 @@ class RekamMedisController extends Controller
      */
     public function store(Request $request)
     {
-        RekamMedis::created($request->all());
+        RekamMedis::create($request->all());
 
-        return redirect()->route('rekammedis')->with('sucsess', 'Data Berhasil di tambahkan');
+        return redirect()->back()->with('success', 'Data Berhasil di tambahkan');
     }
 
     /**
@@ -75,9 +77,12 @@ class RekamMedisController extends Controller
      * @param  \App\Models\RekamMedis  $rekamMedis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekamMedis $rekamMedis)
+    public function update(Request $request, $id)
     {
-        //
+        $rekamMedis =  RekamMedis::find($id);
+        $rekamMedis -> update($request->all());
+        
+        return redirect()->back()->with('success', 'Data Berhasil di ubah');
     }
 
     /**
@@ -86,8 +91,10 @@ class RekamMedisController extends Controller
      * @param  \App\Models\RekamMedis  $rekamMedis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekamMedis $rekamMedis)
+    public function destroy($id )
     {
-        //
-    }
+        $rekamMedis = RekamMedis::find($id);
+        $rekamMedis->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di hapus');
+        }
 }

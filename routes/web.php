@@ -97,16 +97,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('dokter', DokterController::class);
 
     Route::get('/jadwal', function () {
-        return view('jadwal');
-    })->name('jadwal');
+        return view('jadwal.index');
+    })->name('jadwal.index');
 
     Route::get('/resep', function () {
         return view('resep');
     })->name('resep');
 
     Route::resource('rekammedis', RekamMedisController::class);
+    // Route::delete('rekammedis/{id}', [RekamMedisController::class, 'destroy'])->name('rekammedis.destroy');
 
-    // Route::get('/rekammedis', function () {
-    //     return view('rekammedis');
-    // })->name('rekammedis');
 });
