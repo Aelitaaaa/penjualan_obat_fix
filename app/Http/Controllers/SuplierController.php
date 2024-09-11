@@ -10,13 +10,31 @@ class SuplierController extends Controller
     public function index()
     {
         $supliers = Suplier::all();
-        return view('suplier.index', compact('supliers'));
+
+          $latestSuplier = Suplier::orderBy('id_suplier', 'desc')->first();
+    if (!$latestSuplier) {
+        $newKode = 'SP0001';
+    } else {
+        // Ambil angka terakhir dari kode suplier terakhir, lalu tambahkan 1
+        $lastNumber = (int) substr($latestSuplier->kode_suplier, 2);
+        $newKode = 'SP' . str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
     }
+
+        return view('suplier.index', compact('supliers', 'newKode'));
+    }
+
+
+    public function create()
+{
+   
+    
+}
+
 
     public function store(Request $request)
     {
         $request->validate([
-            'kode_suplier' => 'required|max:5',
+            'kode_suplier' => 'required|max:6',
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
             'nomor_telepon' => 'required|numeric',
@@ -36,7 +54,7 @@ class SuplierController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_suplier' => 'required|max:5',
+            'kode_suplier' => 'required|max:6',
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
             'nomor_telepon' => 'required|numeric',

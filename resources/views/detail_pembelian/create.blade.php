@@ -50,40 +50,45 @@
 
 <script>
     $(document).ready(function() {
-        // Ketika kode obat berubah
-        $('#kode_obat').change(function() {
-            var selectedOption = $(this).find('option:selected');
-            var namaObat = selectedOption.data('nama');
-            var hargaJual = selectedOption.data('harga');
+    // Fungsi untuk memformat angka dengan titik sebagai pemisah ribuan
+    function formatRibuan(angka) {
+        return parseInt(angka).toLocaleString('id-ID', { minimumFractionDigits: 0 });
+    }
 
-            // Isi field harga_satuan
-            $('#harga_satuan').val(hargaJual);
+    // Ketika kode obat berubah
+    $('#kode_obat').change(function() {
+        var selectedOption = $(this).find('option:selected');
+        var hargaJual = selectedOption.data('harga');
 
-            // Reset nilai subtotal
-            $('#subtotal').val('');
+        // Format dan isi field harga_satuan
+        $('#harga_satuan').val(formatRibuan(hargaJual));
 
-            // Jika jumlah sudah diisi, hitung total harga
-            var jumlah = $('#jumlah').val();
-            if (jumlah) {
-                var totalHarga = hargaJual * jumlah;
-                $('#subtotal').val(totalHarga);
-            }
-        });
+        // Reset nilai subtotal
+        $('#subtotal').val('');
 
-        // Ketika jumlah obat diinput
-        $('#jumlah').on('input', function() {
-            var hargaJual = $('#harga_satuan').val();
-            var jumlah = $(this).val();
-
-            // Hitung total harga
-            if (hargaJual && jumlah) {
-                var totalHarga = hargaJual * jumlah;
-                $('#subtotal').val(totalHarga);
-            } else {
-                $('#subtotal').val('');
-            }
-        });
+        // Jika jumlah sudah diisi, hitung total harga
+        var jumlah = $('#jumlah').val();
+        if (jumlah) {
+            var totalHarga = hargaJual * jumlah;
+            $('#subtotal').val(formatRibuan(totalHarga));
+        }
     });
+
+    // Ketika jumlah obat diinput
+    $('#jumlah').on('input', function() {
+        var hargaJual = $('#kode_obat').find('option:selected').data('harga');
+        var jumlah = $(this).val();
+
+        // Hitung total harga
+        if (hargaJual && jumlah) {
+            var totalHarga = hargaJual * jumlah;
+            $('#subtotal').val(formatRibuan(totalHarga));
+        } else {
+            $('#subtotal').val('');
+        }
+    });
+});
+
 </script>
 
 

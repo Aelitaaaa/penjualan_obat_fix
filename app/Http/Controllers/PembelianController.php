@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailPembelian;
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
  use App\Models\Suplier;
@@ -85,6 +86,11 @@ class PembelianController extends Controller
         }
     
         try {
+
+            $detail = DetailPembelian::where('kode_pembelian', $pembelian->kode_pembelian)->get();
+            foreach($detail as $d){
+                $d->delete();
+            }
           
             $pembelian->delete();
             return redirect()->route('pembelian.index')->with('success', 'Pembelian berhasil dihapus.');

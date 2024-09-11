@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
-        Route::get('/{kodePembelian}', [DetailPembelianController::class, 'index'])->name('index');
+        Route::get('/', [DetailPembelianController::class, 'index'])->name('index');
         Route::get('/create', [DetailPembelianController::class, 'create'])->name('create');
         Route::post('/', [DetailPembelianController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [DetailPembelianController::class, 'edit'])->name('edit');

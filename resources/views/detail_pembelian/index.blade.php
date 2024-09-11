@@ -67,7 +67,7 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="4">Total:</td>
-                                            <td colspan="3">{{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                            <td colspan="3">Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
                                         </tr>
                                     </tfoot>                                    
                                 </table>

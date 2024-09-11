@@ -14,8 +14,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Kode Supplier</label>
-                        <input type="text" name="kode_suplier" class="form-control" required>
-                    </div>
+                        <input type="text" name="kode_suplier" class="form-control" value="{{ $newKode }}" readonly>
+                    </div>                    
                     <div class="form-group">
                         <label>Nama Supplier</label>
                         <input type="text" id="nama_suplier" name="nama_suplier" class="form-control" required>
