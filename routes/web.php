@@ -97,8 +97,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('dokter', DokterController::class);
 
     Route::get('/jadwal', function () {
-        return view('jadwal.index');
-    })->name('jadwal.index');
+        return view('jadwal');
+    })->name('jadwal');
 
     Route::get('/resep', function () {
         return view('resep');
@@ -106,7 +106,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('rekammedis', RekamMedisController::class);
 
-    Route::get('/rekammedis', function () {
-        return view('rekammedis');
-    })->name('rekammedis');
+    // Route::get('/rekammedis', function () {
+    //     return view('rekammedis');
+    // })->name('rekammedis');
 });

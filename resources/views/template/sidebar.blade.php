@@ -39,7 +39,7 @@
         <h6 class="collapse-header">Informasi Detail:</h6>
         <a class="collapse-item {{ request()->routeIs('dokter.index') ? 'active' : '' }}" href="{{ route('dokter.index') }}">Dokter</a>
         <a class="collapse-item {{ request()->routeIs('pasien.index') ? 'active' : '' }}" href="{{ route('pasien.index') }}">Pasien</a>
-        <a class="collapse-item {{ request()->routeIs('jadwal.index') ? 'active' : '' }}" href="{{ route('jadwal.index') }}">Jadwal</a>
+        <a class="collapse-item {{ request()->routeIs('jadwal') ? 'active' : '' }}" href="{{ route('jadwal') }}">Jadwal</a>
         <a class="collapse-item {{ request()->routeIs('resep') ? 'active' : '' }}" href="{{ route('resep') }}">Resep</a>
     </div>
 </div>
@@ -55,7 +55,7 @@
 <div id="collapseAdministrasi" class="collapse {{ request()->is('rekammedis*', 'pembayaran*', 'laporan*') ? 'show' : '' }}" aria-labelledby="headingAdministrasi" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Administrasi Detail:</h6>
-        <a class="collapse-item {{ request()->routeIs('rekammedis') ? 'active' : '' }}" href="{{ route('rekammedis') }}">Rekam Medis</a>
+        <a class="collapse-item {{ request()->routeIs('rekammedis') ? 'active' : '' }}" href="{{ route('rekammedis.index') }}">Rekam Medis</a>
         <a class="collapse-item {{ request()->routeIs('pembayaran') ? 'active' : '' }}" href="">Pembayaran</a>
         <a class="collapse-item {{ request()->routeIs('laporan') ? 'active' : '' }}" href="">Laporan</a>
     </div>
