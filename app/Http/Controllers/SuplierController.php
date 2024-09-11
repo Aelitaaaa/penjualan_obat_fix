@@ -20,7 +20,6 @@ class SuplierController extends Controller
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
             'nomor_telepon' => 'required|numeric',
-            'created_at' => 'nullable|date_format:Y-m-d H:i:s',
         ]);
 
         Suplier::create($request->all());
@@ -41,7 +40,6 @@ class SuplierController extends Controller
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
             'nomor_telepon' => 'required|numeric',
-            'created_at' => 'nullable|date_format:Y-m-d H:i:s',
         ]);
 
         $suplierItem = Suplier::findOrFail($id);

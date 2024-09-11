@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Penjualan</title>
+    <title>Daftar Penjualan - KLIMISTRI</title>
     @include('template.head')
 </head>
 <body id="page-top">
@@ -15,7 +15,7 @@
                 @include('template.navbar')
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan - KLIMISTRI</h1>
                     </div>
                    
 

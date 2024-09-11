@@ -16,21 +16,21 @@
                 @include('template.navbar')
 
                 <!-- Pesan sukses -->
-            @if (session('success'))
-              <div class="alert alert-success">
-                {{ session('success') }}
-              </div>
-            @endif
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
 
-            @if (session('error'))
-            <div class="alert alert-danger">
-            {{ session('error') }}
-            </div>
-            @endif
+                @if (session('error'))
+                <div class="alert alert-danger">
+                {{ session('error') }}
+                </div>
+                @endif
 
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Obat Klinik Klimistri</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Data Obat - Klimistri</h1>
                         <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahObatModal">
                             <span class="icon text-white-50">
                                 <i class="fas fa-plus"></i>
@@ -38,7 +38,6 @@
                             <span class="text">Tambah Obat</span>
                         </a>
                     </div>
-
 
                     @include('obat.create', ['suplier' => $suplier])
 
@@ -56,8 +55,9 @@
                                             <th>Obat</th>
                                             <th>Harga Beli</th>
                                             <th>Harga Jual</th>
-                                            <th>Jumlah - Unit</th>
+                                            <th>Stok - Unit</th>
                                             <th>Tanggal Penambahan</th>
+                                            <th>Terakhir Diperbarui</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -71,6 +71,7 @@
                                                 <td>Rp. {{ number_format($obatItem->harga_jual, 0, ',', '.') }}</td>
                                                 <td>{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
                                                 <td>{{ $obatItem->created_at }}</td>
+                                                <td>{{ $obatItem->updated_at }}</td>
                                                 <td>
                                                     <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-info-circle"></i>

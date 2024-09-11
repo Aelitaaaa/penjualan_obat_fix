@@ -93,7 +93,7 @@ class DetailPembelianController extends Controller
     $detailPembelian = DetailPembelian::find($id);
 
     if (!$detailPembelian) {
-        return redirect()->back()->with('error', 'Pembelian tidak ditemukan.');
+        return redirect()->back();
     }
 
     try {
@@ -105,7 +105,7 @@ class DetailPembelianController extends Controller
         // Hapus detail pembelian
         $detailPembelian->delete();
 
-        return redirect()->back()->with('success', 'Pembelian berhasil dihapus.');
+        return redirect()->back();
     } catch (\Illuminate\Database\QueryException $e) {
         return redirect()->back()->with('error', 'Gagal menghapus pembelian: ' . $e->getMessage());
     }

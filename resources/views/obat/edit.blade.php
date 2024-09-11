@@ -12,7 +12,7 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="kode_suplier">Suplier</label>
+                        <label for="kode_suplier">Supplier</label>
                         <select name="kode_suplier" class="form-control" required>
                             @foreach($suplier as $item)
                                 <option value="{{ $item->kode_suplier }}" {{ $item->kode_suplier == $obatItem->kode_suplier ? 'selected' : '' }}>
@@ -38,7 +38,7 @@
                         <input type="number" name="harga_jual" class="form-control" value="{{ $obatItem->harga_jual }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="jumlah_obat">Jumlah</label>
+                        <label for="jumlah_obat">Stok Obat</label>
                         <input type="number" name="jumlah_obat" class="form-control" value="{{ $obatItem->jumlah_obat }}" required>
                     </div>
                     <div class="form-group">

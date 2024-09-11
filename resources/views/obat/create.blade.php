@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Suplier</label>
+                        <label>Nama Supplier</label>
                         <select name="kode_suplier" class="form-control">
                             <option value="">-Pilih-</option>
                             @foreach ($suplier as $suplierItem)
@@ -37,7 +37,7 @@
                         <input type="number" id="harga_jual" name="harga_jual" class="form-control" placeholder="Rp." required>
                     </div>
                     <div class="form-group">
-                        <label>Jumlah</label>
+                        <label>Stok Obat</label>
                         <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" required>
                     </div>
                     <div class="form-group">

@@ -6,18 +6,18 @@
         @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahSuplierModalLabel">Tambah Suplier</h5>
+                    <h5 class="modal-title" id="tambahSuplierModalLabel">Tambah Supplier</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Suplier</label>
+                        <label>Kode Supplier</label>
                         <input type="text" name="kode_suplier" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Nama Suplier</label>
+                        <label>Nama Supplier</label>
                         <input type="text" id="nama_suplier" name="nama_suplier" class="form-control" required>
                     </div>
                     <div class="form-group">
@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i>Simpan</button>
                 </div>
             </div>
         </form>
