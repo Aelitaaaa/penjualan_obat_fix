@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\RekamMedisController;
 
 Route::redirect('/', '/login');
 
@@ -46,14 +47,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
-        Route::get('/', [DetailPembelianController::class, 'index'])->name('index');
+        Route::get('/{kodePembelian}', [DetailPembelianController::class, 'index'])->name('index');
         Route::get('/create', [DetailPembelianController::class, 'create'])->name('create');
         Route::post('/', [DetailPembelianController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [DetailPembelianController::class, 'edit'])->name('edit');
         Route::put('/{id}', [DetailPembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [DetailPembelianController::class, 'destroy'])->name('destroy');
     });
-
 
     Route::prefix('suplier')->name('suplier.')->group(function () {
         Route::get('/', [SuplierController::class, 'index'])->name('index');
@@ -75,14 +75,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
 
-    Route::get('/penjualan', function () {
-        return view('penjualan.index');
-    })->name('penjualan.index');
-
-    Route::get('/detail-penjualan-obat', function () {
-        return view('detail_penjualan.index');
-    })->name('detail_penjualan.index');
-
+    Route::get('/penjualan-obat', function () {
+        return view('penjualan');
+    })->name('penjualan.obat');
 
     Route::get('/omset', function () {
         return view('omset.index');
@@ -99,6 +94,8 @@ Route::middleware(['auth'])->group(function () {
 
     // RAWAT JALAN 
 
+    Route::resource('dokter', DokterController::class);
+
     Route::get('/jadwal', function () {
         return view('jadwal');
     })->name('jadwal');
@@ -107,16 +104,9 @@ Route::middleware(['auth'])->group(function () {
         return view('resep');
     })->name('resep');
 
-    Route::get('/rekammedis', function () {
-        return view('rekammedis');
-    })->name('rekammedis');
+    Route::resource('rekammedis', RekamMedisController::class);
 
-    Route::prefix('dokter')->name('dokter.')->group(function () {
-        Route::get('/', [DokterController::class, 'index'])->name('index');
-        Route::get('/create', [DokterController::class, 'create'])->name('create');
-        Route::post('/', [DokterController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [DokterController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [DokterController::class, 'update'])->name('update');
-        Route::delete('/{id}', [DokterController::class, 'destroy'])->name('destroy');
-    });
+    // Route::get('/rekammedis', function () {
+    //     return view('rekammedis');
+    // })->name('rekammedis');
 });

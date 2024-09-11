@@ -55,7 +55,7 @@
 <div id="collapseAdministrasi" class="collapse {{ request()->is('rekammedis*', 'pembayaran*', 'laporan*') ? 'show' : '' }}" aria-labelledby="headingAdministrasi" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Administrasi Detail:</h6>
-        <a class="collapse-item {{ request()->routeIs('rekammedis') ? 'active' : '' }}" href="{{ route('rekammedis') }}">Rekam Medis</a>
+        <a class="collapse-item {{ request()->routeIs('rekammedis') ? 'active' : '' }}" href="{{ route('rekammedis.index') }}">Rekam Medis</a>
         <a class="collapse-item {{ request()->routeIs('pembayaran') ? 'active' : '' }}" href="">Pembayaran</a>
         <a class="collapse-item {{ request()->routeIs('laporan') ? 'active' : '' }}" href="">Laporan</a>
     </div>
@@ -84,7 +84,7 @@
                 <a class="collapse-item {{ request()->routeIs('obat.index') ? 'active' : '' }}" href="{{ route('obat.index') }}">Obat</a>
                 <a class="collapse-item {{ request()->routeIs('suplier.index') ? 'active' : '' }}" href="{{ route('suplier.index') }}">Supplier</a>
                 <a class="collapse-item {{ request()->routeIs('pembelian.index') ? 'active' : '' }}" href="{{ route('pembelian.index') }}">Pembelian Obat</a>
-                <a class="collapse-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan Obat</a>
+                <a class="collapse-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('pembelian.index') }}">Penjualan Obat</a>
                 <a class="collapse-item {{ request()->routeIs('opname') ? 'active' : '' }}" href="{{ route('opname') }}">Laporan Opname</a>
             </div>
         </div>
@@ -108,4 +108,3 @@
     </div>
 
 </ul>
-

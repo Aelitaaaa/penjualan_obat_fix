@@ -134,14 +134,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="namaPasien">Pasien</label>
-                            <select class="form-control" id="namaPasien">
-                                <option>Jane Smith</option>
+                            <select class="form-control" id="namaDokter">
+                                @foreach($pasien as $p)
+                                <option value = "{{$p -> id_pasien}}">{{$p -> nama_pasien}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="namaDokter">Dokter</label>
                             <select class="form-control" id="namaDokter">
-                                <option>dr. Budi Santoso</option>
+                                @foreach($dokter as $d)
+                                <option value = "{{$d -> id}}">{{$d -> nama}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -175,14 +179,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="editNamaPasien">Pasien</label>
-                            <select class="form-control" id="namaPasien">
-                                <option>Jane Smith</option>
+                            <select class="form-control" id="namaDokter">
+                                @foreach($pasien as $p)
+                                <option value = "{{$p -> id_pasien}}">{{$p -> nama_pasien}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="editNamaDokter">Dokter</label>
                             <select class="form-control" id="namaDokter">
-                                <option>dr. Budi Santoso</option>
+                                @foreach($dokter as $d)
+                                <option value = "{{$d -> id}}">{{$d -> nama}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
