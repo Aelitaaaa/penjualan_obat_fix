@@ -19,8 +19,7 @@ class Obat extends Model
         'harga_jual', 
         'jumlah_obat', 
         'unit', 
-        'created_at',
-        'update_at'
+       
     ];
 
     public function suplier()

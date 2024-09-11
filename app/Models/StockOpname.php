@@ -7,19 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class StockOpname extends Model
 {
     protected $table = 'stock_opname';
-    protected $primaryKey = 'id'; 
-    public $timestamps = false; 
+    protected $primaryKey = 'id_opname'; 
     
     
     protected $fillable = [
-        'tanggal_obat',
         'kode_obat',
-        'jumlah_obat',
+        'jumlah_sistem',
         'jumlah_fisik',
         'minus',
-        'harga',
+        'harga_obat',
         'total_kerugian',
-        'created_at',
-        'updated_at',
+        'tanggal_opname',
     ];
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat');
+    }
 }

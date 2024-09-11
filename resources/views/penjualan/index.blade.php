@@ -15,7 +15,7 @@
                 @include('template.navbar')
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan - KLIMISTRI</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan - Klimistri</h1>
                     </div>
                    
 
@@ -45,7 +45,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="{{ route('detail_penjualan.index') }}" class="btn btn-warning btn-sm">Detail</a>
+                                                    <a href="" class="btn btn-warning btn-sm">Detail</a>
                                                     <form action="" method="POST" style="display:inline-block;">
                                                         @csrf
                                                       

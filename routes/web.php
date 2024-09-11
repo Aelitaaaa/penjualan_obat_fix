@@ -73,11 +73,18 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/{id}', [PasienController::class, 'destroy'])->name('destroy');
     });
 
-    Route::get('/opname', [StockOpnameController::class, 'index'])->name('opname');
+    Route::prefix('opname')->name('opname.')->group(function () {
+        Route::get('/', [StockOpnameController::class, 'index'])->name('index');
+        Route::get('/create', [StockOpnameController::class, 'create'])->name('create');
+        Route::post('/', [StockOpnameController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [StockOpnameController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [StockOpnameController::class, 'update'])->name('update');
+        Route::delete('/{id}', [StockOpnameController::class, 'destroy'])->name('destroy');
+    });
 
     Route::get('/penjualan-obat', function () {
-        return view('penjualan');
-    })->name('penjualan.obat');
+        return view('penjualan.index');
+    })->name('penjualan.index');
 
     Route::get('/omset', function () {
         return view('omset.index');

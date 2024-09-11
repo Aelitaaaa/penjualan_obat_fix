@@ -17,12 +17,12 @@
                 <div class="container-fluid">
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Opname Klinik Klimistri</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Data Opname - Klimistri</h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#tambahOpnameModal">
                             <i class="fas fa-fw fa-plus"></i> Tambah Opname
                         </button>
                     </div>
-
+                  @include('opname.create')
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Opname</h6>
@@ -44,17 +44,17 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($stockOpnames as $index => $stockOpname)
+                                @foreach ($stockOpname as $index => $stockOpnames)
                                   <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $stockOpname->tanggal_opname }}</td>
-                                    <td>{{ $stockOpname->kode_obat }}</td>
-                                    <td>{{ $stockOpname->jumlah_obat }}</td>
-                                    <td>{{ $stockOpname->jumlah_fisik }}</td>
-                                    <td>{{ $stockOpname->minus }}</td>
-                                    <td>Rp. {{ $stockOpname->harga_obat }}</td>
-                                    <td>Rp. {{ $stockOpname->total_kerugian }}</td>
-                                    <td>Rp. {{ $stockOpname->updated_at }}</td>
+                                    <td>{{ $stockOpnames->created_at }}</td>
+                                    <td>{{ $stockOpnames->kode_obat ? $stockOpnames->obat->nama_obat : '' }}</td>
+                                    <td>{{ $stockOpnames->jumlah_sistem }}</td>
+                                    <td>{{ $stockOpnames->jumlah_fisik }}</td>
+                                    <td>{{ $stockOpnames->minus }}</td>
+                                    <td>Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.') }}</td>
+                                    <td>Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
+                                    <td>{{ $stockOpnames->updated_at }}</td>
                                   </tr>
                                 @endforeach
                               </tbody>
@@ -67,8 +67,8 @@
             </div>
         </div>
     </div>
-
     @include('template.script')
+    @include('sweetalert::alert')
 </body>
 
 </html>

@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Batal</button>
                     <button type="submit" class="btn btn-primary" name=""><i class="fas fa-fw fa-save"></i> Simpan</button>
                 </div>
             </div>

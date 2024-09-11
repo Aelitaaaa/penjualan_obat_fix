@@ -20,8 +20,6 @@ class Suplier extends Model
         'nama_suplier', 
         'alamat', 
         'nomor_telepon',
-        'created_at',
-        'updated_at',
     ];
 
    

@@ -20,8 +20,6 @@ class Pasien extends Model
         'tanggal_lahir',
         'nomor_telepon', 
         'alamat',
-        'created_at',
-        'updated_at',
 
     ];
 

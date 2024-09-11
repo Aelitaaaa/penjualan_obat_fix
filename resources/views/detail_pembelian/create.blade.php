@@ -17,7 +17,7 @@
                         <select id="kode_obat" name="kode_obat" class="form-control">
                             <option value="">Nama Obat - Stok</option>
                             @foreach ($obat as $obatItem)
-                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_jual }}">
+                                <option value="{{ $obatItem->kode_obat }}" data-nama="{{ $obatItem->nama_obat }}" data-harga="{{ $obatItem->harga_beli }}">
                                     {{ $obatItem->nama_obat }} - {{ $obatItem->jumlah_obat }}
                                 </option>
                             @endforeach
@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Simpan</button>
                 </div>
             </div>
         </form>
