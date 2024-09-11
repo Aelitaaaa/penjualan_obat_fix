@@ -54,7 +54,6 @@
                                                 <td>Rp. {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                                                 <td>{{ $item->created_at}}</td>
                                                 <td>
-                                                    {{-- <a href="{{ route('detail_pembelian.index', $item->id_pembelian) }}" class="btn btn-warning btn-sm">Detail</a> --}}
                                                     <form action="{{ route('detail_pembelian.destroy', $item->id_detail_pembelian) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
@@ -67,7 +66,7 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="4">Total:</td>
-                                            <td colspan="3">Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                            <td colspan="3">Rp.{{ number_format($totalHarga, 0, ',', '.') }}</td>
                                         </tr>
                                     </tfoot>                                    
                                 </table>
