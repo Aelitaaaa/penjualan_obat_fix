@@ -107,6 +107,10 @@ Route::middleware(['auth'])->group(function () {
         return view('jadwal.index');
     })->name('jadwal.index');
 
+    Route::get('/detail_jadwal', function () {
+        return view('detail_jadwal.index');
+    })->name('detail_jadwal.index');
+
     Route::get('/resep', function () {
         return view('resep');
     })->name('resep');

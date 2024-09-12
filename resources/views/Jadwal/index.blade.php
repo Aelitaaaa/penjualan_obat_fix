@@ -15,26 +15,26 @@
 
     <style>
 .day-picker .day-btn {
-    width: 80px;             /* Atur lebar tombol */
+    width: 80px;      
     padding: 10px 15px;
-    border-radius: 10px;      /* Membuat sudut tombol bulat */
+    border-radius: 10px;      
     text-align: center;
-    margin-right: 10px;      /* Jarak antar tombol */
+    margin-right: 10px;
 }
 
 .day-picker .day-btn .text-small {
-    font-size: 12px;         /* Ukuran font untuk tanggal */
+    font-size: 12px;       
 }
 
 .day-picker .day-btn .font-weight-bold {
-    font-size: 16px;         /* Ukuran font untuk hari */
+    font-size: 16px;       
 }
 
 
 .time-grid {
     display: flex;
-    gap: 20px;  /* Jarak antara elemen waktu */
-    flex-wrap: wrap;  /* Agar waktu turun ke baris berikutnya jika tidak cukup ruang */
+    gap: 20px; 
+    flex-wrap: wrap; 
 }
 
 .time-box {
@@ -44,18 +44,18 @@
     border: 1px solid #ced4da;
     width: 80px;
     text-align: center;
-    margin-top: 5px;  /* Jarak atas */
-    margin-bottom: 5px;  /* Jarak bawah */
+    margin-top: 5px; 
+    margin-bottom: 5px;  
 }
 
 .time-box.available {
-    background-color: #ffffff;  /* Background putih untuk waktu tersedia */
-    color: #6c757d;             /* Warna teks abu-abu */
+    background-color: #ffffff;  
+    color: #6c757d;            
 }
 
 .time-box.unavailable {
-    background-color: #f56c6c;  /* Background merah untuk waktu tidak tersedia */
-    color: #ffffff;             /* Warna teks putih */
+    background-color: #f56c6c; 
+    color: #ffffff;    
 }
 
 
@@ -200,9 +200,9 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailScheduleModal">
+                                    <a class="btn btn-info btn-sm" href="{{ route('detail_jadwal.index') }}">
                                         Detail Jadwal
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -250,8 +250,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="week">Minggu Ke-</label>
-                            <input type="week" class="form-control" id="week">
+                            <label for="date">Tanggal</label>
+                            <input type="date" class="form-control" id="date">
                         </div>
                         <div class="form-group">
                             <label for="doctorName">Nama Dokter</label>
@@ -263,35 +263,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="specialization">Spesialisasi</label>
-                            <select class="form-control" id="specialization">
-                                <option value="">Pilih Spesialisasi</option>
-                                <!-- Tambahkan lebih banyak opsi spesialisasi di sini -->
-                                <option value="Dokter Gigi Umum">Dokter Gigi Umum</option>
-                                <option value="Dokter Spesialis Anak">Dokter Spesialis Anak</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="day">Hari</label>
-                            <select class="form-control" id="day">
-                                <option value="">Pilih Hari</option>
-                                <option>Senin</option>
-                                <option>Selasa</option>
-                                <option>Rabu</option>
-                                <option>Kamis</option>
-                                <option>Jumat</option>
-                                <option>Sabtu</option>
-                                <option>Minggu</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="time">Waktu</label>
-                            <select class="form-control" id="time">
-                                <option value="">Pilih Waktu</option>
-                                <!-- Tambahkan lebih banyak opsi waktu di sini -->
-                                <option>08:00 - 12:00</option>
-                                <option>13:00 - 17:00</option>
-                            </select>
+                            <input type="time" class="form-control" id="time">
                         </div>
                     </form>
                 </div>
@@ -478,7 +451,7 @@ function updateDayPicker() {
     if (!week) return;
 
     var dayButtons = document.querySelectorAll('.day-picker .day-btn');
-    var daysOfWeek = ['SEN', 'SEL', 'RAB', 'KAM', 'JUM', 'SAB', 'MIN'];
+    var daysOfWeek = ['MIN', 'SEN', 'SEL', 'RAB', 'KAM', 'JUM', 'SAB'];
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
     dayButtons.forEach((button, index) => {
