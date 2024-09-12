@@ -14,7 +14,6 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{{asset('template/css/sb-admin-2.css')}}" rel="stylesheet">
 
@@ -235,12 +234,17 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="namaPasien">Pasien</label>
-                            <select name="id_pasien" class="form-control" id="namaDokter">
+                            <select name="id_pasien" class="form-control" id="namaPasien">
                                 @foreach($pasien as $p)
                                     <option value="{{$p->id_pasien}}">{{$p->nama_pasien}}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <script>
+                            $('#namaPasien').editableSelect({
+                                 namaPasien: '.modal-body',
+                                    });
+                        </script>
                         <div class="form-group">
                             <label for="namaDokter">Dokter</label>
                             <select name="id_dokter" class="form-control" id="namaDokter">
@@ -249,6 +253,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <script>
+                            $('#namaDokter').editableSelect({
+                                 namaDokter: '.modal-body',
+                                    });
+                        </script>
                         <div class="form-group">
                             <label for="idJadwal">Jadwal</label>
                             <select class="form-control" id="idJadwal">
