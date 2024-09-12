@@ -50,40 +50,40 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Supplier</th>
-                                            <th>Obat</th>
-                                            <th>Harga Beli</th>
-                                            <th>Harga Jual</th>
-                                            <th>Stok - Unit</th>
-                                            <th>Tanggal Penambahan</th>
-                                            <th>Terakhir Diperbarui</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center align-middle" style="width: 6">No</th>
+                                            <th class="text-center align-middle" style="width: 15%" >Supplier</th>
+                                            <th class="text-center align-middle" style="width: 21%">Obat</th>
+                                            <th class="text-center align-middle" style="width: 14%">Stok</th>
+                                            <th class="text-center align-middle" style="width: 15%">Tanggal </th>
+                                            <th class="text-center align-middle" style="width: 15%">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 14%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($obat as $key => $obatItem)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td> 
-                                                <td>{{ $obatItem->kode_obat}} - {{ $obatItem->nama_obat }}</td>
-                                                <td>Rp. {{ number_format($obatItem->harga_beli, 0, ',', '.') }}</td>
-                                                <td>Rp. {{ number_format($obatItem->harga_jual, 0, ',', '.') }}</td>
-                                                <td>{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
-                                                <td>{{ $obatItem->created_at }}</td>
-                                                <td>{{ $obatItem->updated_at }}</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $key + 1 }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->kode_obat }} - <br> {{ $obatItem->nama_obat }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->created_at }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->updated_at }}</td>
+                                                <td class="text-center" style="vertical-align: middle; height: 100px;">
+                                                    <a href="#" class="btn btn-info btn-circle btn-sm mr-1" data-toggle="modal" data-target="#detailObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>
-                                                    @include('obat.edit')
-
+                                                    <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                   
                                                     <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     @include('obat.delete')  
                                                 </td>
                                             </tr>
+                                            @include('obat.edit')
+                                            @include('obat.detail')
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -11,6 +11,8 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\OmsetController;
+
 
 Route::redirect('/', '/login');
 

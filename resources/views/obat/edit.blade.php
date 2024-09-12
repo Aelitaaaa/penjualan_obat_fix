@@ -31,11 +31,11 @@
                     </div>
                     <div class="form-group">
                         <label for="harga_obat">Harga Beli</label>
-                        <input type="number" name="harga_beli" class="form-control" value="{{ $obatItem->harga_beli }}" required>
+                        <input type="number" name="harga_beli" class="form-control" value="{{ number_format($obatItem->harga_beli, 0, ',', '.') }}">
                     </div>
                     <div class="form-group">
                         <label for="harga_obat">Harga Jual</label>
-                        <input type="number" name="harga_jual" class="form-control" value="{{ $obatItem->harga_jual }}" required>
+                        <input type="number" name="harga_jual" class="form-control" value="{{ number_format($obatItem->harga_jual, 0, ',', '.') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah_obat">Stok Obat</label>
