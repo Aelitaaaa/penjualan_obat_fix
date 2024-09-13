@@ -40,7 +40,7 @@
         <a class="collapse-item {{ request()->routeIs('dokter.index') ? 'active' : '' }}" href="{{ route('dokter.index') }}">Dokter</a>
         <a class="collapse-item {{ request()->routeIs('pasien.index') ? 'active' : '' }}" href="{{ route('pasien.index') }}">Pasien</a>
         <a class="collapse-item {{ request()->routeIs('jadwal.index') ? 'active' : '' }}" href="{{ route('jadwal.index') }}">Jadwal</a>
-        <a class="collapse-item {{ request()->routeIs('resep') ? 'active' : '' }}" href="{{ route('resep') }}">Resep</a>
+        <a class="collapse-item {{ request()->routeIs('resep.index') ? 'active' : '' }}" href="{{ route('resep.index') }}">Resep</a>
     </div>
 </div>
 </li>
