@@ -20,7 +20,6 @@ class ResepController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_resep' => 'required',
             'nama_resep' => 'required',
             'daftar_obat' => 'required',
             'id_rekam_medis' => 'required',

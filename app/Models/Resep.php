@@ -12,9 +12,35 @@ class Resep extends Model
     protected $table = 'resep'; 
     protected $primaryKey = 'kode_resep'; 
     
-   
     public $timestamps = true;
+    public $incrementing = false;
+    protected $keyType = 'char';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->kode_resep = $model->generateCustomId();
+        });
+    }
+
+    public function generateCustomId()
+    {
+        $prefix = "AA";
+
+        $lastRecord = self::orderBy('kode_resep', 'desc')->first();
+        if (!$lastRecord) {
+            $increment = 1;
+        } else {
+            $lastIncrement = (int)substr($lastRecord->kode_resep, -3);
+            $increment = $lastIncrement + 1;
+        }
+
+        $incrementString = str_pad($increment, 3, '0', STR_PAD_LEFT);
+
+        return ($prefix  . $incrementString);
+    }
     
     protected $fillable = [
         'kode_resep',

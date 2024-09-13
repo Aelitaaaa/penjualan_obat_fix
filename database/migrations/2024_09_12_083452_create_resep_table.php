@@ -14,10 +14,10 @@ class CreateResepTable extends Migration
     public function up()
     {
         Schema::create('resep', function (Blueprint $table) {
-            $table->string('kode_resep', 10)->primary();
+            $table->char('kode_resep', 10)->primary();
             $table->string('nama_resep');
             $table->text('daftar_obat');
-            $table->unsignedBigInteger('id_rekam_medis'); // Kolom foreign key
+            $table->foreignId('id_rekam_medis'); // Kolom foreign key
             $table->timestamps();
 
             // Define foreign key constraint
@@ -32,10 +32,6 @@ class CreateResepTable extends Migration
      */
     public function down()
     {
-        Schema::table('resep', function (Blueprint $table) {
-            $table->dropForeign(['id_rekam_medis']);
-        });
-
         Schema::dropIfExists('resep');
     }
 }

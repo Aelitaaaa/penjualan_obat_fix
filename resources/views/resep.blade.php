@@ -103,104 +103,104 @@
                                     <tbody>
                                         <!-- Example rows -->
                                         @foreach ($resep as $re)
-                                            <tr>
-                                                <th>{{$re->kode_resep }}</th>
-                                                <th>{{$re->nama_resep}}</th>
-                                                <th>{{$re->obat->nama_obat}}</th>
-                                                <th>{{$re->rekammedis->id}}</th>
-                                                <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal"
-                                                        data-target="#editDataModal{{$re->kode_resep}}">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </a>
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm"
-                                                        data-toggle="modal" data-target="#deleteModal{{$r->kode_resep}}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </th>
+                                        <tr>
+                                            <th>{{$re->kode_resep }}</th>
+                                            <th>{{$re->nama_resep}}</th>
+                                            <th>{{$re->daftar_obat}}</th>
+                                            <th>{{$re->rekamMedis->id}}</th>
+                                            <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal"
+                                                    data-target="#editDataModal{{$re->kode_resep}}">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-danger btn-circle btn-sm"
+                                                    data-toggle="modal" data-target="#deleteModal{{$re->kode_resep}}">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </th>
 
-                                            </tr>
-                                            <div class="modal fade" id="deleteModal{{ $r->kode_resep}}" tabindex="-1"
-                                                role="dialog" aria-labelledby="deleteSuplierModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteSuplierModalLabel">Konfirmasi
-                                                                Hapus Data</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Apakah Anda yakin ingin menghapus data Resep ini?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Batal</button>
-                                                            <form action="{{ route('resep.destroy', $re->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                                            </form>
-                                                        </div>
+                                        </tr>
+                                        <div class="modal fade" id="deleteModal{{ $re->kode_resep}}" tabindex="-1"
+                                            role="dialog" aria-labelledby="deleteSuplierModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteSuplierModalLabel">Konfirmasi
+                                                            Hapus Data</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal fade" id="editDataModal{{$re->kode_resep}}" tabindex="-1"
-                                                role="dialog" aria-labelledby="editDataModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="editDataModalLabel">Edit Data Resep
-                                                            </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <form action="{{route('resep.update', $re->id)}}" method="POST">
+                                                    <div class="modal-body">
+                                                        Apakah Anda yakin ingin menghapus data Resep ini?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Batal</button>
+                                                        <form action="{{ route('resep.destroy', $re->kode_resep) }}"
+                                                            method="POST">
                                                             @csrf
-                                                            @method('PUT')
-                                                            <div class="modal-body">
-                                                                <div class="form-group">
-                                                                    <label>Nama Resep</label>
-                                                                    <textarea class="form-control" id="idJadwal"
-                                                                        name="diagnosis">{{$re->nama_resep}}</textarea>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="editNamaobat"></label>
-                                                                    <select name="id_obat" class="form-control"
-                                                                        id="namaDokter">
-                                                                        @foreach($obat as $o)
-                                                                            <option value="{{$o->nama_obat}}"
-                                                                                {{$o->nama_obat === $re->nama_obat ? 'selected' : ''}}>{{$o->nama_obat}}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="editidrekammedis">Dokter</label>
-                                                                    <select name="id_rekammedis" class="form-control"
-                                                                        id="namaDokter">
-                                                                        @foreach($rekamMedis as $r)
-                                                                            <option value="{{$r->id}}"
-                                                                                {{$r->id === $re->id_rekammedis ? 'selected' : ''}}>{{$r->id}}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Save
-                                                                    changes</button>
-                                                            </div>
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="modal fade" id="editDataModal{{$re->kode_resep}}" tabindex="-1"
+                                            role="dialog" aria-labelledby="editDataModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editDataModalLabel">Edit Data Resep
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{route('resep.update', $re->kode_resep)}}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label>Nama Resep</label>
+                                                                <textarea class="form-control" id="idJadwal"
+                                                                    name="diagnosis">{{$re->nama_resep}}</textarea>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="editNamaobat"></label>
+                                                                <select name="id_obat" class="form-control"
+                                                                    id="namaDokter">
+                                                                    @foreach($obat as $o)
+                                                                    <option value="{{$o->nama_obat}}"
+                                                                        {{$o->nama_obat === $re->nama_obat ? 'selected' : ''}}>{{$o->nama_obat}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="editidrekammedis">Dokter</label>
+                                                                <select name="id_rekammedis" class="form-control"
+                                                                    id="namaDokter">
+                                                                    @foreach($rekamMedis as $r)
+                                                                    <option value="{{$r->id}}"
+                                                                        {{$r->id === $re->id_rekammedis ? 'selected' : ''}}>{{$r->id}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         @endforeach
                                         <!-- More rows can be added here -->
@@ -245,34 +245,38 @@
                 <form action="{{route('resep.store')}}" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="koderesep">Kode Resep</label>
                             <input type="text" class="form-control" id="koderesep" name="kode"
                                 placeholder="Masukkan Kode Resep">
-                        </div>
-                        <div class="modal-body">
+                        </div> -->
                             <div class="form-group">
                                 <label for="namaresep">Nama Resep</label>
-                                <input type="text" class="form-control" id="namaresep" name="nama"
+                                <input type="text" class="form-control" id="namaresep" name="nama_resep"
                                     placeholder="Masukkan Nama Resep">
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="namaObat">Nama Obat</label>
                                 <select name="id_obat" class="form-control" id="namaObat">
                                     @foreach($obat as $o)
-                                        <option value="{{$o->id}}">{{$o->nama_obat}}</option>
+                                    <option value="{{$o->id}}">{{$o->nama_obat}}</option>
+                                    @endforeach
+                                </select>
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="idRekammedis">Rekam Medis</label>
+                                <select name="id_rekam_medis" class="form-control" id="idRekammedis">
+                                    @foreach($rekamMedis as $r)
+                                    <option value="{{$r->id}}">{{$r->id}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="idRekammedis">Rekam Medis</label>
-                                <select name="id_rekammedis" class="form-control" id="idRekammedis">
-                                    @foreach($rekamMedis as $r)
-                                        <option value="{{$r->id}}">{{$r->id}}</option>
-                                    @endforeach
-                                </select>
+                                <label>Daftar Obat</label>
+                                <textarea class="form-control" id="idJadwal" name="daftar_obat"></textarea>
                             </div>
                         </div>
 

@@ -240,11 +240,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <script>
+                        <!-- <script>
                             $('#namaPasien').editableSelect({
                                  namaPasien: '.modal-body',
                                     });
-                        </script>
+                        </script> -->
                         <div class="form-group">
                             <label for="namaDokter">Dokter</label>
                             <select name="id_dokter" class="form-control" id="namaDokter">
@@ -253,11 +253,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <script>
+                        <!-- <script>
                             $('#namaDokter').editableSelect({
                                  namaDokter: '.modal-body',
                                     });
-                        </script>
+                        </script> -->
                         <div class="form-group">
                             <label for="idJadwal">Jadwal</label>
                             <select class="form-control" id="idJadwal">

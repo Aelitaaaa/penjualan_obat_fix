@@ -114,9 +114,9 @@ Route::middleware(['auth'])->group(function () {
         return view('detail_jadwal.index');
     })->name('detail_jadwal.index');
 
-    Route::get('/resep', function () {
-        return view('resep');
-    })->name('resep');
+    // Route::get('/resep', function () {
+    //     return view('resep');
+    // })->name('resep');
 
     Route::resource('rekammedis', RekamMedisController::class);
     // Route::delete('rekammedis/{id}', [RekamMedisController::class, 'destroy'])->name('rekammedis.destroy');
