@@ -26,19 +26,24 @@ class StockOpnameController extends Controller
         $request->validate([
             'kode_obat' => 'required|string|max:7', 
             'jumlah_sistem' => 'required|numeric|min:1', 
-            'jumlah_fisik' => 'required|numeric|min:1', 
-            'minus' => 'required|numeric',
+            'jumlah_fisik' => 'required|numeric|min:0', 
             'harga_obat' => 'required|numeric|min:0', 
-            'total_kerugian' => 'required|numeric|min:0', 
         ]);
-    
+
+        // Menghitung nilai minus
+        $minus = $request->jumlah_sistem - $request->jumlah_fisik;
+
+        // Menghitung total kerugian
+        $total_kerugian = $minus * $request->harga_obat;
+
+        // Simpan data opname
         StockOpname::create([
             'kode_obat'  => $request->kode_obat,
             'jumlah_sistem' => $request->jumlah_sistem,
             'jumlah_fisik' => $request->jumlah_fisik,
-            'minus' => $request->minus,
+            'minus' => $minus, // Menggunakan nilai minus yang sudah dihitung
             'harga_obat' => $request->harga_obat,
-            'total_kerugian' => $request->total_kerugian,
+            'total_kerugian' => $total_kerugian, // Menggunakan nilai total kerugian yang sudah dihitung
         ]);
     
         return redirect()->route('opname.index')->with('success', 'Opname berhasil ditambahkan!');
@@ -46,38 +51,31 @@ class StockOpnameController extends Controller
 
     public function destroy($id)
     {
-    $stockOpnames = StockOpname::findOrFail($id); 
-    $stockOpnames->delete(); 
+        $stockOpnames = StockOpname::findOrFail($id); 
+        $stockOpnames->delete(); 
 
-        return redirect()->route('opname.index')->with('success', 'Opname berhasil dihapus.');
+        return redirect()->back()->with('success', 'Opname berhasil dihapus.');
     }
 
-    public function update(Request $request, $id)
+    // Method update
+public function update(Request $request, StockOpname $opname)
 {
+    // Validasi tetap sama
 
-    $request->validate([
-        'kode_obat' => 'required|string|max:7', 
-        'jumlah_sistem' => 'required|numeric|min:1', 
-        'jumlah_fisik' => 'required|numeric|min:1', 
-        'minus' => 'required|numeric',
-        'harga_obat' => 'required|numeric|min:0', 
-        'total_kerugian' => 'required|numeric|min:0', 
-    ]);
+    // Menghitung ulang nilai minus dan total kerugian
+    $minus = $request->jumlah_sistem - $request->jumlah_fisik;
+    $total_kerugian = $minus * $request->harga_obat;
 
-    $opname = StockOpname::findOrFail($id);
-
+    // Update data opname
     $opname->update([
         'kode_obat'  => $request->kode_obat,
         'jumlah_sistem' => $request->jumlah_sistem,
         'jumlah_fisik' => $request->jumlah_fisik,
-        'minus' => $request->minus,
+        'minus' => $minus,
         'harga_obat' => $request->harga_obat,
-        'total_kerugian' => $request->total_kerugian,
+        'total_kerugian' => $total_kerugian,
     ]);
-
 
     return redirect()->route('opname.index')->with('success', 'Opname berhasil diperbarui!');
 }
 }
-
-
