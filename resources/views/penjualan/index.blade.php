@@ -28,12 +28,12 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Kode Penjualan</th>
-                                            <th>Kode Suplier</th>
-                                            <th>Total Penjualan</th>
-                                            <th>Tanggal Penjualan</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Kode Penjualan</th>
+                                            <th class="text-center align-middle">Kode Suplier</th>
+                                            <th class="text-center align-middle">Total Penjualan</th>
+                                            <th class="text-center align-middle">Tanggal Penjualan</th>
+                                            <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,12 +45,9 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-                                                    <a href="" class="btn btn-warning btn-sm">Detail</a>
-                                                    <form action="" method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                      
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                                    </form>
+                                                    <a href="#" class="btn btn-info btn-circle btn-sm mr-1">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                       

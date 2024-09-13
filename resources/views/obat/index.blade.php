@@ -50,25 +50,25 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center align-middle" style="width: 6">No</th>
-                                            <th class="text-center align-middle" style="width: 15%" >Supplier</th>
-                                            <th class="text-center align-middle" style="width: 21%">Obat</th>
-                                            <th class="text-center align-middle" style="width: 14%">Stok</th>
-                                            <th class="text-center align-middle" style="width: 15%">Tanggal </th>
-                                            <th class="text-center align-middle" style="width: 15%">Terakhir Diperbarui</th>
-                                            <th class="text-center align-middle" style="width: 14%">Aksi</th>
+                                            <th class="text-center align-middle" style="width: 60px">No</th>
+                                            <th class="text-center align-middle" style="width: 150px">Supplier</th>
+                                            <th class="text-center align-middle" style="width: 210px">Obat</th>
+                                            <th class="text-center align-middle" style="width: 140px">Stok</th>
+                                            <th class="text-center align-middle" style="width: 150px">Tanggal</th>
+                                            <th class="text-center align-middle" style="width: 150px">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 140px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($obat as $key => $obatItem)
                                             <tr>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $key + 1 }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->kode_obat }} - <br> {{ $obatItem->nama_obat }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->created_at }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">{{ $obatItem->updated_at }}</td>
-                                                <td class="text-center" style="vertical-align: middle; height: 100px;">
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $key + 1 }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</td>
+                                                <td class="text-center"  data-toggle="modal" data-target="#detailObatModal{{ $obatItem->id_obat }}" style="vertical-align: middle; height: 100px;">{{ $obatItem->kode_obat }} - <br> {{ $obatItem->nama_obat }}</td>
+                                                <td class="text-center"  data-toggle="modal" data-target="#detailObatModal{{ $obatItem->id_obat }}" style="vertical-align: middle; height: 100px;">{{ $obatItem->jumlah_obat }} - {{ $obatItem->unit }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $obatItem->created_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $obatItem->updated_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">
                                                     <a href="#" class="btn btn-info btn-circle btn-sm mr-1" data-toggle="modal" data-target="#detailObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>

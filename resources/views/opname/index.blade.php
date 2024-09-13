@@ -18,9 +18,12 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">Data Opname - Klimistri</h1>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahOpnameModal">
-                            <i class="fas fa-fw fa-plus"></i> Tambah Opname
-                        </button>
+                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahOpnameModal">
+                          <span class="icon text-white-50">
+                              <i class="fas fa-plus"></i>
+                          </span>
+                          <span class="text">Tambah Opname</span>
+                      </a>
                     </div>
                   @include('opname.create')
                     <div class="card shadow mb-4">
@@ -32,40 +35,39 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                               <thead>
                                 <tr>
-                                  <th>No</th>
-                                  <th>Tanggal</th>
-                                  <th>Nama Obat</th>
-                                  <th>Jumlah Sistem</th>
-                                  <th>Jumlah Fisik</th>
-                                  <th>Minus</th>
-                                  <th>Harga</th>
-                                  <th>Kerugian</th>
-                                  <th>Terakhir Diperbarui</th>
-                                  <th>Aksi</th>
+                                  <th class="text-center align-middle">No</th>
+                                  <th class="text-center align-middle">Tanggal</th>
+                                  <th class="text-center align-middle">Nama Obat</th>
+                                  <th class="text-center align-middle">Jumlah Sistem</th>
+                                  <th class="text-center align-middle">Jumlah Fisik</th>
+                                  <th class="text-center align-middle">Minus</th>
+                                  <th class="text-center align-middle">Harga</th>
+                                  <th class="text-center align-middle">Kerugian</th>
+                                  <th class="text-center align-middle">Terakhir Diperbarui</th>
+                                  <th class="text-center align-middle">Aksi</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 @foreach ($stockOpname as $index => $stockOpnames)
                                   <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $stockOpnames->created_at }}</td>
-                                    <td>{{ $stockOpnames->kode_obat ? $stockOpnames->obat->nama_obat : '' }}</td>
-                                    <td>{{ $stockOpnames->jumlah_sistem }}</td>
-                                    <td>{{ $stockOpnames->jumlah_fisik }}</td>
-                                    <td>{{ $stockOpnames->minus }}</td>
-                                    <td>Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.') }}</td>
-                                    <td>Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
-                                    <td>{{ $stockOpnames->updated_at }}</td>
-                                    <td>  
-                                      <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editOpnameModal{{ $stockOpnames->id_opname }}">
-                                        <i class="fas fa-info-circle"></i>
-                                    </a>
-                                    @include('opname.edit')    
-                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteOpnameModal{{ $stockOpnames->id_opname }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    @include('opname.delete')
-                                     
+                                    <td class="text-center" style="vertical-align: middle;">{{ $index + 1 }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->created_at }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->kode_obat}} - {{ $stockOpnames->kode_obat ? $stockOpnames->obat->nama_obat : '' }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_sistem }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_fisik }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->minus }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.') }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->updated_at }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">  
+                                      <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editOpnameModal{{ $stockOpnames->id_opname }}">
+                                        <i class="fas fa-pen"></i>
+                                     </a>
+                                 
+                                      <button type="button" class="btn btn-danger btn-circle mt-1 btn-sm" data-toggle="modal" data-target="#deleteOpnameModal{{ $stockOpnames->id_opname }}">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                      @include('opname.delete')  
                                   </td>   
                                   </tr>
                                 @endforeach

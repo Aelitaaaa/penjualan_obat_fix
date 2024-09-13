@@ -87,7 +87,7 @@ class PembelianController extends Controller
     }
 
     try {
-        // Mendapatkan semua detail pembelian terkait dengan pembelian ini
+        
         $details = DetailPembelian::where('kode_pembelian', $pembelian->kode_pembelian)->get();
 
         // Mengurangi stok obat sesuai dengan detail pembelian
@@ -95,8 +95,8 @@ class PembelianController extends Controller
             $obat = Obat::where('kode_obat', $detail->kode_obat)->first();
             
             if ($obat) {
-                $obat->jumlah_obat -= $detail->jumlah; // Kurangi stok obat sesuai jumlah di detail pembelian
-                $obat->save(); // Simpan perubahan stok
+                $obat->jumlah_obat -= $detail->jumlah; 
+                $obat->save();
             }
 
             // Hapus detail pembelian

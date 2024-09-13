@@ -40,37 +40,38 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Kode Supplier</th>
-                                            <th>Nama Supplier</th>
-                                            <th>Alamat</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Tanggal Penambahan</th>
-                                            <th>Terakhir Diperbarui</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center align-middle" style="width: 40px">No</th>
+                                            <th class="text-center align-middle" style="width: 150px">Kode Supplier</th>
+                                            <th class="text-center align-middle" style="width: 150px">Nama Supplier</th>
+                                            <th class="text-center align-middle" style="width: 150px">Alamat</th>
+                                            <th class="text-center align-middle" style="width: 150px">Nomor Telepon</th>
+                                            <th class="text-center align-middle" style="width: 130px">Tanggal Penambahan</th>
+                                            <th class="text-center align-middle" style="width: 130px">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 100px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($supliers as $index => $suplier)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $suplier->kode_suplier }}</td>
-                                                <td>{{ $suplier->nama_suplier }}</td>
-                                                <td>{{ $suplier->alamat }}</td>
-                                                <td>{{ $suplier->nomor_telepon }}</td>
-                                                <td>{{ $suplier->created_at }}</td>
-                                                <td>{{ $suplier->updated_at }}</td>
-                                                <td>   
-                                                    <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editSuplierModal{{ $suplier->id_suplier }}">
-                                                        <i class="fas fa-info-circle"></i>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $index + 1 }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->kode_suplier }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->nama_suplier }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->alamat }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->nomor_telepon }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->created_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->updated_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">   
+                                                    <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editSuplierModal{{ $suplier->id_suplier }}">
+                                                        <i class="fas fa-pen"></i>
                                                     </a>
-                                                    @include('suplier.edit')    
+                                                    
                                                     <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteSuplierModal{{ $suplier->id_suplier }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     @include('suplier.delete')  
                                                 </td>   
                                             </tr>
+                                            @include('suplier.edit') 
                                         @endforeach
                                     </tbody>
                                 </table>

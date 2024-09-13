@@ -39,29 +39,29 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama Pasien</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Alamat</th>
-                                            <th>Tanggal Penambahan</th>
-                                            <th>Terakhir Diperbarui</th>
-                                            <th style="width: 9.4%">Aksi</th>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Nama Pasien</th>
+                                            <th class="text-center align-middle">Jenis Kelamin</th>
+                                            <th class="text-center align-middle">Tanggal Lahir</th>
+                                            <th class="text-center align-middle">Nomor Telepon</th>
+                                            <th class="text-center align-middle">Alamat</th>
+                                            <th class="text-center align-middle">Tanggal Penambahan</th>
+                                            <th class="text-center align-middle">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 9.4%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($pasien as $index => $pasienItem)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $pasienItem->nama_pasien }}</td>
-                                                <td>{{ $pasienItem->jenis_kelamin }}</td>
-                                                <td>{{ $pasienItem->tanggal_lahir }}</td>
-                                                <td>{{ $pasienItem->nomor_telepon }}</td>
-                                                <td>{{ $pasienItem->alamat }}</td>
-                                                <td>{{ $pasienItem->created_at }}</td>
-                                                <td>{{ $pasienItem->updated_at }}</td>
-                                                <td>  
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $index + 1 }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->nama_pasien }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->jenis_kelamin }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->tanggal_lahir }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->nomor_telepon }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->alamat }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->created_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->updated_at }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">  
                                                     <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editPasienModal{{ $pasienItem->id_pasien }}">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>

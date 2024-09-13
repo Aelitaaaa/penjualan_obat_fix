@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Pembelian</title>
+    <title>Daftar Pembelian - KLIMISTRI</title>
     @include('template.head')
     @include('template.script')
 </head>
@@ -36,29 +36,31 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Kode Pembelian</th>
-                                            <th>Kode Suplier</th>
-                                            <th>Total Pembelian</th>
-                                            <th>Tanggal Pembelian</th>
-                                            <th>Aksi</th>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Kode Pembelian</th>
+                                            <th class="text-center align-middle">Kode Suplier</th>
+                                            <th class="text-center align-middle">Total Pembelian</th>
+                                            <th class="text-center align-middle">Tanggal Pembelian</th>
+                                            <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($pembelian as $key => $item)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $item->kode_pembelian }}</td>              
-                                                <td>{{ $item->kode_suplier }}</td>
-                                                <td>Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
-                                                <td>{{ $item->created_at}}</td>
-                                                <td>
-                                                    <a href="{{ route('detail_pembelian.index', ['kode' => $item->kode_pembelian]) }}" class="btn btn-warning btn-sm">Detail</a>
-                                                    <form action="{{ route('pembelian.destroy', $item->id_pembelian) }}" method="POST" style="display:inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                                    </form>
+                                                <td class="text-center">{{ $key + 1 }}</td>
+                                                <td class="text-center">{{ $item->kode_pembelian }}</td>              
+                                                <td class="text-center">{{ $item->kode_suplier }}</td>
+                                                <td class="text-center">Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
+                                                <td class="text-center">{{ $item->created_at}}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('detail_pembelian.index', ['kode' => $item->kode_pembelian]) }}" class="btn btn-info btn-circle btn-sm mr-1">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
+                                                   
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deletePembelianModal{{ $item->id_pembelian }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                    @include('pembelian.delete', ['item'=>$item])  
                                                 </td>
                                             </tr>
                                         @endforeach
