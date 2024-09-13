@@ -11,6 +11,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\ResepController;
 use App\Http\Controllers\OmsetController;
 
 
@@ -119,5 +120,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('rekammedis', RekamMedisController::class);
     // Route::delete('rekammedis/{id}', [RekamMedisController::class, 'destroy'])->name('rekammedis.destroy');
+    Route::resource('resep', ResepController::class);
 
+    
 });

@@ -1,85 +1,56 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Resep;
+use App\Models\Obat;
+use App\Models\RekamMedis;
 use Illuminate\Http\Request;
 
 class ResepController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $resep = Resep::all();
+        $rekamMedis = RekamMedis::all();
+        $obat = Obat::all(); 
+
+        return view('resep', compact('resep', 'rekamMedis', 'obat'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_resep' => 'required',
+            'nama_resep' => 'required',
+            'daftar_obat' => 'required',
+            'id_rekam_medis' => 'required',
+        ]);
+
+        Resep::create($request->all());
+
+        return redirect()->route('resep.index');
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Resep $resep)
+    public function update(Request $request, $kode_resep)
     {
-        //
+        $request->validate([
+            'nama_resep' => 'required',
+            'daftar_obat' => 'required',
+            'id_rekam_medis' => 'required',
+        ]);
+
+        $resep = Resep::findOrFail($kode_resep);
+        $resep->update($request->all());
+
+        return redirect()->route('resep.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Resep $resep)
+    public function destroy($kode_resep)
     {
-        //
-    }
+        $resep = Resep::findOrFail($kode_resep);
+        $resep->delete();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Resep $resep)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Resep  $resep
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Resep $resep)
-    {
-        //
+        return redirect()->route('resep.index');
     }
 }
