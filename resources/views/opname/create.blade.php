@@ -79,13 +79,22 @@ $(document).ready(function() {
         var jumlahFisik = parseFloat($(this).val());
         var hargaBeli = parseFloat($('#harga_obat').val());
 
-        if (jumlahFisik && !isNaN(jumlahFisik) && !isNaN(jumlahSistem)) {
-            var totalMinus = jumlahSistem - jumlahFisik;
-            $('#minus').val(totalMinus);
-            
+        // Logika baru jika jumlah fisik 0, maka minus = jumlah sistem
+        if (jumlahFisik === 0) {
+            $('#minus').val(jumlahSistem);
+
             // Hitung total kerugian
-            if (hargaBeli && totalMinus >= 0) {
-                var totalHarga = hargaBeli * totalMinus;
+            var totalKerugian = jumlahSistem * hargaBeli;
+            $('#total_kerugian').val(totalKerugian);
+        } else if (!isNaN(jumlahFisik) && !isNaN(jumlahSistem)) {
+            var totalMinus = jumlahSistem - jumlahFisik;
+
+            // Set nilai minus
+            $('#minus').val(totalMinus);
+
+            // Hitung total kerugian
+            if (hargaBeli && totalMinus !== 0) {
+                var totalHarga = hargaBeli * Math.abs(totalMinus); // Gunakan Math.abs untuk mendapatkan nilai absolut
                 $('#total_kerugian').val(totalHarga);
             } else {
                 $('#total_kerugian').val(0);
@@ -95,7 +104,9 @@ $(document).ready(function() {
             $('#total_kerugian').val('');
         }
     });
+
 });
+
 </script>
 
 

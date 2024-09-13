@@ -23,12 +23,7 @@
                                 <option value="{{ $item->kode_suplier }}">{{ $item->kode_suplier }} - {{ $item->nama_suplier }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Total Harga</label>
-                        <input type="number" name="total_pembelian" class="form-control" placeholder="Rp." readonly>
-                    </div>                                   
+                    </div>                                
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Close</button>

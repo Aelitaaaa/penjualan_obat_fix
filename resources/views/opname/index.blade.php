@@ -41,6 +41,7 @@
                                   <th>Harga</th>
                                   <th>Kerugian</th>
                                   <th>Terakhir Diperbarui</th>
+                                  <th>Aksi</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -55,6 +56,17 @@
                                     <td>Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.') }}</td>
                                     <td>Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
                                     <td>{{ $stockOpnames->updated_at }}</td>
+                                    <td>  
+                                      <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editOpnameModal{{ $stockOpnames->id_opname }}">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                    @include('opname.edit')    
+                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteOpnameModal{{ $stockOpnames->id_opname }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    @include('opname.delete')
+                                     
+                                  </td>   
                                   </tr>
                                 @endforeach
                               </tbody>
