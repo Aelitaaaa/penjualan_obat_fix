@@ -15,18 +15,19 @@
                     
                     <div class="form-group">
                         <label for="kode_obat">Obat</label>
-                        <select name="kode_obat" class="form-control" required>
+                        <select name="kode_obat_disabled" class="form-control" disabled>
                             @foreach ($obat as $item)
                                 <option value="{{ $item->kode_obat }}" {{ $item->kode_obat == $opnameItem->kode_obat ? 'selected' : '' }}>
                                     {{ $item->kode_obat }} - {{ $item->nama_obat }}
                                 </option>
                             @endforeach
                         </select>
+                        <input type="hidden" name="kode_obat" value="{{ $opnameItem->kode_obat }}">
                     </div>
                     
                     <div class="form-group">
                         <label for="jumlah_sistem">Jumlah Sistem</label>
-                        <input type="number" id="jumlah_sistem{{ $opnameItem->id_opname }}" name="jumlah_sistem" class="form-control" value="{{ $opnameItem->jumlah_sistem }}" required>
+                        <input type="number" id="jumlah_sistem{{ $opnameItem->id_opname }}" name="jumlah_sistem" class="form-control" value="{{ $opnameItem->jumlah_sistem }}" readonly>
                     </div>
 
                     <div class="form-group">
@@ -41,7 +42,7 @@
 
                     <div class="form-group">
                         <label for="harga_obat">Harga Obat</label>
-                        <input type="number" id="harga_obat{{ $opnameItem->id_opname }}" name="harga_obat" class="form-control" value="{{ $opnameItem->harga_obat }}" required>
+                        <input type="number" id="harga_obat{{ $opnameItem->id_opname }}" name="harga_obat" class="form-control" value="{{ $opnameItem->harga_obat }}" readonly>
                     </div>
 
                     <div class="form-group">
@@ -58,5 +59,18 @@
         </div>
     </div>
 </div>
-@endforeach
 
+<script>
+    document.getElementById('jumlah_fisik{{ $opnameItem->id_opname }}').addEventListener('input', function() {
+        var jumlah_sistem = parseFloat(document.getElementById('jumlah_sistem{{ $opnameItem->id_opname }}').value);
+        var jumlah_fisik = parseFloat(this.value);
+        var harga_obat = parseFloat(document.getElementById('harga_obat{{ $opnameItem->id_opname }}').value);
+
+        var minus = jumlah_sistem - jumlah_fisik;
+        document.getElementById('minus{{ $opnameItem->id_opname }}').value = minus;
+
+        var total_kerugian = minus * harga_obat;
+        document.getElementById('total_kerugian{{ $opnameItem->id_opname }}').value = total_kerugian;
+    });
+</script>
+@endforeach
