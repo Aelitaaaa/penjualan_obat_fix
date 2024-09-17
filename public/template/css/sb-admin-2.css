@@ -4905,6 +4905,17 @@ input[type="button"].btn-block {
   padding: 1.25rem;
 }
 
+.card-body-detail {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  padding-left: 4rem;
+  padding-right: 3rem;
+  
+}
+
 .card-title {
   margin-bottom: 0.75rem;
 }
@@ -4931,6 +4942,7 @@ input[type="button"].btn-block {
   margin-bottom: 0;
   background-color: #f8f9fc;
   border-bottom: 1px solid #e3e6f0;
+  
 }
 
 .card-header:first-child {
@@ -6249,6 +6261,8 @@ a.close.disabled {
   border-bottom: 1px solid #e3e6f0;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
 }
 
 .modal-header .close {
@@ -6259,6 +6273,8 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  font-weight: 700;
+  color: #4e73df;
 }
 
 .modal-body {

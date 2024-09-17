@@ -25,7 +25,7 @@
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <input type="text" name="alamat" class="form-control" value="{{ $suplierItem->alamat }}" required>
+                        <textarea class="form-control" id="alamat" name="alamat" required>{{ $suplierItem->alamat }}</textarea>
                     </div>
 
                     <div class="form-group">

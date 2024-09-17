@@ -62,16 +62,17 @@
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->created_at }}</td>
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $pasienItem->updated_at }}</td>
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">  
-                                                    <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editPasienModal{{ $pasienItem->id_pasien }}">
-                                                        <i class="fas fa-info-circle"></i>
+                                                    <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#editPasienModal{{ $pasienItem->id_pasien }}">
+                                                        <i class="fas fa-pen"></i>
                                                     </a>
-                                                    @include('pasien.edit')    
+                                                   
                                                     <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deletePasienModal{{ $pasienItem->id_pasien }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     @include('pasien.delete')  
                                                 </td>   
                                             </tr>
+                                            @include('pasien.edit')    
                                         @endforeach
                                     </tbody>
                                 </table>

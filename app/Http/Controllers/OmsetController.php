@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembelian;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
 
 class OmsetController extends Controller
 {
@@ -13,11 +15,23 @@ class OmsetController extends Controller
         $data = collect();
 
         if($start && $end){
-            $data = Pembelian::whereBetween("created_at", [$start, $end])->get();
+            $data = Pembelian::whereBetween("created_at", [
+                $start = Carbon::parse($start)->startOfDay(),
+                $end = Carbon::parse($end)->endOfDay()      
+             ])->get();
         }
 
+        $total_modal = $data->sum('total_pembelian');
+      
 
-        return view("omset.index",["data"=> $data]);
+
+        return view("omset.index", [
+            'data' => $data,
+            'start' => $start,
+            'end' => $end,
+            'total_modal' => $total_modal,
+          
+        ]);
     }
 }
 

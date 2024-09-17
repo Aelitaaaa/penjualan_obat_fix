@@ -1,35 +1,45 @@
 <div class="modal" id="detailObatModal{{ $obatItem->id_obat }}" tabindex="-1" role="" aria-labelledby="detailObatModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
-            <div class="card shadow">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary"> Detail Obat </h6>
+         
+                <div class="modal-header">
+                  <h6 class="modal-title"> Detail Obat </h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
               
-                <div class="card-body">
-                    
-                        <div class="mb-4 ml-5">
-                            <h5>Kode Obat : </h5> <h6> {{$obatItem->kode_obat}}</h6>
+                <div class="card-body-detail text-l">
+                    <diw class="row">
+                        <div class="mb-4 col-md-6 text-left">
+                            <div class="text-gray-800">Kode Obat </div>
+                            {{$obatItem->kode_obat}}
                         </div>
-                        <div class="mb-4 ml-5">
-                            <h5>Nama Obat </h5> <h6>{{$obatItem->nama_obat}}</h6>
+                        <div class="mb-4  col-md-6 text-left">
+                            <div class="text-gray-800">Nama Obat </div>
+                            {{$obatItem->nama_obat}}
                         </div>
-                        <div class="mb-4 ml-5">
-                            <h5>Asal Supply </h5> <h6>{{$obatItem->kode_suplier}} - {{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}</h6>
-                        </div>
-                    
-                    
-                        <div class="mb-4 ml-5">
-                            <h5>Harga Jual </h5> <h6>Rp.{{ number_format($obatItem->harga_jual, 0, ',', '.') }}</h6>
-                        </div>
-                        <div class="mb-4 ml-5">
-                            <h5>Harga Beli </h5> <h6>Rp.{{ number_format($obatItem->harga_beli, 0, ',', '.') }}</h6>
-                        </div>
-                        <div class="mb-4 ml-5">
-                            <h5>Stok Obat </h5> <h6>{{$obatItem->jumlah_obat}} - {{$obatItem->unit}}</h6>
-                        </div>   
-                    
+                    </diw>
+                    <div class="row">
+                        <div class="mb-4 col-md-6 text-left">
+                            <div class="text-gray-800">Asal Supply </div>
+                            {{$obatItem->kode_suplier}} - {{ $obatItem->suplier ? $obatItem->suplier->nama_suplier : '' }}
+                         </div>
+                         <div class="mb-4 col-md-6 text-left">
+                            <div class="text-gray-800">Stok Obat </div>
+                            {{$obatItem->jumlah_obat}} - {{$obatItem->unit}}
+                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <div class="text-gray-800">Harga Jual </div>
+                            Rp.{{ number_format($obatItem->harga_jual, 0, ',', '.') }}
+                         </div>
+                         <div class="col-md-6 text-left">
+                            <div class="text-gray-800">Harga Beli </div>
+                            Rp.{{ number_format($obatItem->harga_beli, 0, ',', '.') }}
+                         </div>
+                    </div>
                 </div>
             </div>
            

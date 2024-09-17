@@ -85,14 +85,16 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/{id}', [StockOpnameController::class, 'destroy'])->name('destroy');
     });
 
+    Route::prefix('omset')->name('omset.')->group(function () {
+        Route::get('/', [OmsetController::class, 'index'])->name('index');
+        
+    });
+
     Route::get('/penjualan-obat', function () {
         return view('penjualan.index');
     })->name('penjualan.index');
 
-    Route::get('/omset', function () {
-        return view('omset.index');
-    })->name('omset.index');
-
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

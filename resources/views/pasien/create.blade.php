@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" id="alamat" name="alamat" class="form-control" required>
+                        <textarea type="text" id="alamat" name="alamat" class="form-control" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
