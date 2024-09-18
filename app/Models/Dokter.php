@@ -9,6 +9,8 @@ class Dokter extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'nama',
         'spesialis',
@@ -18,5 +20,8 @@ class Dokter extends Model
 
     public function rekamMedis(){
         return $this->hasMany(RekamMedis::class, 'id_dokter');
+    }
+    public function jadwals(){
+        return $this->hasMany(Jadwal::class, 'id_dokter');
     }
 }

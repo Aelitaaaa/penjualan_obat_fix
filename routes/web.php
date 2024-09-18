@@ -13,6 +13,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\OmsetController;
+use App\Http\Controllers\JadwalController;
 
 
 Route::redirect('/', '/login');
@@ -108,10 +109,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('dokter', DokterController::class);
 
-    Route::get('/jadwal', function () {
-        return view('jadwal.index');
-    })->name('jadwal.index');
-
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+    
     Route::get('/detail_jadwal', function () {
         return view('detail_jadwal.index');
     })->name('detail_jadwal.index');

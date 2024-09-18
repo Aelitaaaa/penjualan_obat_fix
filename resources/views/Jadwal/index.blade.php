@@ -113,40 +113,33 @@
     </div>
 
     <!-- Pilih Minggu -->
-    <div class="mb-4">
-        <label for="selectWeek">Pilih Minggu</label>
-        <input type="week" class="form-control w-auto d-inline" id="selectWeek" onchange="filterScheduleByWeek()">
-    </div>
+    <form method="GET" action="{{ route('jadwal.index') }}">
+        <label for="minggu">Pilih Minggu:</label>
+        <input type="date" name="minggu" id="minggu" value="{{ request('minggu', now()->startOfWeek()->format('Y-m-d')) }}">
+        <button type="submit">Lihat Jadwal</button>
+    </form>    
 
     <!-- Tombol Hari -->
             <div class="day-picker d-flex mb-4 d-none">
-            <button class="day-btn btn btn-outline-primary active" onclick="selectDay(this)">
+            <button data-hari="Senin" class="day-btn btn btn-outline-primary active" onclick="selectDay(this)">
                 <div class="text-small"></div>
                 <div class="font-weight-bold">SEN</div>
             </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
+            <button data-hari="Selasa" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
                 <div class="text-small"></div>
                 <div class="font-weight-bold">SEL</div>
             </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
+            <button data-hari="Rabu" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
                 <div class="text-small"></div>
                 <div class="font-weight-bold">RAB</div>
             </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
+            <button data-hari="Kamis" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
                 <div class="text-small"></div>
                 <div class="font-weight-bold">KAM</div>
             </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
+            <button data-hari="Jumat" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
                 <div class="text-small"></div>
                 <div class="font-weight-bold">JUM</div>
-            </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">SAB</div>
-            </button>
-            <button class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">MIN</div>
             </button>
         </div>
 
@@ -156,57 +149,34 @@
             <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table>
                         <thead>
                             <tr>
-                                <th>Nama Dokter</th>
-                                <th>Spesialisasi</th>
-                                <th style="width: 30%;">Waktu</th>
+                                <th>No</th>
+                                <th>Dokter</th>
+                                <th>Spesialis</th>
+                                <th>Waktu</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="scheduleTable">
-                            <!-- Jadwal dokter untuk Minggu 1 -->
-                            <tr data-week="2024-W35">
-                                <td>dr. Vina Carolina</td>
-                                <td>Dokter Gigi Umum</td>
-                                <td>
-                                    <div class="time-buttons">
-                                        <div class="time-box available">11:30</div>
-                                        <div class="time-box unavailable">14:00</div>
-                                        <div class="time-box available">16:30</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailScheduleModal">
-                                        Detail Jadwal
-                                    </button>
-                                </td>
-                            </tr>
-                            
-                            <!-- Jadwal dokter untuk Minggu 2 -->
-                            <tr data-week="2024-W36">
-                                <td>dr. Budi Santoso</td>
-                                <td>Dokter Spesialis Anak</td>
-                                <td>
-                                    <div class="time-buttons">
-                                        <div class="time-box available">08:00</div>
-                                        <div class="time-box unavailable">09:00</div>
-                                        <div class="time-box available">10:00</div>
-                                        <div class="time-box available">11:00</div>
-                                        <div class="time-box unavailable">14:00</div>
-                                        <div class="time-box available">15:00</div>
-                                        <div class="time-box available">16:00</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="btn btn-info btn-sm" href="{{ route('detail_jadwal.index') }}">
-                                        Detail Jadwal
-                                    </a>
-                                </td>
-                            </tr>
+                        <tbody>
+                            @foreach($dokters as $dokter)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $dokter->nama_dokter }}</td>
+                                    <td>{{ $dokter->spesialis }}</td>
+                                    <td>
+                                        @foreach($dokter->jadwals->whereBetween('tanggal', [$mingguAwal, $mingguAkhir]) as $jadwal)
+                                            {{ $jadwal->waktu }} <br>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('detail_jadwal.index', ['dokter' => $dokter->id_dokter]) }}" class="btn btn-primary">Detail Jadwal</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                    </table>
+                    </table>                    
                 </div>
             </div>
         </div>
