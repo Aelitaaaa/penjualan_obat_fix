@@ -11,14 +11,19 @@ class Jadwal extends Model
 
     protected $fillable = [
         'id_dokter',
+        'id_pasien',
         'tanggal',
         'waktu',
-        'hari',
     ];
 
     public function dokter()
     {
         return $this->belongsTo(Dokter::class, 'id_dokter');
+    }
+
+    public function pasien(): BelongsTo
+    {
+        return $this->belongsTo(pasien::class, 'id_pasien');
     }
 }
 

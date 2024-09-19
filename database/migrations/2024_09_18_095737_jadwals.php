@@ -15,14 +15,15 @@ class Jadwals extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_dokter');  // FK ke tabel dokter
-            $table->date('tanggal');                  // Tanggal jadwal (untuk filter berdasarkan minggu)
-            $table->time('waktu');                    // Waktu, misalnya jam 08:00
-            $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat']); // Hari jadwal
+            $table->unsignedBigInteger('id_dokter');  
+            $table->Integer('id_pasien');
+            $table->date('tanggal');                  
+            $table->time('waktu');                    
             $table->timestamps();
             
             // Foreign key constraint
             $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade');
+            $table->foreign('id_pasien')->references('id_pasien')->on('pasien')->onDelete('cascade');
         });
         
     }
