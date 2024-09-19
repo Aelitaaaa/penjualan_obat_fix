@@ -149,7 +149,7 @@
             <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" >
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -163,7 +163,7 @@
                             @foreach($dokters as $dokter)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $dokter->nama_dokter }}</td>
+                                    <td>{{ $dokter->nama }}</td>
                                     <td>{{ $dokter->spesialis }}</td>
                                     <td>
                                         @foreach($dokter->jadwals->whereBetween('tanggal', [$mingguAwal, $mingguAkhir]) as $jadwal)
