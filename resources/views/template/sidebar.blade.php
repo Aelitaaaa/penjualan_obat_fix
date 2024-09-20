@@ -56,8 +56,8 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Administrasi Detail:</h6>
         <a class="collapse-item {{ request()->routeIs('rekammedis.index') ? 'active' : '' }}" href="{{ route('rekammedis.index') }}">Rekam Medis</a>
-        <a class="collapse-item {{ request()->routeIs('pembayaran') ? 'active' : '' }}" href="">Pembayaran</a>
-        <a class="collapse-item {{ request()->routeIs('laporan') ? 'active' : '' }}" href="">Laporan</a>
+        <a class="collapse-item {{ request()->routeIs('pembayaran.index') ? 'active' : '' }}" href="{{ route('pembayaran.index') }}">Pembayaran</a>
+        <a class="collapse-item {{ request()->routeIs('laporan.index') ? 'active' : '' }}" href="{{ route('laporan.index') }}">Laporan</a>
     </div>
 </div>
 </li>

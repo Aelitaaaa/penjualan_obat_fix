@@ -164,7 +164,7 @@
                             <label>Daftar Obat</label>
                         </div>
                         <div class="form-group">
-                            <select id="editable-select">
+                            <select class="form-control" id="editable-select">
                                 <option>Alfa Romeo</option>
                                 <option>Audi</option>
                                 <option>BMW</option>

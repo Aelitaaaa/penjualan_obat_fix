@@ -115,6 +115,18 @@ Route::middleware(['auth'])->group(function () {
         return view('detail_jadwal.index');
     })->name('detail_jadwal.index');
 
+    Route::get('/jadwal', function () {
+        return view('jadwal.index');
+    })->name('jadwal.index');
+
+    Route::get('/pembayaran', function () {
+        return view('pembayaran.index');
+    })->name('pembayaran.index');
+
+    Route::get('/laporan', function () {
+        return view('laporan.index');
+    })->name('laporan.index');
+
     // Route::get('/resep', function () {
     //     return view('resep');
     // })->name('resep');
