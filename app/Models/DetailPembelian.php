@@ -27,4 +27,9 @@ class DetailPembelian extends Model
     return $this->belongsTo(Pembelian::class, 'kode_pembelian', 'kode_pembelian');
 }
 
+public function obat()
+{
+    return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat');
+}
+
 }

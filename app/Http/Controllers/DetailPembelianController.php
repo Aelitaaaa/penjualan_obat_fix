@@ -11,23 +11,20 @@ use Illuminate\Http\Request;
 class DetailPembelianController extends Controller
 {
     public function index(Request $request)
-    {
-        $kodePembelian = $request->query('kode');
+{
+    $kodePembelian = $request->query('kode');
 
-        // Mendapatkan semua detail pembelian berdasarkan kode pembelian
-        $detailPembelian = DetailPembelian::where('kode_pembelian', $kodePembelian)->get();
-        
-        // Mengambil data obat, suplier, dan pembelian
-        $obat = Obat::all();
-        $suplier = Suplier::all();
-        $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
+    // Mendapatkan semua detail pembelian berdasarkan kode pembelian dengan data obat
+    $detailPembelian = DetailPembelian::with('obat')->where('kode_pembelian', $kodePembelian)->get();
+    
+    $obat = Obat::all();
+    $suplier = Suplier::all();
+    $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
 
-        // Menghitung total harga dari subtotal di detail pembelian
-        $totalHarga = $detailPembelian->sum('subtotal');
+    $totalHarga = $detailPembelian->sum('subtotal');
 
-        // Mengirimkan data ke view
-        return view('detail_pembelian.index', compact('detailPembelian','obat', 'suplier', 'pembelian', 'totalHarga'));
-    }
+    return view('detail_pembelian.index', compact('detailPembelian','obat', 'suplier', 'pembelian', 'totalHarga'));
+}
 
     public function create()
     {

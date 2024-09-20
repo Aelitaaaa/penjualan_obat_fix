@@ -50,8 +50,8 @@
                                     <tbody>
                                         @foreach ($detailPembelian as $key => $item)
                                             <tr>
-                                                <td class="text-center">{{ $key + 1 }}</td>           
-                                                <td class="text-center">{{ $item->kode_obat }}</td>
+                                                <td class="text-center">{{ $key + 1 }}</td>   
+                                                <td class="text-center">{{ $item->obat->kode_obat }} - {{ $item->obat->nama_obat }}</td>
                                                 <td class="text-center">{{ $item->jumlah }}</td>
                                                 <td class="text-center">Rp. {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
                                                 <td class="text-center">Rp. {{ number_format($item->subtotal, 0, ',', '.') }}</td>
