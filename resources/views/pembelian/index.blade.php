@@ -49,7 +49,7 @@
                                             <tr>
                                                 <td class="text-center">{{ $key + 1 }}</td>
                                                 <td class="text-center">{{ $item->kode_pembelian }}</td>              
-                                                <td class="text-center">{{ $item->kode_suplier }}</td>
+                                                <td class="text-center">{{ $item->kode_suplier }} - <br> {{ $item->suplier ? $item->suplier->nama_suplier : ''}}</td>
                                                 <td class="text-center">Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
                                                 <td class="text-center">{{ $item->created_at}}</td>
                                                 <td class="text-center">

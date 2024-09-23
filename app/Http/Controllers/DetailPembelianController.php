@@ -14,12 +14,12 @@ class DetailPembelianController extends Controller
 {
     $kodePembelian = $request->query('kode');
 
-    // Mendapatkan semua detail pembelian berdasarkan kode pembelian dengan data obat
-    $detailPembelian = DetailPembelian::with('obat')->where('kode_pembelian', $kodePembelian)->get();
     
-    $obat = Obat::all();
-    $suplier = Suplier::all();
+    $detailPembelian = DetailPembelian::with('obat')->where('kode_pembelian', $kodePembelian)->get();
+        
     $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
+    $suplier = $pembelian->kode_suplier;
+    $obat = Obat::where('kode_suplier', $suplier)->get();
 
     $totalHarga = $detailPembelian->sum('subtotal');
 
@@ -34,7 +34,7 @@ class DetailPembelianController extends Controller
 
     public function store(Request $request)
 {
-    // Validasi input awal
+  
     $validatedData = $request->validate([
         'kode_obat' => 'required|max:7',
         'jumlah' => 'required|integer|min:1',
@@ -44,22 +44,20 @@ class DetailPembelianController extends Controller
         'created_at' => 'nullable|date',
     ]);
 
-    // Dapatkan data obat berdasarkan kode_obat
-    $obat = Obat::where('kode_obat', $request->input('kode_obat'))->first();
-
-    // Simpan data detail pembelian
     $detailPembelian = DetailPembelian::create($validatedData);
 
-    // Update total pembelian pada tabel Pembelian
     $pembelian = Pembelian::where('kode_pembelian', $request->input('kode_pembelian'))->first();
     $pembelian->total_pembelian += $detailPembelian->subtotal;
     $pembelian->save();
 
-    // Kurangi stok obat di tabel Obat
-    $obat->jumlah_obat += $validatedData['jumlah'];
-    $obat->save(); // Simpan perubahan jumlah obat
+    $obat = Obat::where('kode_obat', $request->input('kode_obat'))
+    ->where('kode_suplier', $pembelian->kode_suplier)
+    ->first();
 
-    // Redirect ke halaman detail pembelian dengan pesan sukses
+    $obat->jumlah_obat += $validatedData['jumlah'];
+    $obat->save(); 
+
+    
     return redirect()->route('detail_pembelian.index', ['kode' => $validatedData['kode_pembelian']])
                      ->with('success', 'Stok obat berhasil ditambahkan.');
 }
