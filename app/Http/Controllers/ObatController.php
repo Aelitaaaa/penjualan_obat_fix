@@ -30,7 +30,7 @@ class ObatController extends Controller
         'nama_obat' => 'required|string|max:255',
         'harga_beli' => 'required|numeric|min:0', 
         'harga_jual' => 'required|numeric|min:0', 
-        'jumlah_obat' => 'required|integer|min:1', 
+        'jumlah_obat' => 'required|integer|min:0', 
         'unit' => 'required|string|max:15',  
     ]);
 
@@ -68,7 +68,7 @@ public function update(Request $request, $id)
         'nama_obat' => 'required|string|max:255',
         'harga_beli' => 'required|numeric|min:0', 
         'harga_jual' => 'required|numeric|min:0', 
-        'jumlah_obat' => 'required|integer|min:1', 
+        'jumlah_obat' => 'required|integer|min:0', 
         'unit' => 'required|string|max:15', 
     ]);
 
