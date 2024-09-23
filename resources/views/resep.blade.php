@@ -106,7 +106,7 @@
                                         <tr>
                                             <th>{{$re->kode_resep }}</th>
                                             <th>{{$re->nama_resep}}</th>
-                                            <th>{{$re->daftar_obat}}</th>
+                                            <th>{{$re->nama_obat}}</th>
                                             <th>{{$re->rekamMedis->id}}</th>
                                             <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal"
                                                     data-target="#editDataModal{{$re->kode_resep}}">
@@ -167,12 +167,12 @@
                                                             <div class="form-group">
                                                                 <label>Nama Resep</label>
                                                                 <textarea class="form-control" id="idJadwal"
-                                                                    name="diagnosis">{{$re->nama_resep}}</textarea>
+                                                                    name="nama_resep">{{$re->nama_resep}}</textarea>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="editNamaobat"></label>
-                                                                <select name="id_obat" class="form-control"
+                                                                <select name="nama_obat" class="form-control"
                                                                     id="namaDokter">
                                                                     @foreach($obat as $o)
                                                                     <option value="{{$o->nama_obat}}"
@@ -182,7 +182,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="editidrekammedis">Dokter</label>
-                                                                <select name="id_rekammedis" class="form-control"
+                                                                <select name="id_rekam_medis" class="form-control"
                                                                     id="namaDokter">
                                                                     @foreach($rekamMedis as $r)
                                                                     <option value="{{$r->id}}"
@@ -256,14 +256,14 @@
                                     placeholder="Masukkan Nama Resep">
                             </div>
 
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="namaObat">Nama Obat</label>
-                                <select name="id_obat" class="form-control" id="namaObat">
+                                <select name="nama_obat" class="form-control" id="namaObat">
                                     @foreach($obat as $o)
-                                    <option value="{{$o->id}}">{{$o->nama_obat}}</option>
+                                    <option value="{{$o->nama_obat}}">{{$o->nama_obat}}</option>
                                     @endforeach
                                 </select>
-                            </div> -->
+                            </div>
 
                             <div class="form-group">
                                 <label for="idRekammedis">Rekam Medis</label>
@@ -274,11 +274,11 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Daftar Obat</label>
                                 <textarea class="form-control" id="idJadwal" name="daftar_obat"></textarea>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

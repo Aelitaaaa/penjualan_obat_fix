@@ -13,16 +13,16 @@ class CreateResepTable extends Migration
      */
     public function up()
     {
-        Schema::create('resep', function (Blueprint $table) {
-            $table->char('kode_resep', 10)->primary();
-            $table->string('nama_resep');
-            $table->text('daftar_obat');
-            $table->foreignId('id_rekam_medis'); // Kolom foreign key
-            $table->timestamps();
+        // Schema::create('resep', function (Blueprint $table) {
+        //     $table->char('kode_resep', 10)->primary();
+        //     $table->string('nama_resep');
+        //     $table->text('daftar_obat');
+        //     $table->foreignId('id_rekam_medis'); // Kolom foreign key
+        //     $table->timestamps();
 
-            // Define foreign key constraint
-            $table->foreign('id_rekam_medis')->references('id')->on('rekam_medis')->onDelete('cascade');
-        });
+        //     // Define foreign key constraint
+        //     $table->foreign('id_rekam_medis')->references('id')->on('rekam_medis')->onDelete('cascade');
+        // });
     }
 
     /**

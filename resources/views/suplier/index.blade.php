@@ -60,12 +60,12 @@
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->nomor_telepon }}</td>
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->created_at }}</td>
                                                 <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $suplier->updated_at }}</td>
-                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">   
+                                                <td class="text-center d-flex"  style="vertical-align: middle; height: 100px;">   
                                                     <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editSuplierModal{{ $suplier->id_suplier }}">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
                                                     
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteSuplierModal{{ $suplier->id_suplier }}">
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm  " data-toggle="modal" data-target="#deleteSuplierModal{{ $suplier->id_suplier }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                     @include('suplier.delete')  

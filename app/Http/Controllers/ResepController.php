@@ -21,7 +21,7 @@ class ResepController extends Controller
     {
         $request->validate([
             'nama_resep' => 'required',
-            'daftar_obat' => 'required',
+            'nama_obat' => 'required',
             'id_rekam_medis' => 'required',
         ]);
 
@@ -33,9 +33,11 @@ class ResepController extends Controller
 
     public function update(Request $request, $kode_resep)
     {
+        // dd($request);
+
         $request->validate([
             'nama_resep' => 'required',
-            'daftar_obat' => 'required',
+            'nama_obat' => 'required',
             'id_rekam_medis' => 'required',
         ]);
 

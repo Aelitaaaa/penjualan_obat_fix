@@ -14,6 +14,7 @@ use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\OmsetController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\PembayaranController;
 
 
 Route::redirect('/', '/login');
@@ -134,6 +135,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('rekammedis', RekamMedisController::class);
     // Route::delete('rekammedis/{id}', [RekamMedisController::class, 'destroy'])->name('rekammedis.destroy');
     Route::resource('resep', ResepController::class);
+    Route::get('/get-rekammedis-by-resep', [RekamMedisController::class, 'getRekammedisByResep'])->name('getRekammedisByResep');
 
-    
+    Route::resource('pembayaran', PembayaranController::class);
 });

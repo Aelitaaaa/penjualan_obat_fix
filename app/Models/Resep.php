@@ -45,14 +45,14 @@ class Resep extends Model
     protected $fillable = [
         'kode_resep',
         'nama_resep',
-        'daftar_obat',
+        'nama_obat',
         'id_rekam_medis',
     ];
 
   
     public function obat()
     {
-        return $this->belongsTo(Obat::class, 'daftar_obat', 'nama_obat');
+        return $this->belongsTo(Obat::class, 'nama_obat', 'id_obat');
     }
 
     
