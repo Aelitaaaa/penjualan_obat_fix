@@ -36,7 +36,7 @@
                               <thead>
                                 <tr>
                                   <th class="text-center align-middle">No</th>
-                                  <th class="text-center align-middle">Tanggal</th>
+                                  <th class="text-center align-middle">Tanggal Opname</th>
                                   <th class="text-center align-middle">Nama Obat</th>
                                   <th class="text-center align-middle">Jumlah Sistem</th>
                                   <th class="text-center align-middle">Jumlah Fisik</th>
@@ -68,7 +68,9 @@
                                           <i class="fas fa-trash"></i>
                                       </button>
                                       @include('opname.delete')  
+                                        
                                   </td>   
+                                  @include('opname.edit')
                                   </tr>
                                 @endforeach
                               </tbody>

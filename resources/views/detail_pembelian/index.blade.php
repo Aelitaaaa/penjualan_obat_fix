@@ -71,8 +71,9 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td colspan="4">Total:</td>
-                                            <td colspan="3">Rp.{{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                            <th class="text-center" colspan="4">Total Pembelian:</td>
+                                            <th colspan="3"> Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                            
                                         </tr>
                                     </tfoot>                                    
                                 </table>

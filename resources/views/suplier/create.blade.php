@@ -2,8 +2,8 @@
 
 <div class="modal fade text-left" id="tambahSuplierModal" tabindex="-1" role="dialog" aria-labelledby="tambahSuplierModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="post" action="{{ route('suplier.store') }}">
-        @csrf
+        <form method="post" action="{{ route('suplier.store') }}" onsubmit="return validateForm()">
+            @csrf
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tambahSuplierModalLabel">Tambah Supplier</h5>
@@ -27,6 +27,9 @@
                     <div class="form-group">
                         <label>Nomor Telepon</label>
                         <input type="number" id="nomor_telepon" name="nomor_telepon" class="form-control" required>
+                        <small id="nomor_telepon_error" class="form-text text-danger" style="display:none;">
+                           Masukkan nomor telepon dengan benar.
+                        </small>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -35,5 +38,32 @@
                 </div>
             </div>
         </form>
+        
+        <script>
+            function validateForm() {
+                var nomorTelepon = document.getElementById('nomor_telepon').value;
+                var errorMessage = document.getElementById('nomor_telepon_error');
+        
+                if (!nomorTelepon.startsWith('08')) {
+                    errorMessage.style.display = 'block'; 
+                    return false; 
+                }
+        
+                if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
+                    errorMessage.style.display = 'block'; 
+                    return false; 
+                }
+        
+                errorMessage.style.display = 'none'; 
+                return true; 
+            }
+
+            document.getElementById('nomor_telepon').addEventListener('input', function(e) {
+                        if (this.value.length > 13) {
+                            this.value = this.value.slice(0, 13); 
+                        }
+                    });
+        </script>
+             
     </div>
 </div>

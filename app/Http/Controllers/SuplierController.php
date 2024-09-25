@@ -37,7 +37,7 @@ class SuplierController extends Controller
             'kode_suplier' => 'required|max:6',
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
-            'nomor_telepon' => 'required|numeric',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13|regex:/^08[0-9]+$/',
         ]);
 
         Suplier::create($request->all());
@@ -57,7 +57,7 @@ class SuplierController extends Controller
             'kode_suplier' => 'required|max:6',
             'nama_suplier' => 'required|max:50',
             'alamat' => 'required|max:100',
-            'nomor_telepon' => 'required|numeric',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13|regex:/^08[0-9]+$/',
         ]);
 
         $suplierItem = Suplier::findOrFail($id);

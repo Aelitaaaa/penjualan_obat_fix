@@ -47,12 +47,12 @@
                                     <tbody>
                                         @foreach ($pembelian as $key => $item)
                                             <tr>
-                                                <td class="text-center">{{ $key + 1 }}</td>
-                                                <td class="text-center">{{ $item->kode_pembelian }}</td>              
-                                                <td class="text-center">{{ $item->kode_suplier }} - <br> {{ $item->suplier ? $item->suplier->nama_suplier : ''}}</td>
-                                                <td class="text-center">Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
-                                                <td class="text-center">{{ $item->created_at}}</td>
-                                                <td class="text-center">
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $key + 1 }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $item->kode_pembelian }}</td>              
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $item->kode_suplier }} - <br> {{ $item->suplier ? $item->suplier->nama_suplier : ''}}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">Rp. {{ number_format($item->total_pembelian, 0, ',', '.') }}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">{{ $item->created_at}}</td>
+                                                <td class="text-center"  style="vertical-align: middle; height: 100px;">
                                                     <a href="{{ route('detail_pembelian.index', ['kode' => $item->kode_pembelian]) }}" class="btn btn-info btn-circle btn-sm mr-1">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>

@@ -16,7 +16,7 @@
                         <select name="kode_suplier" class="form-control" required>
                             @foreach($suplier as $item)
                                 <option value="{{ $item->kode_suplier }}" {{ $item->kode_suplier == $obatItem->kode_suplier ? 'selected' : '' }}>
-                                    {{ $item->nama_suplier }}
+                                    {{ $item->kode_suplier }} - {{ $item->nama_suplier }}
                                 </option>
                             @endforeach
                         </select>

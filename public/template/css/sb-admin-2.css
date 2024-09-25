@@ -1930,6 +1930,12 @@ pre code {
   border-color: #e3e6f0;
 }
 
+.table .tfoot-light td {
+  color: #6e707e;
+  background-color: #eaecf4;
+  border-color: #e3e6f0;
+}
+
 .table-dark {
   color: #fff;
   background-color: #5a5c69;
@@ -6128,7 +6134,7 @@ a.close.disabled {
 
 .modal-dialog {
   position: relative;
-  width: auto;
+  max-width: 450px !important;
   margin: 0.5rem;
   pointer-events: none;
 }
@@ -6319,7 +6325,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 100px;
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {
@@ -6342,7 +6348,7 @@ a.close.disabled {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 800px;
+    max-width: ;
   }
 }
 

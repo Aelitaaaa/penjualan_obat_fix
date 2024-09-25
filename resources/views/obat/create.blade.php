@@ -13,13 +13,18 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Supplier</label>
-                        <select name="kode_suplier" class="form-control">
-                            <option value="">-Pilih-</option>
+                        <select name="kode_suplier" class="form-control" id="namaSuplier">
+                            <option value="">- Pilih Supplier -</option>
                             @foreach ($suplier as $suplierItem)
                                 <option value="{{ $suplierItem->kode_suplier }}">{{ $suplierItem->kode_suplier }} - {{ $suplierItem->nama_suplier }}</option>
                             @endforeach
                         </select>                        
                     </div>
+                    <script>
+                        $('#namaSuplier').editableSelect({
+                             namaSuplier: '.modal-body',
+                                });
+                    </script> 
                     <div class="form-group">
                         <label>Kode Obat</label>
                         <input type="text" id="kode_obat" name="kode_obat" class="form-control" required>
