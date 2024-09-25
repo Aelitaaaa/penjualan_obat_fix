@@ -9,8 +9,10 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-        $pembayaran = Pembayaran::all(); // Ambil semua data pembayaran
-        return view('pembayaran.index', compact('pembayaran'));
+
+        $resep = Resep::all();
+
+        return view('pembayaran.index', compact('resep'));
     }
 
     public function create()
