@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
-
+use App\Models\Resep;
 class PembayaranController extends Controller
 {
     public function index()
     {
 
         $resep = Resep::all();
-
-        return view('pembayaran.index', compact('resep'));
+        $pembayaran = Pembayaran::all();
+        return view('pembayaran.index', compact('resep', 'pembayaran'));
     }
 
     public function create()
     {
-        return view('pembayaran.create'); 
+        return view('pembayaran.create');
     }
 
     public function store(Request $request)
