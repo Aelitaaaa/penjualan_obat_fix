@@ -17,7 +17,7 @@ class PembayaranController extends Controller
 
     public function create()
     {
-        return view('pembayaran.create'); // Form untuk tambah pembayaran
+        return view('pembayaran.create'); 
     }
 
     public function store(Request $request)
