@@ -11,7 +11,7 @@ class ResepController extends Controller
     public function index()
     {
         $resep = Resep::all();
-        $rekamMedis = RekamMedis::all();
+        $rekamMedis = RekamMedis::whereDoesntHave('resep')->get();
         $obat = Obat::all(); 
 
         return view('resep', compact('resep', 'rekamMedis', 'obat'));

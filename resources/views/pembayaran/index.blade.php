@@ -61,9 +61,9 @@
                                         @foreach($pembayaran as $pem)
                                         <tr>
                                             <td>{{ $pem->id }}</td>
-                                            <td>{{ $pem->resep->rekamMedis->pasien->nama }}</td>
-                                            <td>{{ $pem->resep->dokter->nama }}</td>
-                                            <td>{{ $pem->resep->no_rekam_medis }}</td>
+                                            <td>{{ $pem->resep->rekamMedis->pasien->nama ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->resep->dokter->nama ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->resep->no_rekam_medis ?? 'Tidak ada data' }}</td>
                                             <td>{{ number_format($pem->total_biaya, 2) }}</td>
                                             <td>
                                                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editDataModal{{ $pem->id }}">
@@ -91,7 +91,7 @@
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="no_rekam_medis">No Rekam Medis</label>
-                                                                <input type="text" name="no_rekam_medis" class="form-control" value="{{ $pem->resep->no_rekam_medis }}" required>
+                                                                <input type="text" name="no_rekam_medis" class="form-control" value="{{ $pem->resep->no_rekam_medis ?? '' }}" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="total_biaya">Total Biaya</label>
@@ -197,20 +197,24 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap and DataTables JS -->
     <script src="{{ asset('template/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('template/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('template/js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 </body>
+
 </html>
