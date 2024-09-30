@@ -27,7 +27,7 @@ class Pasien extends Model
         return $this->hasOne(RekamMedis::class, 'id_pasien');
     }
 
-    public function Jadwals(): HasMany
+    public function Jadwals()
     {
         return $this->hasMany(Jadwal::class, 'id_pasien');
     }

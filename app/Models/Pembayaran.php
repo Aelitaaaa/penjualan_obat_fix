@@ -20,7 +20,7 @@ class Pembayaran extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function resep(): BelongsTo
+    public function resep()
     {
         return $this->belongsTo(Resep::class, 'kode_resep');
     }
