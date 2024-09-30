@@ -23,4 +23,9 @@ class RekamMedis extends Model
     public function dokter(){
         return $this->belongsTo(Dokter::class, 'id_dokter');
     }
+
+    public function resep()
+    {
+        return $this->hasOne(Resep::class, 'id_rekam_medis');
+    }
 }
