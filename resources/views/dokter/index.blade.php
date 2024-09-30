@@ -172,5 +172,6 @@
 
 
 </body>
+@include('sweetalert::alert')
 @include('template.script')
 </html>
