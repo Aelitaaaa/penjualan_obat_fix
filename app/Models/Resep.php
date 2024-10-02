@@ -49,20 +49,25 @@ class Resep extends Model
         'id_rekam_medis',
     ];
 
-  
+    
     public function obat()
     {
         return $this->belongsTo(Obat::class, 'nama_obat', 'id_obat');
     }
 
-    
     public function rekamMedis()
     {
         return $this->belongsTo(RekamMedis::class, 'id_rekam_medis', 'id');
     }
- 
+
     public function pembayaran()
     {
         return $this->hasOne(Pembayaran::class, 'kode_resep');
+    }
+
+    
+    public function detailResep()
+    {
+        return $this->hasMany(DetailResep::class, 'resep_id', 'kode_resep'); // Menghubungkan ke detail resep
     }
 }
