@@ -61,8 +61,8 @@
                                         @foreach($pembayaran as $pem)
                                         <tr>
                                             <td>{{ $pem->id }}</td>
-                                            <td>{{ $pem->resep->rekamMedis->pasien->nama ?? 'Tidak ada data' }}</td>
-                                            <td>{{ $pem->resep->dokter->nama ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->resep->rekamMedis->pasien->nama_pasien ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->rekamMedis->dokter->nama ?? 'Tidak ada data' }}</td>
                                             <td>{{ $pem->resep->no_rekam_medis ?? 'Tidak ada data' }}</td>
                                             <td>{{ number_format($pem->total_biaya, 2) }}</td>
                                             <td>
