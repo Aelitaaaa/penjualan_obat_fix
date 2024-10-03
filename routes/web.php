@@ -16,6 +16,8 @@ use App\Http\Controllers\OmsetController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailResepController;
+use App\Http\Controllers\IndexController;
+
 
 
 Route::redirect('/', '/login');
@@ -32,9 +34,8 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/index', function () {
-        return view('index');
-    })->name('index');
+    Route::get('/index', [IndexController::class,'index'])->name('index');
+
 
     Route::get('/obat', [ObatController::class, 'index'])->name('obat.index');
     Route::get('/obat/create', [ObatController::class, 'create'])->name('obat.create');
