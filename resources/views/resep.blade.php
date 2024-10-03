@@ -108,9 +108,14 @@
                                             <th>{{$re->nama_resep}}</th>
                                             <th>{{$re->nama_obat}}</th>
                                             <th>{{$re->rekamMedis->id}}</th>
-                                            <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal"
+                                          
+                                            <th>
+                                            <a href="#" class="btn btn-info btn-circle btn-sm mr-1" data-toggle="modal" data-target="#detailResepModal{{ $re->kode_resep }}">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
+                                                <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal"
                                                     data-target="#editDataModal{{$re->kode_resep}}">
-                                                    <i class="fas fa-info-circle"></i>
+                                                    <i class="fas fa-pen"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-circle btn-sm"
                                                     data-toggle="modal" data-target="#deleteModal{{$re->kode_resep}}">
@@ -201,7 +206,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                       @include('detailresep')
                                         @endforeach
                                         <!-- More rows can be added here -->
                                     </tbody>
