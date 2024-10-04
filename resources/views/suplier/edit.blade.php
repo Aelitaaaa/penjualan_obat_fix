@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('suplier.update', $suplierItem->id_suplier) }}" method="POST">
+                <form action="{{ route('suplier.update', $suplierItem->id_suplier) }}" method="POST" onsubmit="return validateForm{{ $suplierItem->id_suplier }}()">
                     @csrf
                     @method('PUT')
                     
@@ -25,12 +25,15 @@
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat" name="alamat" required>{{ $suplierItem->alamat }}</textarea>
+                        <textarea class="form-control" name="alamat" required>{{ $suplierItem->alamat }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="nomor_telepon">Nomor Telepon</label>
-                        <input type="text" name="nomor_telepon" class="form-control" value="{{ $suplierItem->nomor_telepon }}" required>
+                        <input type="number" id="nomor_telepon{{ $suplierItem->id_suplier }}" name="nomor_telepon" class="form-control" value="{{ $suplierItem->nomor_telepon }}" required>
+                        <small id="nomor_telepon_error{{ $suplierItem->id_suplier }}" class="form-text text-danger" style="display:none;">
+                            Masukan nomor telepon dengan benar.
+                         </small>
                     </div>
                     
                     <div class="modal-footer">
@@ -38,6 +41,34 @@
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                 </form>
+                <script>
+                    function validateForm{{ $suplierItem->id_suplier }}() {
+                        var nomorTelepon = document.getElementById('nomor_telepon{{ $suplierItem->id_suplier }}').value;
+                        var errorMessage = document.getElementById('nomor_telepon_error{{ $suplierItem->id_suplier }}');
+                
+                        if (!nomorTelepon.startsWith('08')) {
+                            errorMessage.style.display = 'block'; 
+                            return false; 
+                        }
+                
+                        if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
+                            errorMessage.style.display = 'block'; 
+                            return false; 
+                        }
+                
+                        errorMessage.style.display = 'none'; 
+                        return true; 
+                        
+                    }
+
+                    document.getElementById('nomor_telepon{{ $suplierItem->id_suplier }}').addEventListener('input', function(e) {
+                        if (this.value.length > 13) {
+                            this.value = this.value.slice(0, 13); 
+                        }
+                    });
+
+
+                </script>
             </div>
         </div>
     </div>

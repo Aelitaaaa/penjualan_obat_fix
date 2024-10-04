@@ -16,5 +16,5 @@
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
 <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script>
 <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery-editable-select@2.2.5/dist/jquery-editable-select.min.js"></script>
