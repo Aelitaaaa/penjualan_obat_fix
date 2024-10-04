@@ -28,6 +28,11 @@
                             <div class="text-gray-800">ID Rekammedis </div>
                             {{$re->rekamMedis->id}}
                          </div>
+
+                         <div class="mb-4 .col-md-6 .ml-auto text-left">
+                            <div class="text-gray-800">Dokter </div>
+                            {{$re->rekamMedis->dokter->nama}}
+                         </div>
                     
     
                        
