@@ -17,21 +17,21 @@
                     <button class="btn btn-primary mb-4 mt-4" onclick="window.location.href='{{ route('pembelian.index') }}'">
                         <i class="fas fa-fw fa-arrow-left"></i> Kembali</button>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Kode Pembelian: {{ $pembelian->kode_pembelian }} </h1>
-                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahObatModal">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span class="text">Tambah Pembelian</span>
-                        </a>
+                        <h1 class="h3 mb-2 text-gray-800">Kode Pembelian: {{ $pembelian->kode_pembelian }} -  {{ $pembelian->suplier ? $pembelian->suplier->nama_suplier : ''}} ( {{ $pembelian->kode_suplier }} )</h1>
                     </div>
 
                      <!-- Modal Tambah Obat -->
                      @include('detail_pembelian.create', ['obat' => $obat]) 
 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary">Detail Pembelian</h6>
+                            <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahObatModal">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Tambah Obat</span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -82,6 +82,7 @@
                     </div>
                 </div>
             </div>
+            @include('template.footer')
         </div>
     </div>
     @include('template.script')

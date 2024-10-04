@@ -14,10 +14,6 @@
             <div id="content">
                 @include('template.navbar')
                 <div class="container-fluid">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Daftar Penjualan - Klimistri</h1>
-                    </div>
-                   
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -58,6 +54,7 @@
                     </div>
                 </div>
             </div>
+            @include('template.footer')
         </div>
     </div>
     @include('sweetalert::alert')

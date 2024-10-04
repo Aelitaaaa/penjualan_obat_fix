@@ -58,9 +58,11 @@ class StockOpnameController extends Controller
     }
 
     // Method update
-public function update(Request $request, StockOpname $opname)
+public function update(Request $request, string $id)
 {
     // Validasi tetap sama
+
+    $opname = StockOpname::findOrFail($id);
 
     // Menghitung ulang nilai minus dan total kerugian
     $minus = $request->jumlah_sistem - $request->jumlah_fisik;

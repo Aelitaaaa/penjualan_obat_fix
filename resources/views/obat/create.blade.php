@@ -18,7 +18,8 @@
                             @foreach ($suplier as $suplierItem)
                                 <option value="{{ $suplierItem->kode_suplier }}">{{ $suplierItem->kode_suplier }} - {{ $suplierItem->nama_suplier }}</option>
                             @endforeach
-                        </select>                        
+                        </select>                   
+                        <a class="small" href="{{ route('suplier.index')}}">Tidak ada supplier? Tambahkan disini!</a>             
                     </div>
                     <script>
                         $('#namaSuplier').editableSelect({

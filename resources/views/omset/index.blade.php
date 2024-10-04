@@ -42,7 +42,7 @@
                     <div class="row m-1 mb-0">
                         <div class="col-lg m-1">
                             <h2 class="text-center mb-3 mt-2">Laporan Omset</h2>
-                            <h4 class="text-left mb-3">Laporan Dari Tanggal: {{ $start->format('d-m-Y') }} Sampai Tanggal: {{ $end->format('d-m-Y') }} </h4>
+                            <h4 class="text-center mb-3">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }} </h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
                                     <thead>
@@ -80,9 +80,11 @@
                 @endif
                 </div>
             </div>
+            @include('template.footer')
         </div>
+        
     </div>
-
+   
     @include('template.script')
 </body>
 

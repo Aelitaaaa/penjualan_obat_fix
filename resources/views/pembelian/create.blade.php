@@ -23,6 +23,7 @@
                                 <option value="{{ $item->kode_suplier }}">{{ $item->kode_suplier }} - {{ $item->nama_suplier }}</option>
                             @endforeach
                         </select>
+                        <a class="small" href="{{ route('suplier.index')}}">Tidak ada supplier? Tambahkan disini!</a>
                     </div>                                
                 </div>
                 <div class="modal-footer">

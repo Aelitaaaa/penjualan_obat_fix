@@ -45,14 +45,14 @@ class PembelianController extends Controller
     ]);
 
     // Simpan data pembelian, kode pembelian sudah ada di request dari form
-    Pembelian::create([
-        'kode_pembelian' => $request->kode_pembelian, // Ini akan menggunakan value dari form
+    $pembelian = Pembelian::create([
+        'kode_pembelian' => $request->kode_pembelian,
         'kode_suplier' => $request->kode_suplier,
         'total_pembelian' => $request->total_pembelian,
         'created_at' => now(),
     ]);
 
-    return redirect()->route('pembelian.index')->with('success', 'Pembelian berhasil ditambahkan.');
+    return redirect()->route('detail_pembelian.index', ['kode' => $pembelian->kode_pembelian]);
 }
     
     public function edit($id)
