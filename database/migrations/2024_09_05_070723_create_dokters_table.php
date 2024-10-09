@@ -16,8 +16,8 @@ class CreateDoktersTable extends Migration
         Schema::create('dokters', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 100);
-            $table->enum('jenis', ['Umum', 'Spesialis'])->nullable()->default(['Umum', 'Spesialis']);
-            $table->string('spesialis', 50);
+            $table->enum('jenis', ['umum', 'spesialis'])->nullable();
+            $table->string('spesialis', 50)->nullable();
             $table->string('telp', 15)->unique();
             $table->unsignedBigInteger('tarif');
             $table->timestamps();

@@ -107,43 +107,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Jadwal Dokter</h1>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addScheduleModal">
-            Tambah Jadwal
-        </button>
     </div>
-
-    <!-- Pilih Minggu -->
-    <form method="GET" action="{{ route('jadwal.index') }}">
-        <label for="minggu">Pilih Minggu:</label>
-        <input type="date" name="minggu" id="minggu" value="{{ request('minggu', now()->startOfWeek()->format('Y-m-d')) }}">
-        <button type="submit">Lihat Jadwal</button>
-    </form>    
-
-    <!-- Tombol Hari -->
-            <div class="day-picker d-flex mb-4 d-none">
-            <button data-hari="Senin" class="day-btn btn btn-outline-primary active" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">SEN</div>
-            </button>
-            <button data-hari="Selasa" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">SEL</div>
-            </button>
-            <button data-hari="Rabu" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">RAB</div>
-            </button>
-            <button data-hari="Kamis" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">KAM</div>
-            </button>
-            <button data-hari="Jumat" class="day-btn btn btn-outline-primary" onclick="selectDay(this)">
-                <div class="text-small"></div>
-                <div class="font-weight-bold">JUM</div>
-            </button>
-        </div>
-
-
 
     <!-- Daftar Jadwal Dokter -->
             <div class="card shadow mb-4">
@@ -154,8 +118,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Dokter</th>
+                                <th>Jenis</th>
                                 <th>Spesialis</th>
-                                <th>Waktu</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -164,12 +128,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $dokter->nama }}</td>
+                                    <td>{{ $dokter->jenis}}</td>
                                     <td>{{ $dokter->spesialis }}</td>
-                                    <td>
-                                        @foreach($dokter->jadwals->whereBetween('tanggal', [$mingguAwal, $mingguAkhir]) as $jadwal)
-                                            {{ $jadwal->waktu }} <br>
-                                        @endforeach
-                                    </td>
                                     <td>
                                         <a href="{{ route('detail_jadwal.index', ['dokter' => $dokter->id_dokter]) }}" class="btn btn-primary">Detail Jadwal</a>
                                     </td>

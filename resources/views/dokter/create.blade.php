@@ -16,9 +16,9 @@
                     </div>
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis</label><br>
-                        <input type="radio" id="umum" name="jenis" value="umum" {{ old('jenis', $dokter->jenis) == 'umum' ? 'checked' : '' }}>
+                        <input type="radio" id="umum" name="jenis" value="umum" {{ old('jenis') == 'umum' ? 'checked' : '' }}>
                         <label for="umum">Umum</label> |
-                        <input type="radio" id="spesialis" name="jenis" value="spesialis" {{ old('jenis', $dokter->jenis) == 'spesialis' ? 'checked' : '' }}>
+                        <input type="radio" id="spesialis" name="jenis" value="spesialis" {{ old('jenis') == 'spesialis' ? 'checked' : '' }}>
                         <label for="spesialis">Spesialis</label>
                     </div>
                     <div class="form-group">
