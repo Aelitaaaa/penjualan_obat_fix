@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pembelian - KLIMISTRI</title>
     @include('template.head')
-    @include('template.script')
+
 </head>
 <body id="page-top">
     <div id="wrapper">

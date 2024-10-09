@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Obat - KLIMISTRI</title>
     @include('template.head')
-    @include('template.script')
+
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -92,7 +90,8 @@
             @include('template.footer')
         </div>
     </div>
+      @include('template.script')
     @include('sweetalert::alert')
-
+  
 </body>
 </html>

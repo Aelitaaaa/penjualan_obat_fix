@@ -5,7 +5,7 @@
 <head>
     <title>Data Supplier - KLIMISTRI</title>
     @include('template.head')
-    @include('template.script')
+
 </head>
 
 <body id="page-top">

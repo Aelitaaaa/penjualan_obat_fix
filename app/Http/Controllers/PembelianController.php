@@ -10,24 +10,23 @@ use Illuminate\Http\Request;
 
 class PembelianController extends Controller
 {
-        public function index()
+    public function index()
     {
-        $pembelian = Pembelian::all();
+        $pembelian = Pembelian::with('detailPembelian')->get();
         $suplier = Suplier::all(); 
-
-        $lastPembelian = Pembelian::orderBy('kode_pembelian', 'desc')->first();
-
-        // Tentukan kode pembelian baru
-        if (!$lastPembelian) {
-            $newKodePembelian = 'KDBL0001';
-        } else {
-            $lastNumber = (int)substr($lastPembelian->kode_pembelian, 4);
-            $newKodePembelian = 'KDBL' . str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+    
+        // Hitung total pembelian untuk setiap item berdasarkan detail pembelian
+        foreach ($pembelian as $item) {
+            $item->total_pembelian = $item->detailPembelian->sum('subtotal');
         }
-
+    
+        // Buat kode pembelian baru
+        $lastPembelian = Pembelian::orderBy('kode_pembelian', 'desc')->first();
+        $newKodePembelian = $lastPembelian ? 'KDBL' . str_pad((int)substr($lastPembelian->kode_pembelian, 4) + 1, 4, '0', STR_PAD_LEFT) : 'KDBL0001';
+    
         return view('pembelian.index', compact('pembelian', 'suplier', 'newKodePembelian'));
     }
-
+    
        public function create()
     {
     
@@ -37,23 +36,23 @@ class PembelianController extends Controller
    
     public function store(Request $request)
 {
-    // Validasi input lainnya
+    // Validasi input tanpa total_pembelian
     $request->validate([
         'kode_suplier' => 'required|max:7',
-        'total_pembelian' => 'nullable|numeric',
+        'kode_pembelian' => 'required|max:8',
         'created_at' => 'nullable|date_format:Y-m-d H:i:s',
     ]);
 
-    // Simpan data pembelian, kode pembelian sudah ada di request dari form
+    // Simpan data pembelian tanpa total_pembelian
     $pembelian = Pembelian::create([
         'kode_pembelian' => $request->kode_pembelian,
         'kode_suplier' => $request->kode_suplier,
-        'total_pembelian' => $request->total_pembelian,
         'created_at' => now(),
     ]);
 
     return redirect()->route('detail_pembelian.index', ['kode' => $pembelian->kode_pembelian]);
 }
+
     
     public function edit($id)
     {

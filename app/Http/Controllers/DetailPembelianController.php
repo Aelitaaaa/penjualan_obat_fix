@@ -11,20 +11,21 @@ use Illuminate\Http\Request;
 class DetailPembelianController extends Controller
 {
     public function index(Request $request)
-{
-    $kodePembelian = $request->query('kode');
-
+    {
+        $kodePembelian = $request->query('kode');
     
-    $detailPembelian = DetailPembelian::with('obat')->where('kode_pembelian', $kodePembelian)->get();
-        
-    $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
-    $suplier = $pembelian->kode_suplier;
-    $obat = Obat::where('kode_suplier', $suplier)->get();
-
-    $totalHarga = $detailPembelian->sum('subtotal');
-
-    return view('detail_pembelian.index', compact('detailPembelian','obat', 'suplier', 'pembelian', 'totalHarga'));
-}
+        // Ambil data detail pembelian dengan relasi obat
+        $detailPembelian = DetailPembelian::with('obat')->where('kode_pembelian', $kodePembelian)->get();
+            
+        $pembelian = Pembelian::where('kode_pembelian', $kodePembelian)->first();
+        $suplier = $pembelian->kode_suplier;
+        $obat = Obat::where('kode_suplier', $suplier)->get();
+    
+        $totalHarga = $detailPembelian->sum('subtotal');
+    
+        return view('detail_pembelian.index', compact('detailPembelian', 'obat', 'suplier', 'pembelian', 'totalHarga'));
+    }
+    
 
     public function create()
     {
@@ -34,7 +35,7 @@ class DetailPembelianController extends Controller
 
     public function store(Request $request)
 {
-  
+    // Validasi input
     $validatedData = $request->validate([
         'kode_obat' => 'required|max:7',
         'jumlah' => 'required|integer|min:1',
@@ -44,23 +45,25 @@ class DetailPembelianController extends Controller
         'created_at' => 'nullable|date',
     ]);
 
+    // Simpan detail pembelian
     $detailPembelian = DetailPembelian::create($validatedData);
 
-    $pembelian = Pembelian::where('kode_pembelian', $request->input('kode_pembelian'))->first();
+    // Update total pembelian berdasarkan subtotal baru
+    $pembelian = Pembelian::where('kode_pembelian', $request->kode_pembelian)->first();
     $pembelian->total_pembelian += $detailPembelian->subtotal;
     $pembelian->save();
 
-    $obat = Obat::where('kode_obat', $request->input('kode_obat'))
-    ->where('kode_suplier', $pembelian->kode_suplier)
-    ->first();
-
+    // Update stok obat
+    $obat = Obat::where('kode_obat', $request->kode_obat)
+        ->where('kode_suplier', $pembelian->kode_suplier)
+        ->first();
     $obat->jumlah_obat += $validatedData['jumlah'];
-    $obat->save(); 
+    $obat->save();
 
-    
     return redirect()->route('detail_pembelian.index', ['kode' => $validatedData['kode_pembelian']])
                      ->with('success', 'Stok obat berhasil ditambahkan.');
 }
+
 
 
     public function edit($id)
