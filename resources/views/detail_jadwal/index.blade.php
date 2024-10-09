@@ -9,11 +9,14 @@
     <!-- Include CSS and JS -->
     @include('template.head')
     @include('template.script')
+    @include('template.detailjadwal')
 
     <!-- Custom styles for this page -->
     <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.3/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -58,74 +61,79 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <a href="{{ route('jadwal.index') }}" class="btn btn-primary mb-3">
-                                        <span class="icon text-white-50 ">
-                                            <i class="fas fa-fw fa-arrow-left"></i>
-                                        </span>
-                                        <span class="text">Kembali</span>
-                                    </a>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Dr. Budi santoso</h6>
+                <div class="d-flex justify-content-start mb-3" onclick="window.location.href='{{ route('jadwal.index') }}'">
+                        <button class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</button>
+                    </div>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <h5>Pilih Tanggal</h5>
                         </div>
-                        <div class="card-body">
-                            <div class="table">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Waktu</th>
-                                            <th>Pasien</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Example rows -->
-                                        <tr>
-                                            <td>08:00</td>
-                                            <td>Dzaki</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>09:00</td>
-                                            <td></td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>10:00</td>
-                                            <td></td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>11:00</td>
-                                            <td>Dzaky</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editDataModal">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!-- More rows can be added here -->
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="calendar-header">
+                            <i class="fas fa-chevron-left"></i>
+                            <h5>Oktober 2024</h5>
+                            <i class="fas fa-chevron-right"></i>
                         </div>
+                        <div class="calendar">
+                            <div class="day">S</div>
+                            <div class="day">S</div>
+                            <div class="day">R</div>
+                            <div class="day">K</div>
+                            <div class="day">J</div>
+                            <div class="day">S</div>
+                            <div class="day">M</div>
+                            <div class="day"></div>
+                            <div class="date grey-date">1</div>
+                            <div class="date grey-date">2</div>
+                            <div class="date grey-date">3</div>
+                            <div class="date grey-date">4</div>
+                            <div class="date grey-date">5</div>
+                            <div class="date grey-date">6</div>
+                            <div class="date grey-date">7</div>
+                            <div class="date grey-date">8</div>
+                            <div class="date">9</div>
+                            <div class="date selected-date">10</div>
+                            <div class="date">11</div>
+                            <div class="date">12</div>
+                            <div class="date grey-date">13</div>
+                            <div class="date">14</div>
+                            <div class="date">15</div>
+                            <div class="date">16</div>
+                            <div class="date">17</div>
+                            <div class="date">18</div>
+                            <div class="date">19</div>
+                            <div class="date grey-date">20</div>
+                            <div class="date">21</div>
+                            <div class="date">22</div>
+                            <div class="date">23</div>
+                            <div class="date">24</div>
+                            <div class="date">25</div>
+                            <div class="date">26</div>
+                            <div class="date grey-date">27</div>
+                            <div class="date">28</div>
+                            <div class="date">29</div>
+                            <div class="date">30</div>
+                            <div class="date">31</div>
+                        </div>
+                        <div class="legend">
+                            <div class="practice"><span></span> Praktek</div>
+                            <div class="no-practice"><span></span> Tidak Praktek</div>
+                        </div>
+                    </div>
+                    <div class="time-container">
+                        <h5>Pilih Jam</h5>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary flex-fill mr-1">09:00 - 14:00</button>
+                            <button class="btn btn-outline-primary flex-fill ml-1">14:00 - 18:00</button>
+                        </div>
+                    </div>
+                    <div class="footer-text">
+                        Jadwal Janji Temu Dokter dapat dipilih dari <strong>30 hari</strong> sampai <strong>3 jam</strong> sebelum jadwal dokter praktik berakhir.
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary btn-lg">Lanjut</button>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -144,50 +152,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Edit Data Modal -->
-    <div class="modal fade" id="editDataModal" tabindex="-1" role="dialog" aria-labelledby="editDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editDataModalLabel">Edit Data Jadwal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="editWaktu">Waktu</label>
-                            <input type="text" class="form-control" id="editWaktu" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Daftar Obat</label>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="editable-select">
-                                <option>Alfa Romeo</option>
-                                <option>Audi</option>
-                                <option>BMW</option>
-                                <option>Citroen</option>
-                            </select>
-                        </div>
-                        <script>
-                            $('#editable-select').editableSelect();
-                            $('#appendTo').editableSelect({
-                            appendTo: '.modal-body'
-                            });
-                        </script>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- End of Edit Data Modal -->
 
     <!-- Logout Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
