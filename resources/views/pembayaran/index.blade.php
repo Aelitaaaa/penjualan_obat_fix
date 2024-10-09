@@ -168,11 +168,27 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="no_rekam_medis">No Rekam Medis</label>
-                            <input type="text" name="no_rekam_medis" class="form-control" required>
+                            <select name="id_dokter" class="form-control" id="namaDokter">
+                                @foreach($pasien as $p)
+                                    <option value="{{$p->id}}">{{$p->nama_pasien}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="total_biaya">Total Biaya</label>
-                            <input type="number" name="total_biaya" class="form-control" required>
+                            <select name="id_dokter" class="form-control" id="namaDokter">
+                                @foreach($dokter as $d)
+                                    <option value="{{$d->id}}">{{$d->nama_dokter}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rekam_medis">rekam</label>
+                            <select name="id_dokter" class="form-control" id="namaDokter">
+                                @foreach($rekammedis as $r)
+                                    <option value="{{$r->id}}">{{$r->id}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

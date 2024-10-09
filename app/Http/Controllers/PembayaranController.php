@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokter;
+use App\Models\Pasien;
 use App\Models\Pembayaran;
+use App\Models\RekamMedis;
 use Illuminate\Http\Request;
 use App\Models\Resep;
 class PembayaranController extends Controller
@@ -12,7 +15,11 @@ class PembayaranController extends Controller
 
         $resep = Resep::all();
         $pembayaran = Pembayaran::all();
-        return view('pembayaran.index', compact('resep', 'pembayaran'));
+        $dokter = Dokter::all();
+        $pasien = Pasien::all();
+        $rekammedis = RekamMedis::all();
+
+        return view('pembayaran.index', compact('resep', 'pembayaran', 'dokter', 'pasien', 'rekammedis'));
     }
 
     public function create()
