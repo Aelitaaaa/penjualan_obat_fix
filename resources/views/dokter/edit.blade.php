@@ -17,6 +17,13 @@
                         <input type="text" class="form-control" value="{{$dokter->nama}}" name="nama" id="editNamaDokter" placeholder="Masukkan Nama Dokter">
                     </div>
                     <div class="form-group">
+                        <label for="jenis_kelamin">Jenis</label><br>
+                        <input type="radio" id="umum" name="jenis" value="umum" {{ old('jenis', $dokter->jenis) == 'umum' ? 'checked' : '' }}>
+                        <label for="umum">Umum</label> |
+                        <input type="radio" id="spesialis" name="jenis" value="spesialis" {{ old('jenis', $dokter->jenis) == 'spesialis' ? 'checked' : '' }}>
+                        <label for="spesialis">Spesialis</label>
+                    </div>
+                    <div class="form-group">
                         <label for="editSpesialisDokter">Spesialis</label>
                         <input type="text" class="form-control" id="editSpesialisDokter" value="{{$dokter->spesialis}}" name="spesialis" placeholder="Masukkan Spesialis">
                     </div>

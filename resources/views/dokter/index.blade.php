@@ -57,6 +57,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
+                                            <th>Jenis</th>
                                             <th>Spesialis</th>
                                             <th>No. Telepon</th>
                                             <th>Tarif</th>
@@ -66,6 +67,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Nama</th>
+                                            <th>Jenis</th>
                                             <th>Spesialis</th>
                                             <th>No. Telepon</th>
                                             <th>Tarif</th>
@@ -76,6 +78,7 @@
                                         @foreach($dataDokter as $dokter)
                                         <tr>
                                             <td>{{ $dokter->nama }}</td>
+                                            <td>{{ $dokter->jenis}}</td>
                                             <td>{{ $dokter->spesialis }}</td>
                                             <td>{{ $dokter->telp }}</td>
                                             <td>{{ $dokter->tarif }}</td>

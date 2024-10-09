@@ -81,6 +81,7 @@ class DokterController extends Controller
     {
         $request->validate([
             'nama' => 'required|max:100',
+            'jenis' => 'required|in:umum,spesialis',
             'spesialis' => 'required|max:50',
             'telp' => 'required|max:15',
             'tarif' => 'required|max:20',
@@ -89,6 +90,7 @@ class DokterController extends Controller
         $dokter = Dokter::findOrFail($id);
         $dokter->update([
             'nama' => $request->nama,
+            'jenis' => $request->jenis,
             'spesialis' => $request->spesialis,
             'telp' => $request->telp,
             'tarif' => $request->tarif,
