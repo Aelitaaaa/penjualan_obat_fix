@@ -112,7 +112,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('dokter', DokterController::class);
 
-    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+    Route::resource('jadwal', JadwalController::class);
     
     Route::get('/detail_jadwal', function () {
         return view('detail_jadwal.index');

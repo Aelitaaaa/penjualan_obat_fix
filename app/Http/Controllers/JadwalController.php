@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Models\Dokter;
+use app\Models\Pasien;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -11,30 +12,31 @@ class JadwalController extends Controller
 {
     public function index(Request $request)
     {
-        // Ambil semua dokter dengan relasi jadwals
-        $dokters = Dokter::with(['jadwals' => function($query) use ($request) {
-            if ($request->has('minggu')) {
-                $mingguAwal = Carbon::parse($request->minggu)->startOfWeek();
-                $mingguAkhir = Carbon::parse($request->minggu)->endOfWeek();
-                $query->whereBetween('tanggal', [$mingguAwal, $mingguAkhir]);
-            } else {
-                $mingguAwal = Carbon::now()->startOfWeek();
-                $mingguAkhir = Carbon::now()->endOfWeek();
-                $query->whereBetween('tanggal', [$mingguAwal, $mingguAkhir]);
-            }
-        }])->get();
-
-        // Jika minggu dipilih, hitung tanggal awal dan akhir minggu
-        if ($request->has('minggu')) {
-            $mingguAwal = Carbon::parse($request->minggu)->startOfWeek();
-            $mingguAkhir = Carbon::parse($request->minggu)->endOfWeek();
-        } else {
-            // Default ke minggu ini
-            $mingguAwal = Carbon::now()->startOfWeek();
-            $mingguAkhir = Carbon::now()->endOfWeek();
-        }
-
-        // Kembalikan view dengan data
-        return view('jadwal.index', compact('dokters', 'mingguAwal', 'mingguAkhir'));
+        $jadwals = Jadwal::with('pasien', 'dokter')->get();
+        $pasiens = Pasien::all();
+        $dokters = Dokter::all();
+        return view('jadwal.index', compact('jadwals', 'pasiens', 'dokters'));
     }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id_pasien' => 'required',
+            'id_dokter' => 'required',
+            'tanggal' => 'required',
+            'waktu' => 'required',
+        ]);
+    
+        Jadwal::create($validatedData);
+        return redirect()->route('jadwal.index');
+    }
+
+public function edit($id)
+{
+    
+}
+public function destroy(Jadwal $jadwal)
+{
+    $jadwal->delete();
+    return redirect()->route('jadwal.index');
+}
 }
