@@ -24,3 +24,4 @@
         </div>
     </div>
 @endforeach
+@include('sweetalert::alert')
