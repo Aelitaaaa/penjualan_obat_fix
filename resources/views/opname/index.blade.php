@@ -107,8 +107,9 @@
             @include('template.footer')
         </div>
     </div>
-    @include('template.script')
     @include('sweetalert::alert')
+    @include('template.script')
+    
 </body>
 
 </html>

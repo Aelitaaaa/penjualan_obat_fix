@@ -9,10 +9,6 @@
 
     <!-- Include CSS and JS -->
     @include('template.head')
-    @include('template.script')
-
-    <!-- Custom styles for this page -->
-    <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -178,8 +174,8 @@
     </div>
 
 
-
-</body>
 @include('sweetalert::alert')
 @include('template.script')
+</body>
+
 </html>
