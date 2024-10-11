@@ -12,7 +12,6 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-
         $resep = Resep::all();
         $pembayaran = Pembayaran::all();
         $dokter = Dokter::all();
@@ -27,17 +26,24 @@ class PembayaranController extends Controller
         return view('pembayaran.create');
     }
 
+   // PembayaranController.php
     public function store(Request $request)
     {
         $request->validate([
-            'id_pasien' => 'required',
-            'id_dokter' => 'required',
-            'no_rekam_medis' => 'required',
-            'id_resep' => 'required',
+            'id_rekam_medis' => 'required',
+            // 'id_dokter' => 'required',
             'total_biaya' => 'required|numeric',
         ]);
 
-        Pembayaran::create($request->all());
+        $rekamMedis = RekamMedis::find($request->id_rekam_medis);
+
+        Pembayaran::create([
+            'id_pasien' => $rekamMedis->id_pasien,
+            'id_dokter' => $rekamMedis->id_dokter,
+            'id_rekammedis' => $request->id_rekam_medis,
+            'total_biaya' => $request->total_biaya,
+        ]);
+
         return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil ditambahkan.');
     }
 

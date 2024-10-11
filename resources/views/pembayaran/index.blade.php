@@ -61,9 +61,9 @@
                                         @foreach($pembayaran as $pem)
                                         <tr>
                                             <td>{{ $pem->id }}</td>
-                                            <td>{{ $pem->resep->rekamMedis->pasien->nama_pasien ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->rekamMedis->pasien->nama_pasien ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->rekamMedis->no_rekam_medis ?? 'Tidak ada data' }}</td>
                                             <td>{{ $pem->rekamMedis->dokter->nama ?? 'Tidak ada data' }}</td>
-                                            <td>{{ $pem->resep->no_rekam_medis ?? 'Tidak ada data' }}</td>
                                             <td>{{ number_format($pem->total_biaya, 2) }}</td>
                                             <td>
                                                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editDataModal{{ $pem->id }}">
@@ -167,28 +167,24 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="no_rekam_medis">No Rekam Medis</label>
-                            <select name="id_dokter" class="form-control" id="namaDokter">
-                                @foreach($pasien as $p)
-                                    <option value="{{$p->id}}">{{$p->nama_pasien}}</option>
+                            <label for="rekam_medis">Rekam Medis</label>
+                            <select name="id_rekam_medis" class="form-control" id="id_rekam_medis">
+                                @foreach($rekammedis as $r)
+                                    <option value="{{$r->id}}">{{$r->id}} - {{$r->pasien->nama_pasien}} - {{$r->dokter->nama_dokter}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="total_biaya">Total Biaya</label>
+                        {{-- <div class="form-group">
+                            <label for="Dokter">Dokter</label>
                             <select name="id_dokter" class="form-control" id="namaDokter">
                                 @foreach($dokter as $d)
                                     <option value="{{$d->id}}">{{$d->nama_dokter}}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
-                            <label for="rekam_medis">rekam</label>
-                            <select name="id_dokter" class="form-control" id="namaDokter">
-                                @foreach($rekammedis as $r)
-                                    <option value="{{$r->id}}">{{$r->id}}</option>
-                                @endforeach
-                            </select>
+                            <label for="total_biaya">Total Biaya</label>
+                            <input type="number" name="total_biaya" class="form-control" id="total_biaya" step="0.01">
                         </div>
                     </div>
                     <div class="modal-footer">

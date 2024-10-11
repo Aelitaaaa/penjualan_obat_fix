@@ -11,17 +11,24 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kode_resep',
-        'biaya_dokter',
-        'biaya_obat',
+        'id_pasien',
+        'id_dokter',
+        'id_rekammedis',
+        'total_biaya',
     ];
-    /**
-     * Get the resep that owns the Pembayaran
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function resep()
+
+    public function pasien()
     {
-        return $this->belongsTo(Resep::class, 'kode_resep');
+        return $this->belongsTo(Pasien::class, 'id_pasien');
+    }
+
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class, 'id_dokter');
+    }
+
+    public function rekamMedis()
+    {
+        return $this->belongsTo(RekamMedis::class, 'id_rekammedis');
     }
 }
