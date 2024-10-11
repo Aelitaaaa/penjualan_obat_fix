@@ -18,21 +18,21 @@
                 <div class="container-fluid">
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Pasien - Klimistri</h1>
-                        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahPasienModal">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span class="text">Tambah Pasien</span>
-                        </a>
+                        <h1 class="h3 mb-2 text-gray-800">Data Pasien</h1>
                     </div>
 
                     <!-- Modal Tambah Pasien -->
                     @include('pasien.create')
 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary">Pasien</h6>
+                            <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahPasienModal">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span class="text">Tambah Pasien</span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -50,6 +50,19 @@
                                             <th class="text-center align-middle" style="width: 9.4%">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Nama Pasien</th>
+                                            <th class="text-center align-middle">Jenis Kelamin</th>
+                                            <th class="text-center align-middle">Tanggal Lahir</th>
+                                            <th class="text-center align-middle">Nomor Telepon</th>
+                                            <th class="text-center align-middle">Alamat</th>
+                                            <th class="text-center align-middle">Tanggal Penambahan</th>
+                                            <th class="text-center align-middle">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 9.4%">Aksi</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         @foreach($pasien as $index => $pasienItem)
                                             <tr>

@@ -16,10 +16,14 @@
 
                 <div class="container-fluid">
 
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Data Opname</h1>
+                </div>
+
                   @include('opname.create')
                     <div class="card shadow mb-4">
                       <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                      <h6 class="m-0 font-weight-bold text-primary">Data Opname</h6>
+                      <h6 class="m-0 font-weight-bold text-primary">Opname</h6>
                       <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahOpnameModal">
                           <span class="icon text-white-50">
                               <i class="fas fa-plus"></i>
@@ -44,6 +48,20 @@
                                   <th class="text-center align-middle">Aksi</th>
                                 </tr>
                               </thead>
+                              <tfoot>
+                                <tr>
+                                  <th class="text-center align-middle">No</th>
+                                  <th class="text-center align-middle">Tanggal Opname</th>
+                                  <th class="text-center align-middle">Nama Obat</th>
+                                  <th class="text-center align-middle">Jumlah Sistem</th>
+                                  <th class="text-center align-middle">Jumlah Fisik</th>
+                                  <th class="text-center align-middle">Minus</th>
+                                  <th class="text-center align-middle">Harga</th>
+                                  <th class="text-center align-middle">Kerugian</th>
+                                  <th class="text-center align-middle">Terakhir Diperbarui</th>
+                                  <th class="text-center align-middle">Aksi</th>
+                                </tr>
+                              </tfoot>
                               <tbody>
                                 @foreach ($stockOpname as $index => $stockOpnames)
                                   <tr>

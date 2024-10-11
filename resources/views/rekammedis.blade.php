@@ -43,10 +43,13 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Rekam Medis</h1>
+                    </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Resep</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Rekam Medis</h6>
                             <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal"
                                 data-target="#tambahDataModal">
                                 <span class="icon text-white-50">

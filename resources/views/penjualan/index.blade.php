@@ -14,6 +14,11 @@
             <div id="content">
                 @include('template.navbar')
                 <div class="container-fluid">
+                    
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Penjualan</h1>
+                    </div>
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -32,6 +37,16 @@
                                             <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Kode Penjualan</th>
+                                            <th class="text-center align-middle">Kode Suplier</th>
+                                            <th class="text-center align-middle">Total Penjualan</th>
+                                            <th class="text-center align-middle">Tanggal Penjualan</th>
+                                            <th class="text-center align-middle">Aksi</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         
                                             <tr>

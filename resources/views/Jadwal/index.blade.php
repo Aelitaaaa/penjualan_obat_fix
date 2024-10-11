@@ -59,16 +59,19 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Jadwal Dokter</h1>
-        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#addScheduleModal">
-            <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-            </span>
-            <span class="text">Tambah Data</span>
-        </a>
     </div>
 
     <!-- Daftar Jadwal Dokter -->
             <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Jadwal</h6>
+                    <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#addScheduleModal">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Data</span>
+                    </a>
+                </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
@@ -84,6 +87,18 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Pasien</th>
+                                <th>Dokter</th>
+                                <th>Jenis</th>
+                                <th>Spesialis</th>
+                                <th>Tanggal</th>
+                                <th>Waktu</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
                         <tbody>
                             @foreach($jadwals as $jadwal)
                                 <tr>

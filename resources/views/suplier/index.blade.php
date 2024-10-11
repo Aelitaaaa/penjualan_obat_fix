@@ -17,13 +17,16 @@
                 @include('template.navbar')
 
                 <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Supplier</h1>
+                    </div>
 
                     <!-- Modal Tambah Supplier -->
                     @include('suplier.create')
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Supplier</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Supplier</h6>
                             <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahSuplierModal">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
@@ -46,6 +49,18 @@
                                             <th class="text-center align-middle" style="width: 100px">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="text-center align-middle" style="width: 40px">No</th>
+                                            <th class="text-center align-middle" style="width: 150px">Kode Supplier</th>
+                                            <th class="text-center align-middle" style="width: 150px">Nama Supplier</th>
+                                            <th class="text-center align-middle" style="width: 150px">Alamat</th>
+                                            <th class="text-center align-middle" style="width: 150px">Nomor Telepon</th>
+                                            <th class="text-center align-middle" style="width: 130px">Tanggal Penambahan</th>
+                                            <th class="text-center align-middle" style="width: 130px">Terakhir Diperbarui</th>
+                                            <th class="text-center align-middle" style="width: 100px">Aksi</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         @foreach($supliers as $index => $suplier)
                                             <tr>

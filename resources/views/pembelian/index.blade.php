@@ -15,6 +15,10 @@
             <div id="content">
                 @include('template.navbar')
                 <div class="container-fluid">
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Pembelian</h1>
+                    </div>
                    
                     
                     @include('pembelian.create')
@@ -42,6 +46,16 @@
                                             <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="text-center align-middle">No</th>
+                                            <th class="text-center align-middle">Kode Pembelian</th>
+                                            <th class="text-center align-middle">Kode Suplier</th>
+                                            <th class="text-center align-middle">Total Pembelian</th>
+                                            <th class="text-center align-middle">Tanggal Pembelian</th>
+                                            <th class="text-center align-middle">Aksi</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                         @foreach ($pembelian as $key => $item)
                                             <tr>
