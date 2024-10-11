@@ -42,7 +42,7 @@ class SuplierController extends Controller
 
         Suplier::create($request->all());
 
-        return redirect()->route('suplier.index')->with('success', 'Suplier berhasil ditambahkan.');
+        return redirect()->route('suplier.index')->with('success', 'Supplier berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -63,7 +63,7 @@ class SuplierController extends Controller
         $suplierItem = Suplier::findOrFail($id);
         $suplierItem->update($request->all());
 
-        return redirect()->route('suplier.index')->with('success', 'Suplier berhasil diperbarui.');
+        return redirect()->route('suplier.index')->with('success', 'Supplier berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -71,14 +71,14 @@ class SuplierController extends Controller
         $suplier = Suplier::find($id);
 
         if (!$suplier) {
-            return redirect()->route('suplier.index')->with('error', 'Suplier tidak ditemukan.');
+            return redirect()->route('suplier.index')->with('error', 'Supplier tidak ditemukan.');
         }
 
         try {
             $suplier->delete();
-            return redirect()->route('suplier.index')->with('success', 'Suplier berhasil dihapus.');
+            return redirect()->route('suplier.index')->with('success', 'Supplier berhasil dihapus.');
         } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->route('suplier.index')->with('error', 'Gagal menghapus suplier: ' . $e->getMessage());
+            return redirect()->route('suplier.index')->with('error', 'Gagal menghapus supplier: ' . $e->getMessage());
         }
     }
 }
