@@ -17,12 +17,14 @@ class CreateRekamMedisTable extends Migration
             $table->id();
             $table->integer('id_pasien')->length(20);
             $table->foreignId('id_dokter');
+            $table->foreignId('id_jadwal');
             $table->text('diagnosis');
             $table->string('tindakan');
             $table->timestamps();
 
             $table->foreign('id_pasien')->references('id_pasien')->on('pasien')->onDelete('cascade');
             $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade');
+            $table->foreign('id_jadwal')->references('id')->on('jadwals')->onDelete('cascade');
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokter;
 use App\Models\Pasien;
+use App\Models\Jadwal;
 use App\Models\RekamMedis;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,10 @@ class RekamMedisController extends Controller
     {
         $Pasien = Pasien::whereDoesntHave('rekamMedis')->get();
         $Dokter = Dokter::all();
-
+        $Jadwal = Jadwal::all();
         $PasienEdit = Pasien::all();
         $RekamMedis = RekamMedis::orderBy('created_at', 'DESC')->get();
-
-        return view('rekammedis', ['rekamMedis'=>$RekamMedis,'pasienEdit'=>$PasienEdit, 'pasien'=>$Pasien, 'dokter'=>$Dokter]);
+        return view('rekammedis', compact('Pasien', 'Dokter', 'Jadwal', 'PasienEdit','RekamMedis'));
     }
 
     /**

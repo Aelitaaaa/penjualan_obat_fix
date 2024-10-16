@@ -68,14 +68,12 @@
                                     <td class="text-center" style="vertical-align: middle;">{{ $index + 1 }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->created_at }}</td>
                                    <td class="text-center" style="vertical-align: middle;">
-    {{ $stockOpnames->kode_obat }} - 
-    @if($stockOpnames->obat)
-        {{ $stockOpnames->obat->nama_obat }}
-    @else
-        <span class="text-danger">Obat tidak ditemukan</span>
-    @endif
-</td>
-
+                                    {{ $stockOpnames->kode_obat }} - 
+                                    @if($stockOpnames->obat)
+                                        {{ $stockOpnames->obat->nama_obat }}
+                                    @else
+                                        <span class="text-danger">Obat tidak ditemukan</span>
+                                    @endif </td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_sistem }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_fisik }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->minus }}</td>

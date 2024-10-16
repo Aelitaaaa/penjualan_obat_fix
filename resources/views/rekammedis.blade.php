@@ -70,7 +70,7 @@
                                     </tfoot>
                                     <tbody>
                                         <!-- Example rows -->
-                                        @foreach ($rekamMedis as $r)
+                                        @foreach ($RekamMedis as $r)
                                             <tr>
                                                 <th>{{$r->id }}</th>
                                                 <th>{{$r->pasien->nama_pasien}}</th>
@@ -223,36 +223,21 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="namaPasien">Pasien</label>
-                            <select name="id_pasien" class="form-control" id="namaPasien">
-                                @foreach($pasien as $p)
-                                    <option value="{{$p->id_pasien}}">{{$p->nama_pasien}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                         <!-- <script>
-                            $('#namaPasien').editableSelect({
-                                 namaPasien: '.modal-body',
-                                    });
-                        </script>  -->
-                        <div class="form-group">
-                            <label for="namaDokter">Dokter</label>
-                            <select name="id_dokter" class="form-control" id="namaDokter">
-                                @foreach($dokter as $d)
-                                    <option value="{{$d->id}}">{{$d->nama}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <!-- <script>
-                            $('#namaDokter').editableSelect({
-                                 namaDokter: '.modal-body',
-                                    });
-                        </script> -->
-                        <div class="form-group">
                             <label for="idJadwal">Jadwal</label>
                             <select class="form-control" id="idJadwal">
-                                <option></option>
+                                <option value="">Pilih Jadwal</option>
+                                @foreach($Jadwal as $j)
+                                <option value="{{$j->id}}" data-pasien="{{$j->pasien->nama_pasien}}" data-dokter="{{$j->dokter->nama}}">{{$j->pasien->nama_pasien}} - {{$j->dokter->nama}} | {{$j->tanggal}} > {{$j->waktu}}</option>
+                                @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="namaPasien">Pasien</label>
+                            <input type="text" id="namaPasien" name="nama_pasien" class="form-control" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="namaDokter">Dokter</label>
+                            <input type="text" id="namaDokter" name="nama_dokter" class="form-control" required readonly>
                         </div>
                         <div class="form-group">
                             <label>Diagnosis</label>
@@ -300,6 +285,22 @@
 
     @include('sweetalert::alert')
     @include('template.script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Ketika kode obat berubah
+    $('#idJadwal').change(function() {
+        var selectedOption = $(this).find('option:selected');
+        var namaPasien = selectedOption.data('pasien');
+        var namaDokter = selectedOption.data('dokter');
+        
+        // Set jumlah sistem dan harga beli
+        $('#namaDokter').val(namaDokter);
+        $('#namaPasien').val(namaPasien);
+     });
+  }
+)
+    </script>
 </body>
 
 </html>

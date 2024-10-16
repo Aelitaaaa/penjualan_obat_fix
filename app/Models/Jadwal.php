@@ -25,5 +25,11 @@ class Jadwal extends Model
     {
         return $this->belongsTo(pasien::class, 'id_pasien');
     }
+ 
+
+    public function rekammedis()
+    {
+        return $this->hasMany( RekamMedis::class, 'id_jadwal');
+    }
 }
 
