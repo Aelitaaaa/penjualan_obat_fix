@@ -29,6 +29,7 @@ class PembayaranController extends Controller
    // PembayaranController.php
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'id_rekam_medis' => 'required',
             // 'id_dokter' => 'required',

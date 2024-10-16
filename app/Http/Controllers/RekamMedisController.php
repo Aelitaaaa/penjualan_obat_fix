@@ -43,7 +43,18 @@ class RekamMedisController extends Controller
      */
     public function store(Request $request)
     {
-        RekamMedis::create($request->all());
+        $Jadwal = Jadwal::find($request->id_jadwal);
+
+        // dd($Jadwal);
+
+        RekamMedis::create([
+            'id_pasien' => $Jadwal->id_pasien,
+            'id_dokter' => $Jadwal->id_dokter,
+            'id_jadwal' => $Jadwal->id,
+            'diagnosis' => $request->diagnosis,
+            'tindakan' => $request->tindakan,
+        ]);
+
 
         return redirect()->back()->with('success', 'Data Berhasil di tambahkan');
     }

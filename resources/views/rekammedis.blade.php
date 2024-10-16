@@ -75,7 +75,7 @@
                                                 <th>{{$r->id }}</th>
                                                 <th>{{$r->pasien->nama_pasien}}</th>
                                                 <th>{{$r->dokter->nama}}</th>
-                                                <th></th>
+                                                <th>{{$r->jadwal->tanggal}} - {{ $r->jadwal->waktu }}</th>
                                                 <th>{{$r->diagnosis}}</th>
                                                 <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal"
                                                         data-target="#editDataModal{{$r->id}}">
@@ -133,7 +133,7 @@
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="modal-body">
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label for="editNamaPasien">Pasien</label>
                                                                     <select name="id_pasien" class="form-control"
                                                                         id="namaDokter">
@@ -151,7 +151,7 @@
                                                                             <option value="{{$d->id}}" {{$d->id === $r->id_dokter ? 'selected' : ''}}>{{$d->nama}}</option>
                                                                         @endforeach
                                                                     </select>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="form-group">
                                                                     <label for="editIdJadwal">Jadwal</label>
                                                                     <select class="form-control" id="idJadwal">
@@ -224,21 +224,21 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="idJadwal">Jadwal</label>
-                            <select class="form-control" id="idJadwal">
+                            <select name="id_jadwal" class="form-control" id="idJadwal">
                                 <option value="">Pilih Jadwal</option>
                                 @foreach($Jadwal as $j)
                                 <option value="{{$j->id}}" data-pasien="{{$j->pasien->nama_pasien}}" data-dokter="{{$j->dokter->nama}}">{{$j->pasien->nama_pasien}} - {{$j->dokter->nama}} | {{$j->tanggal}} > {{$j->waktu}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="namaPasien">Pasien</label>
                             <input type="text" id="namaPasien" name="nama_pasien" class="form-control" required readonly>
                         </div>
                         <div class="form-group">
                             <label for="namaDokter">Dokter</label>
                             <input type="text" id="namaDokter" name="nama_dokter" class="form-control" required readonly>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label>Diagnosis</label>
                             <textarea class="form-control" id="idJadwal" name="diagnosis"></textarea>

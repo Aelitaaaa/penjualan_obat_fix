@@ -78,8 +78,8 @@
                                         <tr>
                                             <td>{{ $pem->id }}</td>
                                             <td>{{ $pem->rekamMedis->pasien->nama_pasien ?? 'Tidak ada data' }}</td>
-                                            <td>{{ $pem->rekamMedis->no_rekam_medis ?? 'Tidak ada data' }}</td>
                                             <td>{{ $pem->rekamMedis->dokter->nama ?? 'Tidak ada data' }}</td>
+                                            <td>{{ $pem->rekamMedis->id ?? 'Tidak ada data' }}</td>
                                             <td>{{ number_format($pem->total_biaya, 2) }}</td>
                                             <td>
                                                 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editDataModal{{ $pem->id }}">
