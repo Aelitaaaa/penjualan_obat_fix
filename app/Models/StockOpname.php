@@ -17,7 +17,6 @@ class StockOpname extends Model
         'minus',
         'harga_obat',
         'total_kerugian',
-        'tanggal_opname',
     ];
 
     public function obat()

@@ -5,34 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Pembelian;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OmsetController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $start = $request->query('dari_tanggal');
         $end = $request->query('sampai_tanggal');
         $data = collect();
 
-        if($start && $end){
+        if ($start && $end) {
             $data = Pembelian::whereBetween("created_at", [
                 $start = Carbon::parse($start)->startOfDay(),
-                $end = Carbon::parse($end)->endOfDay()      
-             ])->get();
+                $end = Carbon::parse($end)->endOfDay()
+            ])->get();
         }
 
         $total_modal = $data->sum('total_pembelian');
-      
-
 
         return view("omset.index", [
             'data' => $data,
             'start' => $start,
             'end' => $end,
             'total_modal' => $total_modal,
-          
         ]);
     }
+
+    public function export(Request $request)
+    {
+        $start = $request->query('dari_tanggal');
+        $end = $request->query('sampai_tanggal');
+
+        return Excel::download(new LaporanExport($start, $end), 'laporan.xlsx');
+    }
 }
-
-

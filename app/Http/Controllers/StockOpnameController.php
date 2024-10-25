@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\laporanExport;
+use App\Exports\laporanOpnameExport;
 use App\Models\StockOpname;
 use App\Models\Obat;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StockOpnameController extends Controller
 {
@@ -13,6 +16,7 @@ class StockOpnameController extends Controller
         $stockOpname = StockOpname::all();
         $obat = Obat::all();
         return view('opname.index', compact('stockOpname', 'obat')); 
+
     }
 
     public function create()
@@ -58,26 +62,32 @@ class StockOpnameController extends Controller
     }
 
     // Method update
-public function update(Request $request, string $id)
-{
-    // Validasi tetap sama
+    public function update(Request $request, string $id)
+    {
+        // Validasi tetap sama
 
-    $opname = StockOpname::findOrFail($id);
+        $opname = StockOpname::findOrFail($id);
 
-    // Menghitung ulang nilai minus dan total kerugian
-    $minus = $request->jumlah_sistem - $request->jumlah_fisik;
-    $total_kerugian = $minus * $request->harga_obat;
+        // Menghitung ulang nilai minus dan total kerugian
+        $minus = $request->jumlah_sistem - $request->jumlah_fisik;
+        $total_kerugian = $minus * $request->harga_obat;
 
-    // Update data opname
-    $opname->update([
-        'kode_obat'  => $request->kode_obat,
-        'jumlah_sistem' => $request->jumlah_sistem,
-        'jumlah_fisik' => $request->jumlah_fisik,
-        'minus' => $minus,
-        'harga_obat' => $request->harga_obat,
-        'total_kerugian' => $total_kerugian,
-    ]);
+        // Update data opname
+        $opname->update([
+            'kode_obat'  => $request->kode_obat,
+            'jumlah_sistem' => $request->jumlah_sistem,
+            'jumlah_fisik' => $request->jumlah_fisik,
+            'minus' => $minus,
+            'harga_obat' => $request->harga_obat,
+            'total_kerugian' => $total_kerugian,
+        ]);
 
-    return redirect()->route('opname.index')->with('success', 'Opname berhasil diperbarui!');
-}
+        return redirect()->route('opname.index')->with('success', 'Opname berhasil diperbarui!');
+    }
+
+    public function export()
+    {
+       
+        return Excel::download(new laporanOpnameExport, 'laporan.xlsx');
+    }
 }

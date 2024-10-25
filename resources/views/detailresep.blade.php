@@ -1,3 +1,4 @@
+
 <div class="modal" id="detailResepModal{{ $re->kode_resep }}" tabindex="-1" role="dialog" aria-labelledby="detailResepModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

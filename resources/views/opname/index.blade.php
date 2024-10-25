@@ -30,6 +30,8 @@
                           </span>
                           <span class="text">Tambah Opname</span>
                       </a>
+                      <a class="btn btn-success" href="{{ route('opname.export') }}">Export Excel</a>
+
                   </div>
                         <div class="card-body">
                             <div class="table-responsive">

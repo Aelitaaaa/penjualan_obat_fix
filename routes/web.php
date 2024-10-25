@@ -87,11 +87,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}/edit', [StockOpnameController::class, 'edit'])->name('edit');
         Route::put('/{id}', [StockOpnameController::class, 'update'])->name('update');
         Route::delete('/{id}', [StockOpnameController::class, 'destroy'])->name('destroy');
+        Route::get('/opname-export', [StockOpnameController::class, 'export'])->name('export');
     });
+    
 
     Route::prefix('omset')->name('omset.')->group(function () {
         Route::get('/', [OmsetController::class, 'index'])->name('index');
-        
+        Route::get('/omset-export', [OmsetController::class, 'export'])->name('export');
     });
 
     Route::get('/penjualan-obat', function () {

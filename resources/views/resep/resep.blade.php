@@ -251,14 +251,7 @@
                                     placeholder="Masukkan Nama Resep">
                             </div>
 
-                            <div class="form-group">
-                                <label for="namaObat">Nama Obat</label>
-                                <select name="nama_obat" class="form-control" id="namaObat">
-                                    @foreach($obat as $o)
-                                    <option value="{{$o->nama_obat}}">{{$o->nama_obat}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                          
 
                             <div class="form-group">
                                 <label for="idRekammedis">Rekam Medis</label>

@@ -56,13 +56,11 @@ class PembayaranController extends Controller
 
     public function update(Request $request, $id)
     {
+        
         $request->validate([
-            'id_pasien' => 'required',
-            'id_dokter' => 'required',
-            'no_rekam_medis' => 'required',
-            'id_resep' => 'required',
             'total_biaya' => 'required|numeric',
         ]);
+
 
         $pembayaran = Pembayaran::findOrFail($id);
         $pembayaran->update($request->all());

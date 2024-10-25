@@ -107,7 +107,7 @@
                                                         <div class="modal-body">
                                                             <div class="form-group">
                                                                 <label for="no_rekam_medis">No Rekam Medis</label>
-                                                                <input type="text" name="no_rekam_medis" class="form-control" value="{{ $pem->resep->no_rekam_medis ?? '' }}" required>
+                                                                <input type="text" name="no_rekam_medis" class="form-control" disabled value="{{ $pem->rekamMedis->id ?? '' }}" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="total_biaya">Total Biaya</label>
@@ -243,6 +243,8 @@
             $('#dataTable').DataTable();
         });
     </script>
+    @include('sweetalert::alert')
+    @include('template.script')
 </body>
 
 </html>

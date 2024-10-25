@@ -20,9 +20,9 @@ class ResepController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'nama_resep' => 'required',
-            'nama_obat' => 'required',
             'id_rekam_medis' => 'required',
         ]);
 
@@ -34,11 +34,9 @@ class ResepController extends Controller
 
     public function update(Request $request, $kode_resep)
     {
-        // dd($request);
-
+        dd($request);
         $request->validate([
             'nama_resep' => 'required',
-            'nama_obat' => 'required',
             'id_rekam_medis' => 'required',
         ]);
 
