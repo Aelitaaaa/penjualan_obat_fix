@@ -138,9 +138,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('rekammedis', RekamMedisController::class);
     // Route::delete('rekammedis/{id}', [RekamMedisController::class, 'destroy'])->name('rekammedis.destroy');
-    Route::resource('resep', ResepController::class);
     Route::get('/get-rekammedis-by-resep', [RekamMedisController::class, 'getRekammedisByResep'])->name('getRekammedisByResep');
     Route::resource('detail_resep', DetailResepController::class);
-
+    
     Route::resource('pembayaran', PembayaranController::class);
+    Route::resource('resep', ResepController::class);
 });

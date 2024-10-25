@@ -15,7 +15,7 @@ class ResepController extends Controller
         $rekamMedis = RekamMedis::whereDoesntHave('resep')->get();
         $obat = Obat::all(); 
 
-        return view('resep', compact('resep', 'rekamMedis', 'obat'));
+        return view('resep.resep', compact('resep', 'rekamMedis', 'obat'));
     }
 
     public function store(Request $request)
@@ -34,7 +34,6 @@ class ResepController extends Controller
 
     public function update(Request $request, $kode_resep)
     {
-        dd($request);
         $request->validate([
             'nama_resep' => 'required',
             'id_rekam_medis' => 'required',
