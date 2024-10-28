@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailResep extends Model
 {
     use HasFactory;
+    protected $table = "detail_resep";
 
     protected $fillable = [
         'kode_resep',
@@ -16,15 +17,16 @@ class DetailResep extends Model
         'dosis',
         'keterangan',
         'harga_satuan',
+        'total'
     ];
 
     public function resep()
     {
-        return $this->belongsTo(Resep::class);
+        return $this->belongsTo(Resep::class, 'kode_resep');
     }
 
     public function obat()
     {
-        return $this->belongsTo(Obat::class);
+        return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat');
     }
 }

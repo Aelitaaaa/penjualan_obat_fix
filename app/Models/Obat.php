@@ -55,4 +55,9 @@ class Obat extends Model
             $obat->stockOpnames()->delete();
         });
     }
+
+    public function detailResep()
+    {
+        return $this->hasMany(DetailResep::class, 'kode_obat', 'kode_obat');
+    }
 }

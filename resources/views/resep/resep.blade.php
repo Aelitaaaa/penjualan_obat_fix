@@ -96,11 +96,15 @@
                                         <tr>
                                             <th>{{$re->kode_resep }}</th>
                                             <th>{{$re->nama_resep}}</th>
-                                            <th>{{$re->nama_obat}}</th>
+                                            <th>
+                                                @foreach($re->detailResep as $dr)
+                                                    <p>{{$dr->obat->nama_obat}}</p>
+                                                @endforeach
+                                            </th>
                                             <th>{{$re->rekamMedis->id}}</th>
                                           
                                             <th>
-                                            <a href="#" class="btn btn-info btn-circle btn-sm mr-1" data-toggle="modal" data-target="#detailResepModal{{ $re->kode_resep }}">
+                                            <a href=" {{ route('detail_resep.index', ['kode'=>$re->kode_resep]) }}" class="btn btn-info btn-circle btn-sm mr-1">
                                                         <i class="fas fa-info-circle"></i>
                                                     </a>
                                                 <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal"

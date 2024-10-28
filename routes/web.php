@@ -17,6 +17,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailResepController;
 use App\Http\Controllers\IndexController;
+use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 
 
 
@@ -115,10 +116,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('dokter', DokterController::class);
 
     Route::resource('jadwal', JadwalController::class);
+
+    Route::get('/detail_resep', function(){
+        return view('detail_resep.index');
+    })->name('detail_resep.index');
     
-    Route::get('/detail_jadwal', function () {
-        return view('detail_jadwal.index');
-    })->name('detail_jadwal.index');
+    Route::resource('detail_resep', DetailResepController::class);
 
     // Route::get('/jadwal', function () {
     //     return view('jadwal.index');
