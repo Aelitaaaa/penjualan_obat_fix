@@ -9,27 +9,27 @@ use Illuminate\Http\Request;
 
 class DetailResepController extends Controller
 {
-    public function index()
-    {
-        $detailReseps = DetailResep::with('resep', 'obat')->get();
-        return view('detail_resep.index', compact('detailResep'));
+    public function index(Request $request)
+    {  
+        $detailResep = DetailResep::all();
+        $obat = Obat::all();
+        $kode = $request->query('kode');
+
+        return view('resep.detail_resep',compact('detailResep', 'obat', 'kode'));
     }
 
     public function create()
     {
-        $reseps = Resep::all();
-        $obats = Obat::all();
+        $resep = Resep::all();
+    
         return view('detail_resep.create', compact('resep', 'obat'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'resep_id' => 'required',
-            'obat_id' => 'required',
-            'jumlah_obat' => 'required|integer',
-            'dosis' => 'required|string',
-            'harga_satuan' => 'required|numeric',
+            'total' => 'required',
+            'keterangan' => 'required',
         ]);
 
         DetailResep::create($request->all());
@@ -60,6 +60,6 @@ class DetailResepController extends Controller
     public function destroy(DetailResep $detailResep)
     {
         $detailResep->delete();
-        return redirect()->route('detail_resep.index')->with('success', 'Detail resep berhasil dihapus');
+        return redirect()->back()->with('success', 'Detail resep berhasil dihapus');
     }
 }

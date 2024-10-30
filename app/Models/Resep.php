@@ -67,7 +67,7 @@ class Resep extends Model
     
     public function detailResep()
     {
-        return $this->hasMany(DetailResep::class, 'resep_id', 'kode_resep');
+        return $this->hasMany(DetailResep::class, 'kode_resep');
     }
 
 
