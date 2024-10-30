@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pembelian;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Exports\LaporanExport;
+use App\Exports\laporanExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OmsetController extends Controller
@@ -37,7 +37,8 @@ class OmsetController extends Controller
     {
         $start = $request->query('dari_tanggal');
         $end = $request->query('sampai_tanggal');
+        $filename = 'laporan_omset (' . date('d-m-Y') . ').xlsx';
 
-        return Excel::download(new LaporanExport($start, $end), 'laporan.xlsx');
+        return Excel::download(new laporanExport($start, $end), $filename);
     }
 }

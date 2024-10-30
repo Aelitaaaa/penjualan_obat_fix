@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Suplier;
 use Illuminate\Http\Request;
 
+use App\Exports\exportSuplier;
+use Maatwebsite\Excel\Facades\Excel;
+
 class SuplierController extends Controller
 {
     public function index()
@@ -81,4 +84,10 @@ class SuplierController extends Controller
             return redirect()->route('suplier.index')->with('error', 'Gagal menghapus supplier: ' . $e->getMessage());
         }
     }
+
+    public function export()
+{
+    $filenames = 'data_suuplier (' .date('d-m-Y') . ').xlsx';
+    return Excel::download(new exportSuplier, $filenames);
+}
 }

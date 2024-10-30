@@ -88,6 +88,7 @@ class StockOpnameController extends Controller
     public function export()
     {
        
-        return Excel::download(new laporanOpnameExport, 'laporan.xlsx');
+        $filenames = 'data_opname (' .date('d-m-Y') . ').xlsx';
+        return Excel::download(new laporanOpnameExport, $filenames);
     }
 }

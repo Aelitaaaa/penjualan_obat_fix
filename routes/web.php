@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('obat/{id}/edit', [ObatController::class, 'edit'])->name('obat.edit');
     Route::put('obat/{id}', [ObatController::class, 'update'])->name('obat.update');
     Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.delete');
+    Route::get('/obat-export', [ObatController::class, 'export'])->name('obat.export');
     
     Route::prefix('pembelian')->name('pembelian.')->group(function () {
         Route::get('/', [PembelianController::class, 'index'])->name('index');
@@ -54,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/{id}', [PembelianController::class, 'destroy'])->name('destroy');
     });
 
+    
+
     Route::prefix('detail_pembelian')->name('detail_pembelian.')->group(function () {
         Route::get('/', [DetailPembelianController::class, 'index'])->name('index');
         Route::get('/create', [DetailPembelianController::class, 'create'])->name('create');
@@ -62,6 +65,9 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{id}', [DetailPembelianController::class, 'update'])->name('update');
         Route::delete('/{id}', [DetailPembelianController::class, 'destroy'])->name('destroy');
     });
+    
+    
+    Route::get('/pembelian-export', [PembelianController::class, 'export'])->name('pembelian.export');
 
     Route::prefix('suplier')->name('suplier.')->group(function () {
         Route::get('/', [SuplierController::class, 'index'])->name('index');
@@ -71,6 +77,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{id}', [SuplierController::class, 'update'])->name('update');
         Route::delete('/{id}', [SuplierController::class, 'destroy'])->name('destroy');
     });
+
+    Route::get('/suplier-export', [SuplierController::class, 'export'])->name('suplier.export');
 
     Route::prefix('pasien')->name('pasien.')->group(function () {
         Route::get('/', [PasienController::class, 'index'])->name('index');

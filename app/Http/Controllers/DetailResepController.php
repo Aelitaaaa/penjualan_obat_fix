@@ -11,11 +11,13 @@ class DetailResepController extends Controller
 {
     public function index(Request $request)
     {  
-        $detailResep = DetailResep::all();
-        $obat = Obat::all();
-        $kode = $request->query('kode');
+       
+        $kodeResep = $request->query('kode');
 
-        return view('resep.detail_resep',compact('detailResep', 'obat', 'kode'));
+        $detailResep = DetailResep::where('kode_resep', $kodeResep)->get();
+        $obat = Obat::all();
+
+        return view('resep.detail_resep',compact('detailResep', 'obat', 'kodeResep'));
     }
 
     public function create()
