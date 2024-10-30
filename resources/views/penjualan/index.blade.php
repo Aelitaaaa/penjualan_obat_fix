@@ -31,20 +31,20 @@
                                         <tr>
                                             <th class="text-center align-middle">No</th>
                                             <th class="text-center align-middle">Kode Penjualan</th>
-                                            <th class="text-center align-middle">Kode Suplier</th>
-                                            <th class="text-center align-middle">Total Penjualan</th>
-                                            <th class="text-center align-middle">Tanggal Penjualan</th>
-                                            <th class="text-center align-middle">Aksi</th>
+                                            <th class="text-center align-middle">Obat</th>
+                                            <th class="text-center align-middle">Pasien</th>
+                                            <th class="text-center align-middle">Jumlah</th>
+                                            <th class="text-center align-middle">Total Harga</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th class="text-center align-middle">No</th>
                                             <th class="text-center align-middle">Kode Penjualan</th>
-                                            <th class="text-center align-middle">Kode Suplier</th>
-                                            <th class="text-center align-middle">Total Penjualan</th>
-                                            <th class="text-center align-middle">Tanggal Penjualan</th>
-                                            <th class="text-center align-middle">Aksi</th>
+                                            <th class="text-center align-middle">Obat</th>
+                                            <th class="text-center align-middle">Pasien</th>
+                                            <th class="text-center align-middle">Jumlah</th>
+                                            <th class="text-center align-middle">Total Harga</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -55,11 +55,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-circle btn-sm mr-1">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </a>
-                                                </td>
+                                                <td></td>
                                             </tr>
                                       
                                     </tbody>

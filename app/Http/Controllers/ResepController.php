@@ -24,13 +24,18 @@ class ResepController extends Controller
     {
         
         $request->validate([
+            'kode_resep' => 'required',
             'nama_resep' => 'required',
             'id_rekam_medis' => 'required',
         ]);
 
-        Resep::create($request->all());
+        $resep = Resep::create([
+            'kode_resep' => $request->kode_resep,
+            'created_at' => now(),
+        ]);
 
-        return redirect()->route('resep.index');
+
+        return redirect()->route('resep.index', ['kode' => $resep->kode_resep]);
         
     }
 
