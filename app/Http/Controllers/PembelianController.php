@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\DetailPembelian;
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
- use App\Models\Suplier;
- use App\Models\Obat;
+use App\Models\Suplier;
+use App\Models\Obat;
+use App\Exports\pembelianExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PembelianController extends Controller
 {
@@ -111,5 +113,11 @@ class PembelianController extends Controller
     }
 }
     
+public function export()
+{
+   
+    $filenames = 'pembelian_obat (' .date('d-m-Y') . ').xlsx';
+    return Excel::download(new pembelianExport, $filenames);
+}
     
 }

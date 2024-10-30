@@ -33,12 +33,14 @@
                                 <div class="form-group mt-2">
                                     <button type="submit" class="btn btn-primary"> Lihat Laporan</button>
                                 </div>
-                                <a class="btn btn-success" href="{{ route('omset.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Export Excel</a>
+                              
                             </form>
                         </div>
                     </div>
                     @if ($start && $end)
-                        <div class="row m-1 mb-0">
+                    <a class="btn btn-success" href="{{ route('omset.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Export Excel (XLSX)</a>
+                        <div class="row m-1 mb-8">
+                            
                             <div class="col-lg m-1">
                                 <h2 class="text-center mb-3 mt-2">Laporan Omset</h2>
                                 <h4 class="text-center mb-3">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h4>
@@ -66,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mx-1 mb-9 mt-0">
+                        <div class="row mx-1 mb-9 mt-0 pb-xl-3">
                             <div class="col-lg-4">
                                 <div class="p-3 rounded bg-success total" id="total_modal" name="total_modal">
                                     Total Modal: Rp. {{ number_format($total_modal, 0, ',', '.') }}

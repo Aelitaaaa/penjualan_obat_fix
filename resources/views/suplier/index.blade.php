@@ -19,6 +19,7 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Supplier</h1>
+                        <a class="btn btn-success" href="{{ route('suplier.export') }}">Export Excel (XLSX)</a>
                     </div>
 
                     <!-- Modal Tambah Supplier -->

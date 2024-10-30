@@ -2,27 +2,40 @@
 namespace App\Exports;
 
 use App\Models\Pembelian;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
+
 class laporanExport implements FromView
 {
-    private $tanggalMulai;
-    private $tanggalSelesai;
+    private $start;
+    private $end;
 
-    public function __construct($tanggalMulai, $tanggalSelesai)
+    public function __construct($start, $end)
     {
-        $this->tanggalMulai = $tanggalMulai;
-        $this->tanggalSelesai = $tanggalSelesai;
+        $this->start = Carbon::parse($start);
+        $this->end = Carbon::parse($end);
     }
 
     public function view(): View
     {
+        
         $pembelian = Pembelian::whereBetween('created_at', [
-            $this->tanggalMulai, 
-            $this->tanggalSelesai
+            $this->start, 
+            $this->end
         ])->get();
 
-        return view('export.omset', ['data' => $pembelian]);
+        $total_modal = Pembelian::whereBetween('created_at', [
+            $this->start,
+            $this->end
+        ])->sum('total_pembelian');
+
+        return view('export.omset', [
+            'data' => $pembelian, 
+            'start' => $this->start,
+            'end' => $this->end,
+            'total_modal' => $total_modal
+    ]);
     }
 }

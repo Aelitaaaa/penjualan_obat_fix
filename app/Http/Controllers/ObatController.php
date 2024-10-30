@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Obat;
 use App\Models\Suplier;
 
+use App\Exports\exportObat;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 class ObatController extends Controller
 {
     public function index()
@@ -92,5 +96,13 @@ public function update(Request $request, $id)
 
     return redirect()->route('obat.index')->with('success', 'Obat berhasil diperbarui!');
 }
+
+public function export()
+{
+   
+    $filenames = 'data_obat (' .date('d-m-Y') . ').xlsx';
+    return Excel::download(new exportObat, $filenames);
+}
+
 
 }

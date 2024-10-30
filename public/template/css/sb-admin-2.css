@@ -550,7 +550,7 @@ pre code {
 }
 
 .pre-scrollable {
-  max-height: 340px;
+  max-height: 600x;
   overflow-y: scroll;
 }
 
@@ -6140,6 +6140,14 @@ a.close.disabled {
   pointer-events: none;
 }
 
+
+.modal-dialog-detail {
+  position: relative;
+  max-width: 300px !important;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
@@ -6326,6 +6334,10 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
+    max-width: 100px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog-detail {
     max-width: 100px;
     margin: 1.75rem auto;
   }
@@ -11141,8 +11153,8 @@ a:focus {
 }
 
 .sidebar {
-  width: 6.5rem;
-  min-height: 100vh;
+  position: sticky;
+  top: 0;
 }
 
 .sidebar .nav-item {
@@ -11668,7 +11680,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background:url('/images/obat.jpg');
   background-position: center;
   background-size: cover;
 }
