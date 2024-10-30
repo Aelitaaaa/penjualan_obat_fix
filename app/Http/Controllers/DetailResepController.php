@@ -34,8 +34,9 @@ class DetailResepController extends Controller
             'keterangan' => 'required',
         ]);
 
-        DetailResep::create($request->all());
-        return redirect()->route('detail_resep.index')->with('success', 'Detail resep berhasil ditambahkan');
+
+        $detail = DetailResep::create($request->all());
+        return redirect()->route('detail_resep.index', ['kode'=>$detail->kode_resep])->with('success', 'Detail resep berhasil ditambahkan');
     }
 
     public function edit(DetailResep $detailResep)

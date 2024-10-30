@@ -105,7 +105,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden" name="kode_resep" value="{{ $kode }}" />
+                        <input type="hidden" name="kode_resep" value="{{ $kodeResep }}" />
                         <div class="form-group">
                             <label for="jumlah">Jumlah Pembelian</label>
                             <input type="number" id="jumlah" name="jumlah_obat" class="form-control" required>
