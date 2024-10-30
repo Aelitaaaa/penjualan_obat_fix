@@ -24,7 +24,7 @@
                         <tr>
                             <th>Kode Obat</th>
                             <th>Jumlah Obat</th>
-                            <th>keterangan</th>
+                            <th>Keterangan</th>
                             <th>Harga Satuan</th>
                             <th>Aksi</th>
                         </tr>
@@ -41,18 +41,17 @@
                     <tbody>
                         @foreach ($detailResep as $re)
                         <tr>
-                            <th>{{$re->kode_obat }}</th>
-                            <th>{{$re->jumlah_obat}}</th>
-                            <th>{{$re->keterangan}}</th>
-                            <th>{{$re->harga_satuan}}</th>
-                            <th>
-                               
-                                <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteModal{{$re->kode_resep}}">
+                            <td>{{ $re->kode_obat }}</td>
+                            <td>{{ $re->jumlah_obat }}</td>
+                            <td>{{ $re->keterangan }}</td>
+                            <td>{{ $re->harga_satuan }}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteModal{{ $re->id }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
-                            </th>
+                            </td>
                         </tr>
-                        <div class="modal fade" id="deleteModal{{ $re->kode_resep}}" tabindex="-1" role="dialog" aria-labelledby="deleteSuplierModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal{{ $re->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteSuplierModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -74,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                
+                        </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -106,7 +105,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden" name="kode_resep" value="{{$kode}}" />
+                        <input type="hidden" name="kode_resep" value="{{ $kodeResep }}" />
                         <div class="form-group">
                             <label for="jumlah">Jumlah Pembelian</label>
                             <input type="number" id="jumlah" name="jumlah_obat" class="form-control" required>
@@ -120,8 +119,8 @@
                             <input type="number" id="subtotal" name="total" class="form-control" required readonly>
                         </div>
                         <div class="form-group">
-                            <label for="subtotal">Keterangan</label>
-                            <input type="text" id="subtotal" name="keterangan" class="form-control">
+                            <label for="keterangan">Keterangan</label>
+                            <input type="text" id="keterangan" name="keterangan" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
