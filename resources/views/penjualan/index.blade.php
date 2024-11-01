@@ -30,41 +30,35 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center align-middle">No</th>
-                                            <th class="text-center align-middle">Kode Penjualan</th>
-                                            <th class="text-center align-middle"> Obat</th>
+                                            <th class="text-center align-middle">Kode Resep</th>
+                                            <th class="text-center align-middle">Obat</th>
                                             <th class="text-center align-middle">Jumlah Obat</th>
                                             <th class="text-center align-middle">Harga satuan</th>
                                             <th class="text-center align-middle">Total Penjualan</th>
-                                            <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th class="text-center align-middle">No</th>
-                                            <th class="text-center align-middle">Kode Penjualan</th>
-                                            <th class="text-center align-middle"> Obat</th>
+                                            <th class="text-center align-middle">Kode Resep</th>
+                                            <th class="text-center align-middle">Obat</th>
                                             <th class="text-center align-middle">Jumlah Obat</th>
                                             <th class="text-center align-middle">Harga satuan</th>
                                             <th class="text-center align-middle">Total Penjualan</th>
-                                            <th class="text-center align-middle">Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
+                                        @foreach ($penjualan as $key => $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>              
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-circle btn-sm mr-1">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </a>
-                                                </td>
+                                                <td class="text-center align-middle">{{ $key + 1 }}</td>
+                                                <td class="text-center align-middle">{{ $item->kode_resep }}</td>              
+                                                <td class="text-center align-middle">{{ $item->obat->nama_obat }}</td>
+                                                <td class="text-center align-middle">{{ $item->jumlah_obat }}</td>
+                                                <td class="text-center align-middle">{{ $item->harga_satuan }}</td>
+                                                <td class="text-center align-middle">{{ $item->total }}</td>
+                                            
                                             </tr>
-                                      
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
