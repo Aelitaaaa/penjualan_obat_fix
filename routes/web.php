@@ -17,6 +17,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailResepController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PenjualanController;
 use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 
 
@@ -102,12 +103,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('omset')->name('omset.')->group(function () {
         Route::get('/', [OmsetController::class, 'index'])->name('index');
-        Route::get('/omset-export', [OmsetController::class, 'export'])->name('export');
     });
 
-    Route::get('/penjualan-obat', function () {
-        return view('penjualan.index');
-    })->name('penjualan.index');
+    Route::get('/modal-export', [OmsetController::class, 'exportModal'])->name('modal.export');
+    
+    Route::get('/omset-export', [OmsetController::class, 'exportOmset'])->name('omset.export');
+
+    Route::get('/laba-export', [OmsetController::class, 'exportLaba'])->name('laba.export');
+
+    Route::get('/penjualan-obat', [PenjualanController::class, 'index'])->name('penjualan.index');
 
     
     Route::get('/dashboard', function () {

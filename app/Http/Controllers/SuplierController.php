@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Suplier;
 use Illuminate\Http\Request;
 
-use App\Exports\exportSuplier;
+use App\Exports\suplierExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SuplierController extends Controller
@@ -88,6 +88,6 @@ class SuplierController extends Controller
     public function export()
 {
     $filenames = 'data_suuplier (' .date('d-m-Y') . ').xlsx';
-    return Excel::download(new exportSuplier, $filenames);
+    return Excel::download(new suplierExport, $filenames);
 }
 }

@@ -14,10 +14,10 @@ class DetailResep extends Model
         'kode_resep',
         'kode_obat',
         'jumlah_obat',
-        'dosis',
         'keterangan',
         'harga_satuan',
-        'total'
+        'total',
+        'created_at'
     ];
 
     public function resep()

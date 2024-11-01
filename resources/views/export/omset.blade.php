@@ -1,5 +1,4 @@
 <table class="table table-bordered table-hover">
-
     <thead>
         <tr>
             <th colspan="4" class="text-center ">
@@ -9,24 +8,24 @@
         <tr>
             <th>No.</th>
             <th>Tanggal</th>
-            <th>Kode Pembelian</th>
-            <th>Total Pembelian</th>
+            <th>Kode Resep</th>
+            <th>Total Penjualan</th>
         </tr>
-        <tbody>
-            @foreach($data as $index => $pembelian)
-                <tr>
-
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $pembelian->created_at }}</td>
-                    <td>{{ $pembelian->kode_pembelian }}</td>
-                    <td>{{ $pembelian->total_pembelian }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-        <tfoot>
+    </thead>
+    <tbody>
+        @foreach ($data as $index => $penjualan)
             <tr>
-                <th class="text-center" colspan="3">Modal</th>
-                <th>{{ $total_modal }}</th>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $penjualan->created_at }}</td>
+                <td>{{ $penjualan->kode_resep}}</td>
+                <td>{{ $penjualan->total }}</td>
             </tr>
-        </tfoot>
+        @endforeach
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="text-center" colspan="3">Modal</th>
+            <th>{{ $total_omset }}</th>
+        </tr>
+    </tfoot>
 </table>

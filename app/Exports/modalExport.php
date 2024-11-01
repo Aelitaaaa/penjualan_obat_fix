@@ -7,15 +7,15 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
 
-class laporanExport implements FromView
+class modalExport implements FromView
 {
     private $start;
     private $end;
 
     public function __construct($start, $end)
     {
-        $this->start = Carbon::parse($start);
-        $this->end = Carbon::parse($end);
+        $this->start = Carbon::parse($start)->startOfDay();
+        $this->end = Carbon::parse($end)->endOfDay();
     }
 
     public function view(): View
@@ -31,7 +31,7 @@ class laporanExport implements FromView
             $this->end
         ])->sum('total_pembelian');
 
-        return view('export.omset', [
+        return view('export.modal', [
             'data' => $pembelian, 
             'start' => $this->start,
             'end' => $this->end,

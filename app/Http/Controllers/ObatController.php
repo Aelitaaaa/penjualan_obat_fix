@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Obat;
 use App\Models\Suplier;
 
-use App\Exports\exportObat;
+use App\Exports\obatExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -101,7 +101,7 @@ public function export()
 {
    
     $filenames = 'data_obat (' .date('d-m-Y') . ').xlsx';
-    return Excel::download(new exportObat, $filenames);
+    return Excel::download(new obatExport, $filenames);
 }
 
 

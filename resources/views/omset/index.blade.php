@@ -30,7 +30,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group mt-2">
+                                <div class="form-group mt-2 mb-5 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary"> Lihat Laporan</button>
                                 </div>
                               
@@ -38,45 +38,89 @@
                         </div>
                     </div>
                     @if ($start && $end)
-                    <a class="btn btn-success" href="{{ route('omset.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Export Excel (XLSX)</a>
+                    <button class="btn btn-success dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Export (XLSX)
+                      </button>
+                      <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route('modal.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Modal Export Excel (XLSX)</a>
+                        <a class="dropdown-item" href="{{ route('omset.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Omset Export Excel (XLSX)</a>
+                        <a class="dropdown-item" href="{{ route('laba.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Laba Export Excel (XLSX)</a>
+                      </div>
+
                         <div class="row m-1 mb-8">
                             
                             <div class="col-lg m-1">
-                                <h2 class="text-center mb-3 mt-2">Laporan Omset</h2>
-                                <h4 class="text-center mb-3">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h4>
-                                <div class="table-responsive">
+                                <h4 class="text-center mb-3 mt-2">Laporan Pembelian</h4>
+                                <h6 class="text-center mb-3">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h6>
+                                <div class="table-responsive mb-4">
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>Tanggal</th>
-                                                <th>Kode Pembelian</th>
-                                                <th>Total Pembelian</th>
+                                                <th class="text-center align-middle">No.</th>
+                                                <th class="text-center align-middle">Tanggal</th>
+                                                <th class="text-center align-middle">Kode Pembelian</th>
+                                                <th class="text-center align-middle">Total Pembelian</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data as $index => $pembelian)
+                                            @foreach ($data_pembelian as $index => $pembelian)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $pembelian->created_at }}</td>
-                                                    <td>{{ $pembelian->kode_pembelian }}</td>
-                                                    <td>{{ number_format($pembelian->total_pembelian, 0, ',', '.') }}</td>
+                                                    <td class="text-center align-middle">{{ $index + 1 }}</td>
+                                                    <td class="text-center align-middle">{{ $pembelian->created_at }}</td>
+                                                    <td class="text-center align-middle">{{ $pembelian->kode_pembelian }}</td>
+                                                    <td class="text-center align-middle">{{ number_format($pembelian->total_pembelian, 0, ',', '.') }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                  
+                            </div>
+                            <div class="col-lg m-1">
+                                <h4 class="text-center mb-3 mt-2">Laporan Penjualan</h4>
+                                <h6 class="text-center mb-3">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h6>
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                               <th class="text-center align-middle">No.</th>
+                                               <th class="text-center align-middle">Tanggal</th>
+                                               <th class="text-center align-middle">Kode Penjualan</th>
+                                               <th class="text-center align-middle">Total Penjualan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data_penjualan as $index => $penjualan)
+                                                <tr>
+                                                    <td class="text-center align-middle">{{ $index + 1 }}</td>
+                                                    <td class="text-center align-middle">{{ $penjualan->created_at }}</td>
+                                                    <td class="text-center align-middle">{{ $penjualan->kode_resep }}</td>
+                                                    <td class="text-center align-middle">{{ number_format($penjualan->total, 0, ',', '.') }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
+                            
+                            
                         </div>
                         <div class="row mx-1 mb-9 mt-0 pb-xl-3">
-                            <div class="col-lg-4">
-                                <div class="p-3 rounded bg-success total" id="total_modal" name="total_modal">
-                                    Total Modal: Rp. {{ number_format($total_modal, 0, ',', '.') }}
+                            <div class="col-lg-3">
+                                <div class="p-3 rounded bg-success total text-center" id="total_modal" name="total_modal">
+                                    Modal: Rp. {{ number_format($total_modal, 0, ',', '.') }}
                                 </div>
                             </div>
-                            <div class="col-lg-4 ml-auto">
-                                <div class="p-3 rounded bg-success total" id="total_keuntungan" name="total_keuntungan">
-                                    Total Keuntungan: Rp.
+                            <div class="col-lg-3 ml-auto">
+                                <div class="p-3 rounded bg-success total text-center" id="total_keuntungan" name="total_keuntungan">
+                                    Omset: Rp. {{ number_format($omset, 0, ',', '.') }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 ml-auto">
+                                <div class="p-3 rounded bg-success total text-center" id="total_keuntungan" name="total_keuntungan">
+                                    Laba: Rp.  {{ number_format($laba, 0, ',', '.') }}
                                 </div>
                             </div>
                         </div>

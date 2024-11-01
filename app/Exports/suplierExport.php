@@ -2,21 +2,18 @@
 
 namespace App\Exports;
 
-use App\Models\Obat;
+use App\Models\Suplier;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 
-
-class exportObat implements FromView
+class suplierExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-
     public function view(): View
     {
-        $request = Obat::all();
-        return view('export.obat', ['obat' => $request]);
+        $request = Suplier::all();
+        return view('export.suplier', ['supliers' => $request]);
     }
-
 }
