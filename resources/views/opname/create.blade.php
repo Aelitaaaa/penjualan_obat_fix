@@ -92,12 +92,12 @@ $(document).ready(function() {
             // Set nilai minus
             $('#minus').val(totalMinus);
 
-            // Hitung total kerugian
-            if (hargaBeli && totalMinus !== 0) {
-                var totalHarga = hargaBeli * Math.abs(totalMinus); // Gunakan Math.abs untuk mendapatkan nilai absolut
+            // Hitung total kerugian hanya jika totalMinus tidak negatif
+            if (hargaBeli && totalMinus > 0) {
+                var totalHarga = hargaBeli * totalMinus;
                 $('#total_kerugian').val(totalHarga);
             } else {
-                $('#total_kerugian').val(0);
+                $('#total_kerugian').val(0); // jika minus negatif, kerugian adalah 0
             }
         } else {
             $('#minus').val('');
@@ -106,8 +106,8 @@ $(document).ready(function() {
     });
 
 });
-
 </script>
+
 
 
 

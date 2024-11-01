@@ -53,16 +53,8 @@
                               </thead>
                               <tfoot>
                                 <tr>
-                                  <th class="text-center align-middle">No</th>
-                                  <th class="text-center align-middle">Tanggal Opname</th>
-                                  <th class="text-center align-middle">Nama Obat</th>
-                                  <th class="text-center align-middle">Jumlah Sistem</th>
-                                  <th class="text-center align-middle">Jumlah Fisik</th>
-                                  <th class="text-center align-middle">Minus</th>
-                                  <th class="text-center align-middle">Harga</th>
-                                  <th class="text-center align-middle">Kerugian</th>
-                                  <th class="text-center align-middle">Terakhir Diperbarui</th>
-                                  <th class="text-center align-middle">Aksi</th>
+                                  <th class="text-center align-middle"colspan="7">Total Kerugian</th>
+                                  <th  colspan="3">Rp. {{ number_format($totalkerugian, 0, ',', '.') }}</th>
                                 </tr>
                               </tfoot>
                               <tbody>

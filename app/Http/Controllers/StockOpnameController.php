@@ -12,12 +12,14 @@ use Maatwebsite\Excel\Facades\Excel;
 class StockOpnameController extends Controller
 {
     public function index()
-    {
-        $stockOpname = StockOpname::all();
-        $obat = Obat::all();
-        return view('opname.index', compact('stockOpname', 'obat')); 
+{
+    $stockOpname = StockOpname::all();
+    $obat = Obat::all();
+    $totalkerugian = $stockOpname->sum('total_kerugian'); // Wrap 'total_kerugian' in quotes
 
-    }
+    return view('opname.index', compact('stockOpname', 'obat', 'totalkerugian')); 
+}
+
 
     public function create()
     {
