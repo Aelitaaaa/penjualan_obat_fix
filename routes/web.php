@@ -17,6 +17,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailResepController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PenjualanController;
 use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 
@@ -113,6 +114,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/penjualan-obat', [PenjualanController::class, 'index'])->name('penjualan.index');
 
+    Route::resource('laporan', LaporanController::class);
+
     
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -142,10 +145,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembayaran', function () {
         return view('pembayaran.index');
     })->name('pembayaran.index');
-
-    Route::get('/laporan', function () {
-        return view('laporan.index');
-    })->name('laporan.index');
 
     // Route::get('/resep', function () {
     //     return view('resep');

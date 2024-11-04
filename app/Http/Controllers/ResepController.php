@@ -24,7 +24,6 @@ class ResepController extends Controller
     {
         
         $request->validate([
-            'kode_resep' => 'required',
             'nama_resep' => 'required',
             'id_rekam_medis' => 'required',
         ]);
@@ -32,6 +31,8 @@ class ResepController extends Controller
         $resep = Resep::create([
             'kode_resep' => $request->kode_resep,
             'created_at' => now(),
+            'nama_resep' => $request->nama_resep,
+            'id_rekam_medis' => $request->id_rekam_medis
         ]);
 
 
