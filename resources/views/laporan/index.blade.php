@@ -35,6 +35,32 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Laporan</h1>
                     </div>
+
+                    <!-- Date Filter Form -->
+                    <div class="row mb-4">
+                        <div class="col-lg">
+                            <form method="GET" action="{{ route('laporan.index') }}">
+                                <div class="row">
+                                    <div class="col-lg mt-4">
+                                        <div class="form-group">
+                                            <label for="dari_tanggal">Dari Tanggal</label>
+                                            <input type="date" name="dari_tanggal" class="form-control" id="dari_tanggal" value="{{ request('dari_tanggal') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg mt-4">
+                                        <div class="form-group">
+                                            <label for="sampai_tanggal">Sampai Tanggal</label>
+                                            <input type="date" name="sampai_tanggal" class="form-control" id="sampai_tanggal" value="{{ request('sampai_tanggal') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2 mb-5 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Lihat Laporan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -70,21 +96,20 @@
                                         <tr>
                                             <td>{{$d->id}}</td>
                                             <td>{{$d->rekamMedis->pasien->nama_pasien}}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{$d->rekamMedis->dokter->nama_dokter}}</td>
+                                            <td>{{ number_format($d->biaya_obat, 0, ',', '.') }}</td>
+                                            <td>{{ number_format($d->biaya_dokter, 0, ',', '.') }}</td>
+                                            <td>{{ number_format($d->total_biaya, 0, ',', '.') }}</td>
+                                            <td>{{ $d->created_at->format('d-m-y') }}</td>
                                         </tr>
                                         @endforeach
-                                        <!-- Example rows -->
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.container -fluid -->
 
             </div>
             <!-- End of Main Content -->
@@ -138,6 +163,5 @@
         $('.editable-select').editableSelect();
     </script>
     
-    </body>
-    </html>
-    
+</body>
+</html>
