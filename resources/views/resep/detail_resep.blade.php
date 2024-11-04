@@ -10,14 +10,17 @@
     <div id="wrapper">
         @include('template.sidebar')
         <div class="card-body">
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahDataModal">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah Data</span>
-                </button>
-            </div>
+            <div class="d-flex-end">
+                <button class="btn btn-primary mb-4 mt-4" style="margin-right: 895px" onclick="window.location.href='{{ route('resep.index') }}'">
+                    <i class="fas fa-fw fa-arrow-left"></i> Kembali</button>
+                
+                    <button class="btn btn-primary mb-4 mt-4" data-toggle="modal" data-target="#tambahDataModal">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Data</span>
+                    </button>
+                </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

@@ -146,6 +146,8 @@ Route::middleware(['auth'])->group(function () {
         return view('pembayaran.index');
     })->name('pembayaran.index');
 
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+
     // Route::get('/resep', function () {
     //     return view('resep');
     // })->name('resep');

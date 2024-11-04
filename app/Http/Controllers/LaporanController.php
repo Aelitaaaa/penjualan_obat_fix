@@ -13,20 +13,22 @@ use Illuminate\Http\Request;
 class LaporanController extends Controller
 {
     public function index(Request $request)
-    {
-        $start = $request->query('start');
-        $end = $request->query('end');
+{
+    $start = $request->query('dari_tanggal');
+    $end = $request->query('sampai_tanggal');
 
+    $data = Pembayaran::orderBy('created_at', 'desc')->get();
+
+    if ($start && $end) {
+        // Ambil data laporan berdasarkan rentang tanggal
+        $data = Pembayaran::whereBetween('created_at', [$start, $end])->orderBy('created_at', 'desc')->get();
+    } else {
+        // Jika tidak ada filter tanggal, ambil semua data
         $data = Pembayaran::orderBy('created_at', 'desc')->get();
-
-        if($start && $end){
-            $data = Pembayaran::whereBetween('created_at', [$start, $end])->orderBy('created_at', 'desc')->get();
-        }
-    
-        return view('laporan.index', compact('data'));
     }
-    
 
+    return view('laporan.index', compact('data', 'start', 'end'));
+}
     /**
      * Show the form for creating a new resource.
      *
