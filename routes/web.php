@@ -114,6 +114,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/penjualan-obat', [PenjualanController::class, 'index'])->name('penjualan.index');
 
+    Route::get('/penjualan-export', [PenjualanController::class, 'export'])->name('penjualan.export');
+
     Route::resource('laporan', LaporanController::class);
 
     
