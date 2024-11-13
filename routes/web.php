@@ -117,6 +117,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penjualan-export', [PenjualanController::class, 'export'])->name('penjualan.export');
 
     Route::resource('laporan', LaporanController::class);
+    Route::get('/laporan-export', [LaporanController::class, 'export'])->name('laporan.export');
 
     
     Route::get('/dashboard', function () {

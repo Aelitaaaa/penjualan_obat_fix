@@ -76,18 +76,14 @@
                                     <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->updated_at }}</td>
                                     <td class="text-center" style="vertical-align: middle;">  
-                                      <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editOpnameModal{{ $stockOpnames->id_opname }}">
-                                        <i class="fas fa-pen"></i>
-                                     </a>
-                                 
                                       <button type="button" class="btn btn-danger btn-circle mt-1 btn-sm" data-toggle="modal" data-target="#deleteOpnameModal{{ $stockOpnames->id_opname }}">
                                           <i class="fas fa-trash"></i>
                                       </button>
                                       @include('opname.delete')  
                                         
-                                  </td>   </tr>  
-                                  @include('opname.edit')
-                                
+                                  </td>  
+                                 </tr>  
+ 
                                 @endforeach
                               </tbody>
                             </table>

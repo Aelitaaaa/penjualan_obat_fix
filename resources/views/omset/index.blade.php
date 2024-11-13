@@ -42,9 +42,9 @@
                         Export (XLSX)
                       </button>
                       <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('modal.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Modal Export Excel (XLSX)</a>
+                        <a class="dropdown-item" href="{{ route('modal.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">HPP Export Excel (XLSX)</a>
                         <a class="dropdown-item" href="{{ route('omset.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Omset Export Excel (XLSX)</a>
-                        <a class="dropdown-item" href="{{ route('laba.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Laba Export Excel (XLSX)</a>
+                        <a class="dropdown-item" href="{{ route('laba.export', ['dari_tanggal' => isset($start) ? $start->format('Y-m-d') : '', 'sampai_tanggal' => isset($end) ? $end->format('Y-m-d') : '']) }}">Laba Kotor Export Excel (XLSX)</a>
                       </div>
 
                         <div class="row m-1 mb-8">
@@ -110,7 +110,7 @@
                         <div class="row mx-1 mb-9 mt-0 pb-xl-3">
                             <div class="col-lg-3">
                                 <div class="p-3 rounded bg-success total text-center" id="total_modal" name="total_modal">
-                                    Modal: Rp. {{ number_format($total_modal, 0, ',', '.') }}
+                                    HPP: Rp. {{ number_format($total_modal, 0, ',', '.') }}
                                 </div>
                             </div>
                             <div class="col-lg-3 ml-auto">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="col-lg-3 ml-auto">
                                 <div class="p-3 rounded bg-success total text-center" id="total_keuntungan" name="total_keuntungan">
-                                    Laba: Rp.  {{ number_format($laba, 0, ',', '.') }}
+                                    Laba Kotor: Rp.  {{ number_format($laba, 0, ',', '.') }}
                                 </div>
                             </div>
                         </div>
