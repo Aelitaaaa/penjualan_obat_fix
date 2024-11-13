@@ -32,19 +32,28 @@ class DetailResepController extends Controller
         $request->validate([
             'total' => 'required',
             'keterangan' => 'required',
+            'kode_obat' => 'required',
+            'jumlah_obat' => 'required|integer'
         ]);
-
-
+    
+        // Cari obat berdasarkan kode_obat
+        $obat = Obat::where('kode_obat', $request->kode_obat)->first();
+    
+        // Validasi stok obat
+        if (!$obat || $obat->jumlah_obat < $request->jumlah_obat) {
+            return redirect()->back()->with('error', 'Stok obat tidak mencukupi');
+        }
+    
+        // Kurangi stok obat
+        $obat->jumlah_obat -= $request->jumlah_obat;
+        $obat->save();
+    
+        // Simpan detail resep
         $detail = DetailResep::create($request->all());
-        return redirect()->route('detail_resep.index', ['kode'=>$detail->kode_resep])->with('success', 'Detail resep berhasil ditambahkan');
-    }
-
-    public function edit(DetailResep $detailResep)
-    {
-        $reseps = Resep::all();
-        $obats = Obat::all();
-        return view('detail_resep.edit', compact('detailResep', 'resep', 'obat'));
-    }
+    
+        return redirect()->route('detail_resep.index', ['kode' => $detail->kode_resep])->with('success', 'Detail resep berhasil ditambahkan');
+    }    
+    
 
     public function update(Request $request, DetailResep $detailResep)
     {
@@ -61,8 +70,20 @@ class DetailResepController extends Controller
     }
 
     public function destroy(DetailResep $detailResep)
-    {
-        $detailResep->delete();
-        return redirect()->back()->with('success', 'Detail resep berhasil dihapus');
+{
+    // Cari data obat berdasarkan kode_obat di detail resep
+    $obat = Obat::where('kode_obat', $detailResep->kode_obat)->first();
+
+    if ($obat) {
+        // Kembalikan stok obat
+        $obat->jumlah_obat += $detailResep->jumlah_obat;
+        $obat->save();
     }
+
+    // Hapus detail resep
+    $detailResep->delete();
+
+    return redirect()->back()->with('success', 'Detail resep berhasil dihapus');
+}
+
 }
