@@ -13,18 +13,18 @@
             <div id="content">
                 @include('template.navbar')
 
-                <!-- Pesan sukses -->
-                @if (session('success'))
+                <!-- Pesan suksess
+                p@if (session('success'))
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                p { { session('success') }}
                 </div>
-                @endif
+                p@endif 
 
-                @if (session('error'))
+                p@if (session('error'))
                 <div class="alert alert-danger">
-                {{ session('error') }}
+                { { session('error') }}
                 </div>
-                @endif
+                p@endif  -->
 
                 <div class="container-fluid">
 

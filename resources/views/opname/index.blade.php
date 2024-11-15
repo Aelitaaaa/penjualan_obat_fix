@@ -72,8 +72,8 @@
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_sistem }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->jumlah_fisik }}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->minus }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.') }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.') }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->harga_obat, 0, ',', '.')}}</td>
+                                    <td class="text-center" style="vertical-align: middle;">Rp. {{ number_format($stockOpnames->total_kerugian, 0, ',', '.')}}</td>
                                     <td class="text-center" style="vertical-align: middle;">{{ $stockOpnames->updated_at }}</td>
                                     <td class="text-center" style="vertical-align: middle;">  
                                       <button type="button" class="btn btn-danger btn-circle mt-1 btn-sm" data-toggle="modal" data-target="#deleteOpnameModal{{ $stockOpnames->id_opname }}">

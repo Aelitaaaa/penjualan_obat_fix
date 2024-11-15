@@ -75,6 +75,16 @@ class StockOpnameController extends Controller
     public function destroy($id)
     {
         $stockOpnames = StockOpname::findOrFail($id); 
+        
+       
+    $obat = Obat::where('kode_obat', $stockOpnames->kode_obat)->first();
+
+    if ($obat) {
+        // Kembalikan stok obat
+        $obat->jumlah_obat += $stockOpnames->minus;
+        $obat->save();
+    }
+
         $stockOpnames->delete(); 
 
         return redirect()->back()->with('success', 'Opname berhasil dihapus.');

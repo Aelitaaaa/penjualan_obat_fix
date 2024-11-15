@@ -28,7 +28,7 @@
                     </script> 
                     <div class="form-group">
                         <label>Kode Obat</label>
-                        <input type="text" id="kode_obat" name="kode_obat" class="form-control" required>
+                        <input type="text" id="kode_obat" name="kode_obat" class="form-control" maxlength="7" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Obat</label>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group">
                         <label>Stok Obat</label>
-                        <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" required>
+                        <input type="number" id="jumlah_obat" name="jumlah_obat" class="form-control" value="0" readonly>
                     </div>
                     <div class="form-group">
                         <label>Unit</label>
@@ -59,5 +59,6 @@
         </form>
     </div>
 </div>
+
 
 
