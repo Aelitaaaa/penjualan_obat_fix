@@ -18,6 +18,7 @@ class LaporanController extends Controller
     $end = $request->query('sampai_tanggal');
 
     $data = Pembayaran::orderBy('created_at', 'desc')->get();
+    // dd($data);
 
     if ($start && $end) {
         // Ambil data laporan berdasarkan rentang tanggal

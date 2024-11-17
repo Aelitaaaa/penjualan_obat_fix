@@ -1,4 +1,4 @@
-<?php
+<?Php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDoktersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('dokters', function (Blueprint $table) {
@@ -19,16 +14,11 @@ class CreateDoktersTable extends Migration
             $table->enum('jenis', ['umum', 'spesialis'])->nullable();
             $table->string('spesialis', 50)->nullable();
             $table->string('telp', 15)->unique();
-            $table->unsignedBigInteger('tarif');
+            $table->bigInteger('tarif');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('dokters');

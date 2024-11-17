@@ -42,3 +42,5 @@
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
+@include('template.script')

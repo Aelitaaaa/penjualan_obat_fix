@@ -30,7 +30,6 @@ class DetailResepController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'total' => 'required',
             'keterangan' => 'required',
         ]);
 

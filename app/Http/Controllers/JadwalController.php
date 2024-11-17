@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Models\Dokter;
-use app\Models\Pasien;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+
 
 class JadwalController extends Controller
 {

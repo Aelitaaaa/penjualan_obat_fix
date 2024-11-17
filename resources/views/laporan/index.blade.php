@@ -97,8 +97,8 @@
                                             <td>{{$d->id}}</td>
                                             <td>{{$d->rekamMedis->pasien->nama_pasien}}</td>
                                             <td>{{$d->rekamMedis->dokter->nama}}</td>
-                                            <td>{{ number_format($d->rekamMedis->resep->detailResep->sum('total'), 0, ',', '.') }}</td>
-                                            <td>{{ number_format($d->total_biaya - $d->rekamMedis->resep->detailResep->sum('total'), 0, ',', '.') }}</td>
+                                            <td>{{ number_format($d->rekamMedis->resep->detailResep->sum('total_biaya'), 0, ',', '.') }}</td>
+                                            <td>{{ number_format($d->total_biaya - $d->rekamMedis->resep->detailResep->sum('total_biaya'), 0, ',', '.') }}</td>
                                             <td>{{ number_format($d->total_biaya, 0, ',', '.') }}</td>
                                             <td>{{ $d->created_at->format('Y-m-d') }}</td>
 

@@ -10,13 +10,14 @@ class CreateDetailResepTable extends Migration
     {
         Schema::create('detail_resep', function (Blueprint $table) {
             $table->id();
-            $table->char('kode_resep',10)->constrained('resep', 'kode_resep')->onDelete('cascade');
-            $table->string('kode_obat', 7)->constrained('obat', 'kode_obat')->onDelete('cascade');
+            $table->char('kode_resep', 10);
+            $table->char('kode_obat', 7);
             $table->integer('jumlah_obat');
-            $table->string('dosis');
-            $table->text('keterangan')->nullable();
-            $table->decimal('harga_satuan', 10, 2);
+            $table->string('keterangan');
             $table->timestamps();
+
+            $table->foreign('kode_resep')->references('kode_resep')->on('resep')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 
