@@ -54,10 +54,23 @@ class ResepController extends Controller
     }
 
     public function destroy($kode_resep)
-    {
-        $resep = Resep::findOrFail($kode_resep);
-        $resep->delete();
+{
+    $resep = Resep::with('detailResep')->findOrFail($kode_resep);
 
-        return redirect()->route('resep.index');
+    // Mengembalikan stok obat untuk setiap detail resep
+    foreach ($resep->detailResep as $detail) {
+        $obat = Obat::where('kode_obat', $detail->kode_obat)->first();
+        if ($obat) {
+            // Kembalikan stok obat
+            $obat->jumlah_obat += $detail->jumlah_obat;
+            $obat->save();
+        }
     }
+
+    // Hapus resep beserta detail resepnya
+    $resep->delete();
+
+    return redirect()->route('resep.index')->with('success', 'Resep Berhasil Dihapus!');
+}
+
 }

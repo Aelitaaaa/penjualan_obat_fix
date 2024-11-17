@@ -60,12 +60,12 @@
                             </form>
                         </div>
                     </div>
-
+                    @if ($start && $end)
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Laporan</h6>
+                        <div class="d-sm-flex align-items-center mb-4">
+                            <a class="btn btn-success" href="{{ route('laporan.export', ['dari_tanggal' => request('dari_tanggal'), 'sampai_tanggal' => request('sampai_tanggal')])  }}">Export Excel (XLSX)</a>
                         </div>
+<<<<<<< HEAD
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -109,7 +109,43 @@
                             </div>
                         </div>
                     </div>
+=======
+                                <h2 class="text-center">Laporan Rawat-Jalan</h4>
+                                <h3 class="text-center">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h6>
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No Laporan</th>
+                                                <th>Pasien</th>
+                                                <th>Dokter</th>
+                                                <th>Biaya Obat</th>
+                                                <th>Biaya Dokter</th>
+                                                <th>Total Biaya</th>
+                                                <th>Tanggal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($data as $d)
+                                            <tr>
+                                                <td>{{$d->id}}</td>
+                                                <td>{{$d->rekamMedis->pasien->nama_pasien}}</td>
+                                                <td>{{$d->rekamMedis->dokter->nama}}</td>
+                                                <td>{{ number_format($d->rekamMedis->resep->detailResep->sum('total'), 0, ',', '.') }}</td>
+                                                <td>{{ number_format($d->total_biaya - $d->rekamMedis->resep->detailResep->sum('total'), 0, ',', '.') }}</td>
+                                                <td>{{ number_format($d->total_biaya, 0, ',', '.') }}</td>
+                                                <td>{{ $d->created_at->format('Y-m-d') }}</td>
+    
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+              
+                    @endif
+>>>>>>> e932ec1a680b23e63cd87d4208aa1a3db620c640
                 </div>
+
                 <!-- /.container -fluid -->
 
             </div>

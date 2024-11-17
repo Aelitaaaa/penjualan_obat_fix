@@ -55,7 +55,7 @@ class OmsetController extends Controller
     {
         $start = $request->query('dari_tanggal');
         $end = $request->query('sampai_tanggal');
-        $nama_modal = 'laporan_modal (' . date('d-m-Y') . ').xlsx';
+        $nama_modal = 'laporan_HPP (' . date('d-m-Y') . ').xlsx';
 
         return Excel::download(new modalExport($start, $end), $nama_modal);
         
@@ -71,11 +71,11 @@ class OmsetController extends Controller
         
     }
 
-    public function exportLaba(Request $request)
+    public function export(Request $request)
     {
         $start = $request->query('dari_tanggal');
         $end = $request->query('sampai_tanggal');
-        $nama_laba = 'laporan_laba (' . date('d-m-Y') . ').xlsx';
+        $nama_laba = 'laporan_laba_kotor (' . date('d-m-Y') . ').xlsx';
 
         return Excel::download(new labaExport($start, $end), $nama_laba);
         

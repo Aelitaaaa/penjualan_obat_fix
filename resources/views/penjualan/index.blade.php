@@ -14,11 +14,12 @@
             <div id="content">
                 @include('template.navbar')
                 <div class="container-fluid">
-                    
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Penjualan</h1>
+                        <a class="btn btn-success" href="{{ route('penjualan.export') }}">Export Excel (XLSX)</a>
                     </div>
+                   
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

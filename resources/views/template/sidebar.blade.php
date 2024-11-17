@@ -24,7 +24,7 @@
 
     <!-- Heading -->
 <div class="sidebar-heading">
-    Interface
+    Rawat-Jalan
 </div>
 
 <!-- Nav Item - Informasi Collapse Menu -->
@@ -72,20 +72,17 @@
         </div>
 
         <!-- Nav Item - Obat Collapse Menu -->
-        <li class="nav-item {{ request()->is('obat*', 'suplier*', 'penjualan*', 'opname*') ? 'active' : '' }}">
-        <a class="nav-link collapsed {{ request()->is('obat*', 'suplier*', 'penjualan*', 'opname*') ? 'active' : '' }}" href="#" data-toggle="collapse" data-target="#collapseObat"
+        <li class="nav-item {{ request()->is('obat*', 'suplier*') ? 'active' : '' }}">
+        <a class="nav-link collapsed {{ request()->is('obat*', 'suplier*') ? 'active' : '' }}" href="#" data-toggle="collapse" data-target="#collapseObat"
             aria-expanded="true" aria-controls="collapseInObat">
             <i class="fas fa-fw fa-notes-medical"></i>
-            <span>Obat</span>
+            <span>Master Data</span>
         </a>
-        <div id="collapseObat" class="collapse {{ request()->is('obat*', 'suplier*', 'penjualan*', 'opname*') ? 'show' : '' }}" aria-labelledby="headingObat" data-parent="#accordionSidebar">
+        <div id="collapseObat" class="collapse {{ request()->is('obat*', 'suplier*') ? 'show' : '' }}" aria-labelledby="headingObat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Informasi Detail:</h6>
                 <a class="collapse-item {{ request()->routeIs('obat.index') ? 'active' : '' }}" href="{{ route('obat.index') }}">Obat</a>
                 <a class="collapse-item {{ request()->routeIs('suplier.index') ? 'active' : '' }}" href="{{ route('suplier.index') }}">Supplier</a>
-               
-                <a class="collapse-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan Obat</a>
-                <a class="collapse-item {{ request()->routeIs('opname.index') ? 'active' : '' }}" href="{{ route('opname.index') }}">Laporan Opname</a>
             </div>
         </div>
         </li>
@@ -93,15 +90,26 @@
         <li class="nav-item {{ request()->routeIs('pembelian.index') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('pembelian.index') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Pembelian</span></a>
+                <span>Pembelian Obat</span></a>
+        </li>
+        <li class="nav-item {{ request()->routeIs('penjualan.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('penjualan.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Penjualan Obat</span></a>
         </li>
 
-        <!-- Nav Item -  Siswa -->
+        <li class="nav-item {{ request()->routeIs('opname.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('opname.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Stok Opname Obat</span></a>
+        </li>
+
+       
+        <!-- Nav Item -  laporan -->
         <li class="nav-item {{ request()->routeIs('omset.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('omset.index') }}">
-        <i class="fas fa-fw fa-folder-open"></i>
-        <span>Laporan Omset</span>
-        </a>
+            <a class="nav-link" href="{{ route('omset.index') }}">
+                <i class="fas fa-fw fa-folder-open"></i>
+                 <span>Laporan Omset</span></a>
         </li>
 
 

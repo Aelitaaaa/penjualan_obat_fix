@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dokter;
-use App\Models\Jadwal;
-use App\Models\Laporan;
-use App\Models\Pasien;
 use App\Models\Pembayaran;
-use App\Models\RekamMedis;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Exports\laporanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -22,7 +20,10 @@ class LaporanController extends Controller
 
     if ($start && $end) {
         // Ambil data laporan berdasarkan rentang tanggal
-        $data = Pembayaran::whereBetween('created_at', [$start, $end])->orderBy('created_at', 'desc')->get();
+        $data = Pembayaran::whereBetween('created_at', [
+            $start = Carbon::parse($start)->startOfDay(),
+            $end = Carbon::parse($end)->endOfDay()
+            ])->get();
     } else {
         // Jika tidak ada filter tanggal, ambil semua data
         $data = Pembayaran::orderBy('created_at', 'desc')->get();
@@ -122,5 +123,20 @@ class LaporanController extends Controller
     {
         $laporan->delete();
         return redirect()->route('laporan.index')->with('success', 'Data Laporan berhasil dihapus.');
+        
+    }
+
+    public function export(Request $request)
+    {
+        $start = $request->query('dari_tanggal');
+        $end = $request->query('sampai_tanggal');
+        $nama_modal = 'laporan_rawatjalan (' . date('d-m-Y') . ').xlsx';
+
+        \Log::info("Dari Tanggal: " . $start);
+        \Log::info("Sampai Tanggal: " . $end);
+    
+
+        return Excel::download(new laporanExport($start, $end), $nama_modal);
+        
     }
 }

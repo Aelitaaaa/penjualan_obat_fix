@@ -33,14 +33,14 @@
     <tfoot>
         <tr>
             <th></th>
-            <th class="text-center" colspan="2">Modal:</th>
+            <th class="text-center" colspan="2">HPP:</th>
             <th> {{$modal}}</th>
             <th class="text-center" colspan="2">Omset:</th>
             <th> {{$omset}}</th>
         </tr>
     <tr>
         <th></th>
-        <th colspan="7">Laba Keuntungan: {{$laba}}</th>
+        <th colspan="7">Laba kotor: {{$laba}}</th>
     </tr>
 </tfoot>    
 </table>
