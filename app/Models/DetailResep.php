@@ -15,8 +15,6 @@ class DetailResep extends Model
         'kode_obat',
         'jumlah_obat',
         'keterangan',
-        'harga_satuan',
-        'total',
         'created_at'
     ];
 
