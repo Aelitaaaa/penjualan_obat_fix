@@ -13,6 +13,8 @@ class CreateDetailResepTable extends Migration
             $table->char('kode_resep', 10);
             $table->char('kode_obat', 7);
             $table->integer('jumlah_obat');
+            $table->decimal('harga_satuan', 10, 2);
+            $table->decimal('total', 10, 2);
             $table->string('keterangan');
             $table->timestamps();
 
