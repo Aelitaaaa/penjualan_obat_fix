@@ -22,6 +22,11 @@ class CreatePenjualanObatTable extends Migration
             $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('restrict')->onUpdate('restrict');
         });
         
+        Schema::table('penjualan_obat', function (Blueprint $table) {
+            DB::statement('ALTER TABLE penjualan_obat 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

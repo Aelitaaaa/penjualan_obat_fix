@@ -19,6 +19,13 @@ class CreateDetailPenjualanTable extends Migration
             $table->timestamps();
             $table->unique(['kode_penjualan', 'kode_obat']);
         });
+
+
+        Schema::table('detail_penjualan', function (Blueprint $table) {
+            DB::statement('ALTER TABLE detail_penjualan 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

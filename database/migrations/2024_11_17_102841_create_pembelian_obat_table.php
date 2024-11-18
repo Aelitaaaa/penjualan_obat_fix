@@ -16,7 +16,16 @@ class CreatePembelianObatTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('pembelian_obat', function (Blueprint $table) { $table->unique(['id_pembelian', 'kode_suplier']); });
+        Schema::table('pembelian_obat', function (Blueprint $table) { 
+            $table->unique(['id_pembelian', 'kode_suplier']); 
+        });
+
+
+        Schema::table('pembelian_obat', function (Blueprint $table) {
+            DB::statement('ALTER TABLE pembelian_obat 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

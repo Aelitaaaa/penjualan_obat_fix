@@ -17,7 +17,16 @@ class CreateSuplierTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('suplier', function (Blueprint $table) { $table->unique('id_suplier'); });
+        Schema::table('suplier', function (Blueprint $table) { 
+            $table->unique('id_suplier'); 
+        });
+
+
+        Schema::table('suplier', function (Blueprint $table) {
+            DB::statement('ALTER TABLE suplier 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

@@ -17,6 +17,13 @@ class CreateDoktersTable extends Migration
             $table->bigInteger('tarif');
             $table->timestamps();
         });
+
+
+        Schema::table('dokters', function (Blueprint $table) {
+            DB::statement('ALTER TABLE dokters 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

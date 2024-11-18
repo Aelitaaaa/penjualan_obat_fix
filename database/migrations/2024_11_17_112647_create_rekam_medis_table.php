@@ -23,7 +23,16 @@ class CreateRekamMedisTable extends Migration
         });
         
 
-        Schema::table('rekam_medis', function (Blueprint $table) { $table->unique('id'); });
+        Schema::table('rekam_medis', function (Blueprint $table) { 
+            $table->unique('id'); 
+        });
+
+
+        Schema::table('rekam_medis', function (Blueprint $table) {
+            DB::statement('ALTER TABLE rekam_medis 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

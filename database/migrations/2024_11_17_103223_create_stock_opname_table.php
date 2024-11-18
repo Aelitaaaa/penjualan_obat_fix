@@ -20,7 +20,16 @@ class CreateStockOpnameTable extends Migration
             $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('restrict')->onUpdate('restrict');
         });
 
-        Schema::table('stock_opname', function (Blueprint $table) { $table->unique('id_opname'); });
+        Schema::table('stock_opname', function (Blueprint $table)
+         { $table->unique('id_opname'); 
+        });
+
+
+        Schema::table('stock_opname', function (Blueprint $table) {
+            DB::statement('ALTER TABLE stock_opname 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

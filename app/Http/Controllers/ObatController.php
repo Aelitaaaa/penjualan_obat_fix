@@ -65,7 +65,7 @@ public function destroy($id)
     // Hapus obat
     $obat->delete();
 
-    return redirect()->route('obat.index')->with('success', 'Obat dan data opname terkait berhasil dihapus.');
+    return redirect()->route('obat.index')->with('success', 'Obat berhasil dihapus.');
 }
 
 

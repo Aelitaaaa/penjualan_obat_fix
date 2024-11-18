@@ -19,6 +19,13 @@ class CreateDetailResepTable extends Migration
             $table->foreign('kode_resep')->references('kode_resep')->on('resep')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('restrict')->onUpdate('restrict');
         });
+
+
+        Schema::table('detail_resep', function (Blueprint $table) {
+            DB::statement('ALTER TABLE detail_resep 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

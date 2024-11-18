@@ -16,6 +16,13 @@ class CreateResepTable extends Migration
 
             $table->foreign('id_rekam_medis')->references('id')->on('rekam_medis')->onDelete('cascade')->onUpdate('cascade');
         });
+
+
+        Schema::table('resep', function (Blueprint $table) {
+            DB::statement('ALTER TABLE resep 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

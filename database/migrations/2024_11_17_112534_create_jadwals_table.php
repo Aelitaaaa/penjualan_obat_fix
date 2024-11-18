@@ -19,6 +19,13 @@ class CreateJadwalsTable extends Migration
             $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_pasien')->references('id_pasien')->on('pasien')->onDelete('cascade')->onUpdate('cascade');
         });
+
+
+        Schema::table('jadwals', function (Blueprint $table) {
+            DB::statement('ALTER TABLE jadwals 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
         
     }
 

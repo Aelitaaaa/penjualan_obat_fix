@@ -20,6 +20,13 @@ class CreateCustomPembayaranTable extends Migration
             $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_rekammedis')->references('id')->on('rekam_medis')->onDelete('cascade')->onUpdate('cascade');
         });
+
+
+        Schema::table('pembayaran', function (Blueprint $table) {
+            DB::statement('ALTER TABLE pembayaran 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
         
     }
 

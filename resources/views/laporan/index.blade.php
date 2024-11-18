@@ -65,51 +65,8 @@
                         <div class="d-sm-flex align-items-center mb-4">
                             <a class="btn btn-success" href="{{ route('laporan.export', ['dari_tanggal' => request('dari_tanggal'), 'sampai_tanggal' => request('sampai_tanggal')])  }}">Export Excel (XLSX)</a>
                         </div>
-<<<<<<< HEAD
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No Laporan</th>
-                                            <th>Pasien</th>
-                                            <th>Dokter</th>
-                                            <th>Biaya Obat</th>
-                                            <th>Biaya Dokter</th>
-                                            <th>Total Biaya</th>
-                                            <th>Tanggal</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No Laporan</th>
-                                            <th>Pasien</th>
-                                            <th>Dokter</th>
-                                            <th>Biaya Obat</th>
-                                            <th>Biaya Dokter</th>
-                                            <th>Total Biaya</th>
-                                            <th>Tanggal</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        @foreach($data as $d)
-                                        <tr>
-                                            <td>{{$d->id}}</td>
-                                            <td>{{$d->rekamMedis->pasien->nama_pasien}}</td>
-                                            <td>{{$d->rekamMedis->dokter->nama}}</td>
-                                            <td>{{ number_format($d->rekamMedis->resep->detailResep->sum('total_biaya'), 0, ',', '.') }}</td>
-                                            <td>{{ number_format($d->total_biaya - $d->rekamMedis->resep->detailResep->sum('total_biaya'), 0, ',', '.') }}</td>
-                                            <td>{{ number_format($d->total_biaya, 0, ',', '.') }}</td>
-                                            <td>{{ $d->created_at->format('Y-m-d') }}</td>
+   
 
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-=======
                                 <h2 class="text-center">Laporan Rawat-Jalan</h4>
                                 <h3 class="text-center">Dari Tanggal {{ $start->format('d-m-Y') }} Sampai Tanggal {{ $end->format('d-m-Y') }}</h6>
                                 <div class="table-responsive mb-4">
@@ -143,7 +100,6 @@
                                 </div>
               
                     @endif
->>>>>>> e932ec1a680b23e63cd87d4208aa1a3db620c640
                 </div>
 
                 <!-- /.container -fluid -->
@@ -166,25 +122,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <!-- Custom scripts for all pages-->
     @include('template.script')

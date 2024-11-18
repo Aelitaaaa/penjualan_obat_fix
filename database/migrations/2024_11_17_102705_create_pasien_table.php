@@ -17,6 +17,12 @@ class CreatePasienTable extends Migration
             $table->text('alamat');
             $table->timestamps();
         });        
+
+        Schema::table('pasien', function (Blueprint $table) {
+            DB::statement('ALTER TABLE pasien 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
             
     }
 

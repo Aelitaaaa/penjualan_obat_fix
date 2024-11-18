@@ -19,6 +19,12 @@ class CreateDetailPembelianTable extends Migration
             $table->timestamps();
             $table->unique('kode_pembelian');
         });
+
+        Schema::table('detail_pembelian', function (Blueprint $table) {
+            DB::statement('ALTER TABLE detail_pembelian 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()

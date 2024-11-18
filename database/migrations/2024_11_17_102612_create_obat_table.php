@@ -19,6 +19,12 @@ class CreateObatTable extends Migration
             $table->string('unit', 15);
             $table->timestamps();
         });
+
+        Schema::table('obat', function (Blueprint $table) {
+            DB::statement('ALTER TABLE obat 
+                MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        });
     }
 
     public function down()
