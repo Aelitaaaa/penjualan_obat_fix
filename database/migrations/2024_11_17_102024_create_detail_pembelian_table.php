@@ -17,7 +17,6 @@ class CreateDetailPembelianTable extends Migration
             $table->decimal('subtotal', 10, 0);
             $table->decimal('total_pembelian', 10, 0)->nullable();
             $table->timestamps();
-            $table->unique('kode_pembelian');
         });
 
         Schema::table('detail_pembelian', function (Blueprint $table) {
