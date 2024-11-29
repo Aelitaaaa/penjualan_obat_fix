@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('pasien.update', ['id' => $pasienItem->id_pasien]) }}" method="POST">
+            <form action="{{ route('pasien.update', ['id' => $pasienItem->id_pasien]) }}" method="POST" onsubmit="return validateForm{{ $pasienItem->id_pasien }}()">
                 @csrf
                 @method('PUT')
 
@@ -30,7 +30,9 @@
                     </div>
                     <div class="form-group">
                         <label for="nomor_telepon">Nomor Telepon</label>
-                        <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon" value="{{ old('nomor_telepon', $pasienItem->nomor_telepon) }}" required>
+                        <input type="text" class="form-control" id="nomor_telepon{{ $pasienItem->id_pasien }}" name="nomor_telepon" value="{{ old('nomor_telepon', $pasienItem->nomor_telepon) }}" required>
+                        <small id="nomor_telepon_error{{ $pasienItem->id_pasien }}" class="form-text text-danger" style="display:none;">
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
@@ -39,10 +41,38 @@
                 </div>
 
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </form>
+
+<script>
+    function validateForm{{ $pasienItem->id_pasien }}() {
+        var nomorTelepon = document.getElementById('nomor_telepon{{ $pasienItem->id_pasien }}').value;
+        var errorMessage = document.getElementById('nomor_telepon_error{{ $pasienItem->id_pasien }}');
+
+        if (!nomorTelepon.startsWith('08')) {
+            errorMessage.innerText = "Nomor telepon harus diawali dengan '08'.";
+            errorMessage.style.display = 'block'; 
+            return false; 
+        }
+
+        if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
+            errorMessage.innerText = "Nomor telepon harus terdiri dari 10 hingga 13 digit.";
+            errorMessage.style.display = 'block'; 
+            return false; 
+        }
+
+        errorMessage.style.display = 'none'; 
+        return true; 
+    }
+
+    document.getElementById('nomor_telepon{{ $pasienItem->id_pasien }}').addEventListener('input', function(e) {
+        if (this.value.length > 13) {
+            this.value = this.value.slice(0, 13); 
+        }
+    });
+</script>
         </div>
     </div>
 </div>

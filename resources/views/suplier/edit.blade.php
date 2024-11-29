@@ -32,7 +32,6 @@
                         <label for="nomor_telepon">Nomor Telepon</label>
                         <input type="number" id="nomor_telepon{{ $suplierItem->id_suplier }}" name="nomor_telepon" class="form-control" value="{{ $suplierItem->nomor_telepon }}" required>
                         <small id="nomor_telepon_error{{ $suplierItem->id_suplier }}" class="form-text text-danger" style="display:none;">
-                            Masukan nomor telepon dengan benar.
                          </small>
                     </div>
                     
@@ -47,19 +46,20 @@
                         var errorMessage = document.getElementById('nomor_telepon_error{{ $suplierItem->id_suplier }}');
                 
                         if (!nomorTelepon.startsWith('08')) {
-                            errorMessage.style.display = 'block'; 
-                            return false; 
+                                errorMessage.innerText = "Nomor telepon harus diawali dengan '08'.";
+                                errorMessage.style.display = 'block'; 
+                                return false; 
+                            }
+
+                            if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
+                                errorMessage.innerText = "Nomor telepon harus terdiri dari 10 hingga 13 digit.";
+                                errorMessage.style.display = 'block'; 
+                                return false; 
+                            }
+
+                            errorMessage.style.display = 'none'; 
+                            return true; 
                         }
-                
-                        if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
-                            errorMessage.style.display = 'block'; 
-                            return false; 
-                        }
-                
-                        errorMessage.style.display = 'none'; 
-                        return true; 
-                        
-                    }
 
                     document.getElementById('nomor_telepon{{ $suplierItem->id_suplier }}').addEventListener('input', function(e) {
                         if (this.value.length > 13) {

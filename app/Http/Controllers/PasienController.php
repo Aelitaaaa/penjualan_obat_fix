@@ -25,7 +25,7 @@ class PasienController extends Controller
             'nama_pasien' => 'required|string|max:50',
             'jenis_kelamin' => 'required|in:pria,wanita',
             'tanggal_lahir' => 'required|date',
-            'nomor_telepon' => 'required|numeric|digits_between:10,13',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13|regex:/^08[0-9]+$/',
             'alamat' => 'required|string|max:255',
         ]);
 
@@ -56,7 +56,7 @@ class PasienController extends Controller
             'nama_pasien' => 'required|string|max:50',
             'jenis_kelamin' => 'required|in:pria,wanita',
             'tanggal_lahir' => 'required|date',
-            'nomor_telepon' => 'required|numeric|digits_between:10,13',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13|regex:/^08[0-9]+$/',
             'alamat' => 'required|string|max:255',
         ]);
 

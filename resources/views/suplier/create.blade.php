@@ -28,7 +28,6 @@
                         <label>Nomor Telepon</label>
                         <input type="number" id="nomor_telepon" name="nomor_telepon" class="form-control" required>
                         <small id="nomor_telepon_error" class="form-text text-danger" style="display:none;">
-                           Masukkan nomor telepon dengan benar.
                         </small>
                     </div>
                 </div>
@@ -45,15 +44,17 @@
                 var errorMessage = document.getElementById('nomor_telepon_error');
         
                 if (!nomorTelepon.startsWith('08')) {
-                    errorMessage.style.display = 'block'; 
-                    return false; 
-                }
-        
-                if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
-                    errorMessage.style.display = 'block'; 
-                    return false; 
-                }
-        
+                        errorMessage.innerText = "Nomor telepon harus diawali dengan '08'.";
+                        errorMessage.style.display = 'block'; 
+                        return false; 
+                    }
+
+                    if (nomorTelepon.length < 10 || nomorTelepon.length > 13) {
+                        errorMessage.innerText = "Nomor telepon harus terdiri dari 10 hingga 13 digit.";
+                        errorMessage.style.display = 'block'; 
+                        return false; 
+                    }
+
                 errorMessage.style.display = 'none'; 
                 return true; 
             }

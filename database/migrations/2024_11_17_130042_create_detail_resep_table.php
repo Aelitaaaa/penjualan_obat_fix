@@ -19,7 +19,7 @@ class CreateDetailResepTable extends Migration
             $table->timestamps();
 
             $table->foreign('kode_resep')->references('kode_resep')->on('resep')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('kode_obat')->references('kode_obat')->on('obat')->onDelete('cascade')->onUpdate('cascade');
         });
 
 
