@@ -71,7 +71,7 @@ class OmsetController extends Controller
         
     }
 
-    public function export(Request $request)
+    public function exportLaba(Request $request)
     {
         $start = $request->query('dari_tanggal');
         $end = $request->query('sampai_tanggal');
