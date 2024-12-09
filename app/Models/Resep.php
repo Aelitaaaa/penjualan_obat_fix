@@ -53,6 +53,11 @@ class Resep extends Model
         return $this->belongsTo(RekamMedis::class, 'id_rekam_medis', 'id');
     }
 
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat');
+    }
+
     public function pembayaran()
     {
         return $this->hasOne(Pembayaran::class, 'kode_resep');

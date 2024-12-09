@@ -55,54 +55,84 @@ class ObatController extends Controller
 
 
     
-public function destroy($id)
-{
-    $obat = Obat::findOrFail($id);
+    public function destroy($id)
+    {
+        $obat = Obat::findOrFail($id);
 
-    // Hapus data opname terkait sebelum menghapus obat
-    $obat->stockOpnames()->delete();
+        // Hapus data opname terkait sebelum menghapus obat
+        $obat->stockOpnames()->delete();
 
-    // Hapus obat
-    $obat->delete();
+        // Hapus obat
+        $obat->delete();
 
-    return redirect()->route('obat.index')->with('success', 'Obat berhasil dihapus.');
-}
+        return redirect()->route('obat.index')->with('success', 'Obat berhasil dipindahkan.');
+    }
 
 
-public function update(Request $request, $id)
-{
-    // Validasi input
-    $request->validate([
-        'kode_suplier' => 'nullable|string|max:7',
-        'kode_obat' => 'required|string|max:7|unique:obat,kode_obat,' . $id . ',id_obat', 
-        'nama_obat' => 'required|string|max:255',
-        'harga_beli' => 'required|numeric|min:0', 
-        'harga_jual' => 'required|numeric|min:0', 
-        'jumlah_obat' => 'required|integer|min:0', 
-        'unit' => 'required|string|max:15', 
-    ]);
+    public function update(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'kode_suplier' => 'nullable|string|max:7',
+            'kode_obat' => 'required|string|max:7|unique:obat,kode_obat,' . $id . ',id_obat', 
+            'nama_obat' => 'required|string|max:255',
+            'harga_beli' => 'required|numeric|min:0', 
+            'harga_jual' => 'required|numeric|min:0', 
+            'jumlah_obat' => 'required|integer|min:0', 
+            'unit' => 'required|string|max:15', 
+        ]);
 
+        
+        $obat = Obat::findOrFail($id);
+        $obat->update([
+            'kode_suplier' => $request->kode_suplier,
+            'kode_obat' => $request->kode_obat,
+            'nama_obat' => $request->nama_obat,
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual,
+            'jumlah_obat' => $request->jumlah_obat,
+            'unit' => $request->unit,
+        ]);
+
+        return redirect()->route('obat.index')->with('success', 'Obat berhasil diperbarui!');
+    }
+
+    public function export()
+    {
     
-    $obat = Obat::findOrFail($id);
-    $obat->update([
-        'kode_suplier' => $request->kode_suplier,
-        'kode_obat' => $request->kode_obat,
-        'nama_obat' => $request->nama_obat,
-        'harga_beli' => $request->harga_beli,
-        'harga_jual' => $request->harga_jual,
-        'jumlah_obat' => $request->jumlah_obat,
-        'unit' => $request->unit,
-    ]);
+        $filenames = 'data_obat (' .date('d-m-Y') . ').xlsx';
+        return Excel::download(new obatExport, $filenames);
+    }
 
-    return redirect()->route('obat.index')->with('success', 'Obat berhasil diperbarui!');
-}
+    public function trash()
+    {
+        $obat = Obat::onlyTrashed()->get();
+        return view('obat.trash', compact('obat')); 
+    }
 
-public function export()
-{
-   
-    $filenames = 'data_obat (' .date('d-m-Y') . ').xlsx';
-    return Excel::download(new obatExport, $filenames);
-}
+    public function restore($id = null)
+    {
+        if ($id != null){
+            $obat = Obat::onlyTrashed()
+            ->where('id_obat',$id)
+            ->restore();
+        } else{
+            $obat = Obat::onlyTrashed()->restore();
+        }
+        return redirect()->route('obat.trash')->with('success', 'Obat berhasil di-restore!');
+        
+    }
 
-
+    public function delete($id = null)
+    {
+        if ($id != null){
+            $obat = Obat::onlyTrashed()
+            ->where('id_obat',$id)
+            ->forceDelete();
+        } else{
+            $obat = Obat::onlyTrashed()->forceDelete();
+        }
+        return redirect()->route('obat.trash')->with('success', 'Obat berhasil di-hapus!');
+        
+    }
 }

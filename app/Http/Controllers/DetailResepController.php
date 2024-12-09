@@ -14,8 +14,13 @@ class DetailResepController extends Controller
        
         $kodeResep = $request->query('kode');
 
-        $detailResep = DetailResep::where('kode_resep', $kodeResep)->get();
-        $obat = Obat::all();
+        $detailResep = DetailResep::where('kode_resep', $kodeResep)
+        ->with(['obat' => function ($query) {
+            $query->withTrashed();
+        }])->get();
+       
+        $obat = Obat::withTrashed()->get();
+
 
         return view('resep.detail_resep',compact('detailResep', 'obat', 'kodeResep'));
     }

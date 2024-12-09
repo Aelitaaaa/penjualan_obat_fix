@@ -10,12 +10,15 @@ class ResepController extends Controller
 {
     public function index()
     {
-        $resep = Resep::with('detailResep.obat')->get();
+        $resep = Resep::with(['detailResep.obat' => function ($query) {
+            $query->withTrashed();
+        }])->get();
 
         // dd($resep);
         // $resep = Resep::with('detailResep')->get();
         $rekamMedis = RekamMedis::whereDoesntHave('resep')->get();
-        $obat = Obat::all(); 
+        
+        $obat = Obat::withTrashed()->get();;
 
         return view('resep.resep', compact('resep', 'rekamMedis', 'obat'));
     }

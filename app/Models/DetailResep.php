@@ -27,6 +27,6 @@ class DetailResep extends Model
 
     public function obat()
     {
-        return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat');
+        return $this->belongsTo(Obat::class, 'kode_obat', 'kode_obat')->withTrashed();
     }
 }

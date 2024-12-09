@@ -45,8 +45,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/obat', [ObatController::class, 'store'])->name('obat.store');
     Route::get('obat/{id}/edit', [ObatController::class, 'edit'])->name('obat.edit');
     Route::put('obat/{id}', [ObatController::class, 'update'])->name('obat.update');
-    Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.delete');
+    Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.destroy');
     Route::get('/obat-export', [ObatController::class, 'export'])->name('obat.export');
+    Route::get('/obat/trash', [ObatController::class, 'trash'])->name('obat.trash');
+    Route::get('/obat/restore/{id?}', [ObatController::class, 'restore'])->name('obat.restore');
+    Route::get('/obat/delete/{id?}', [ObatController::class, 'delete'])->name('obat.delete');
     
     Route::prefix('pembelian')->name('pembelian.')->group(function () {
         Route::get('/', [PembelianController::class, 'index'])->name('index');

@@ -30,7 +30,10 @@
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Obat</h1>
-                        <a class="btn btn-success" href="{{ route('obat.export') }}">Export Excel (XLSX)</a>
+                        <div class="d-flex">
+                            <a class="btn btn-danger mr-2" href="{{ route('obat.trash') }}" >Trash</i></a>
+                            <a class="btn btn-success" href="{{ route('obat.export') }}">Export Excel (XLSX)</a>
+                        </div>
                     </div>
                     
                     @include('obat.create', ['suplier' => $suplier])
@@ -86,7 +89,7 @@
                                                     <a href="#" class="btn btn-warning btn-circle btn-sm mr-1" data-toggle="modal" data-target="#editObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                   
+                                            
                                                     <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#deleteObatModal{{ $obatItem->id_obat }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
