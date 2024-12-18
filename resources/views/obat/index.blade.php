@@ -31,7 +31,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Obat</h1>
                         <div class="d-flex">
-                            <a class="btn btn-danger mr-2" href="{{ route('obat.trash') }}" >Trash</i></a>
+                
                             <a class="btn btn-success" href="{{ route('obat.export') }}">Export Excel (XLSX)</a>
                         </div>
                     </div>

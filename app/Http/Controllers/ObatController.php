@@ -104,35 +104,5 @@ class ObatController extends Controller
         return Excel::download(new obatExport, $filenames);
     }
 
-    public function trash()
-    {
-        $obat = Obat::onlyTrashed()->get();
-        return view('obat.trash', compact('obat')); 
-    }
-
-    public function restore($id = null)
-    {
-        if ($id != null){
-            $obat = Obat::onlyTrashed()
-            ->where('id_obat',$id)
-            ->restore();
-        } else{
-            $obat = Obat::onlyTrashed()->restore();
-        }
-        return redirect()->route('obat.trash')->with('success', 'Obat berhasil di-restore!');
-        
-    }
-
-    public function delete($id = null)
-    {
-        if ($id != null){
-            $obat = Obat::onlyTrashed()
-            ->where('id_obat',$id)
-            ->forceDelete();
-        } else{
-            $obat = Obat::onlyTrashed()->forceDelete();
-        }
-        return redirect()->route('obat.trash')->with('success', 'Obat berhasil di-hapus!');
-        
-    }
+    
 }
